@@ -206,6 +206,14 @@ header li{
     padding: 50px;
     /*background: #831DAC;*/
 }
+.detail3d{
+    width: 100%;
+    height: 520px;
+    margin: 0 auto;
+    padding: 0px;
+    overflow: hidden;
+    /*background: #7C1DAC;*/
+}
 
 .detailDes .infoTitle{
     position: relative;

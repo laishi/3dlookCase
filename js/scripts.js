@@ -286,9 +286,6 @@ $(document).ready(function() {
 
 
 
-
-
-
         $(".headereyes").remove();
         $("header").children("a").remove();
         $(".detailTag").children().remove();
@@ -296,6 +293,7 @@ $(document).ready(function() {
 
         $(".detailTitle").children().remove();
         $(".detailDes").children().remove();
+        $(".detail3d").children().remove();
         $(".detailAdditional").children().remove();
 
 
@@ -307,10 +305,18 @@ $(document).ready(function() {
         $(".detailAdditional").append( getAdditional );
 
 
+
         // ADD IMG GO TO 3D LOOK
+
         $("header").children("img").wrap($('<a>',{
             href: getLink
         }));
+
+        var iframego = "<iframe src= " + getLink  + " " + "frameBorder=0 scrolling=no width='100%' height='100%'></iframe>"
+
+
+        $(".detail3d").append(iframego);
+
 
         TweenMax.fromTo($("header").find("img"), 1.3, {y:320}, {y:0,delay:1,ease: Elastic.easeOut.config(1, 0.75)});
         TweenMax.fromTo($("header").children("ul"), 2.3, {opacity:0},{opacity:1,delay:2.3});
