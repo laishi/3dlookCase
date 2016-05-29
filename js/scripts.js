@@ -287,8 +287,10 @@ $(document).ready(function() {
 
 
 
+
+
         $(".headereyes").remove();
-        $("header").children("img").remove();
+        $("header").children("a").remove();
         $(".detailTag").children().remove();
 
 
@@ -305,7 +307,12 @@ $(document).ready(function() {
         $(".detailAdditional").append( getAdditional );
 
 
-        TweenMax.fromTo($("header").children("img"), 1.3, {y:320}, {y:0,delay:1,ease: Elastic.easeOut.config(1, 0.75)});
+        // ADD IMG GO TO 3D LOOK
+        $("header").children("img").wrap($('<a>',{
+            href: getLink
+        }));
+
+        TweenMax.fromTo($("header").find("img"), 1.3, {y:320}, {y:0,delay:1,ease: Elastic.easeOut.config(1, 0.75)});
         TweenMax.fromTo($("header").children("ul"), 2.3, {opacity:0},{opacity:1,delay:2.3});
 
     }
@@ -320,7 +327,7 @@ $(document).ready(function() {
 
         $("header").removeClass("fixHeader");
 
-        $("header").children("img").remove();
+        $("header").children("a").remove();
         $("header").children("ul").remove();
         $("header").children(".headereyes").remove();
         $("header").append( headereyes );
