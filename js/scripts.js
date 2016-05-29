@@ -5,14 +5,12 @@ $(document).ready(function() {
 
         if (winTop >= 100) {
 
-            if (!$("header").hasClass("fixHeader")) {
+            TweenMax.to($("header"), 0.3, {
+                height: 60,
+            }, 0.1);
 
-                TweenMax.to($("header"), 0.3, {
-                    height: 60,
-                }, 0.1);
+            // TweenMax.to($(".backCicle"), 0.3, {top:32} );
 
-                TweenMax.to($(".backCicle"), 0.3, {top:32} );
-            }
 
 
         } else {
@@ -21,7 +19,7 @@ $(document).ready(function() {
                 height: 320,
             }, 0.1);
 
-            TweenMax.to($(".backCicle"), 0.3, {top:290} );
+            // TweenMax.to($(".backCicle"), 0.3, {top:290} );
 
         }
 
@@ -48,8 +46,73 @@ $(document).ready(function() {
 
 
     $(".navBlog").click(function () {
-      $('.blogMix').mixItUp();
+        $('.blogMix').mixItUp();
+
+
+
+
+        var inputText;
+
+        var $matching = $();
+
+        var $contText = $();
+
+        // Delay function
+        var delay = (function() {
+            var timer = 0;
+            return function(callback, ms) {
+                clearTimeout(timer);
+                timer = setTimeout(callback, ms);
+            };
+        })();
+
+        $("#input").keyup(function() {
+            delay(function() {
+                inputText = $("#input").val().toLowerCase();
+
+                if ((inputText.length) > 0) {
+                    $('.mix').each(function() {
+                        $this = $("this");
+
+
+                        if ($(this).children('.itemTitle').text().toLowerCase().match(inputText)) {
+                            $matching = $matching.add(this);
+                        } else if ($(this).children('.itemDes').text().toLowerCase().match(inputText)) {
+                            $contText = $contText.add(this);
+                        } else {
+                            // removes any previously matched item
+                            $matching = $matching.not(this);
+                        }
+                    });
+
+
+
+                    $(".blogMix").mixItUp('filter', $matching);
+                    // $(".blogMix").mixItUp('filter', $contText);
+
+
+
+                } else {
+                    // resets the filter to show all item if input is empty
+                    $(".blogMix").mixItUp('filter', 'all');
+                }
+
+
+
+
+            }, 200);
+        });
+
+
     })
+
+
+
+
+
+
+
+
 
 
 
@@ -232,7 +295,6 @@ $(document).ready(function() {
         $(this).parents(".item").children(".bar").children(".barMark").children().addClass("barToggle");
 
 
-        // alert()
 
 
         TweenMax.staggerTo($(".item"), 0.3, {
@@ -247,7 +309,7 @@ $(document).ready(function() {
 
 
 
-            TweenMax.fromTo($(".navGrid"), 0.3, {y:0},{y:60} );
+        TweenMax.fromTo($(".navGrid"), 0.3, {y:0},{y:60} );
 
 
         function gototop() {
@@ -258,11 +320,17 @@ $(document).ready(function() {
 
             $(".infoMax").css({display:"block",opacity:0});
             $(".backCicle").css({display:"block"});
-            $(".go3dCicle").css({display:"block"});
+            
+
+
+
+
+            console.log($(this));
+
 
             TweenMax.to($(".infoMax"), 3.2, {opacity:1} );
-            TweenMax.fromTo($(".backCicle"), 1.3, {left:$(window).innerWidth()/2-30,scale:0,opacity:0},{left:"20%",scale:1,opacity:1,ease: Elastic.easeOut.config(1, 0.75),} );
-            TweenMax.fromTo($(".go3dCicle"), 1.3, {right:$(window).innerWidth()/2-30,scale:0,opacity:0},{right:"20%",scale:1,opacity:1,ease: Elastic.easeOut.config(1, 0.75),} );
+            TweenMax.fromTo($(".backCicle"), 1.3, {left:$(window).innerWidth()/2-30,scale:0,opacity:0},{left:"5%",scale:1,opacity:1,ease: Elastic.easeOut.config(1, 0.75),} );
+            TweenMax.fromTo($(".go3dCicle"), 1.3, {right:$(window).innerWidth()/2-30,scale:0,opacity:0},{right:"5%",scale:1,opacity:1,ease: Elastic.easeOut.config(1, 0.75),} );
 
 
             $(window).scrollTop(0);
@@ -278,11 +346,30 @@ $(document).ready(function() {
         var getAdditional = $(this).parents(".item").children(".itemAdditional").html();
 
 
+
+
+
+
+
+
+
+
+
+
+
         //CHANGE 3D LINK
 
-        var getLink = $(this).parents(".item").children(".bar").find(".3dlink").attr("href");       
+        var getLink = $(this).parents(".item").children(".bar").find(".3dlink").attr("href");
 
-        $(".go3dCicleLink").attr("href", getLink);
+
+
+        if (getLink) {
+            $(".go3dCicleLink").attr("href", getLink);
+            TweenMax.to($(".go3dCicle"), 0.0, {display:"block", delay:0.5} );
+        }
+
+
+
 
 
 
@@ -315,11 +402,16 @@ $(document).ready(function() {
         var iframego = "<iframe src= " + getLink  + " " + "frameBorder=0 scrolling=no width='100%' height='100%'></iframe>"
 
 
-        $(".detail3d").append(iframego);
+        
 
 
-        TweenMax.fromTo($("header").find("img"), 1.3, {y:320}, {y:0,delay:1,ease: Elastic.easeOut.config(1, 0.75)});
+        TweenMax.fromTo($("header").find("img"), 1.3, {y:320}, {y:0,delay:1,ease: Elastic.easeOut.config(1, 0.75),onComplete:showIframe});
         TweenMax.fromTo($("header").children("ul"), 2.3, {opacity:0},{opacity:1,delay:2.3});
+
+
+        function showIframe() {
+            $(".detail3d").append(iframego);
+        }
 
     }
 
@@ -330,6 +422,7 @@ $(document).ready(function() {
     // closeDetail
     var headereyes = $(".headerCont").html();
     function closeDetail() {
+
 
         $("header").removeClass("fixHeader");
 
@@ -355,8 +448,15 @@ $(document).ready(function() {
                 delay: function(index) {
                     return Math.random(index)/10;
                 }
-            }
+            },
         }, 0.01);
+
+        function killItem() {
+            alert("killItem");
+        }
+
+
+        TweenMax.to($(".itme"), 0.0, {display:"none", delay:0.5} );
 
     }
 
@@ -524,9 +624,9 @@ $(document).ready(function() {
 /*EXPAND MENU INIT*/
 $(document).ready(function() {
 
-    var navItemL = $(".navItem").length; // Div count
+    var navItemL = $(".navItem").length;
 
-    var expandW = 38; // Div over width
+    var expandW = 38;
     TweenMax.set($(".navItem"), {
         width: 100 / navItemL + '%'
     });
@@ -550,10 +650,54 @@ $(document).ready(function() {
 
 });
 
+/*EXPAND MENU INIT*/
+$(document).ready(function() {
+
+    var filterItemL = $(".filterItem").length;
+
+    var expandW = 25;
+
+
+    TweenMax.set($(".filterItem"), {
+        width: 100 / filterItemL + '%'
+    });
+
+    $(".filterItem").hover(over, out);
+
+    function over() {
+
+
+        if ($(this).hasClass("filterInput")) {
+            expandW = 100;
+        } else {
+            expandW = 25;            
+        }
+
+
+
+        TweenMax.to($(this), 0.8, {
+            width: expandW + '%'
+        });
+        TweenMax.to($(this).siblings(), 0.8, {
+            width: (100 - expandW) / (filterItemL - 1) + '%'
+        })
+
+
+    }
+
+    function out() {
+        TweenMax.to($(".filterItem"), 0.8, {
+            width: 100 / filterItemL + '%',
+            ease: Back.easeOut
+        })
+    }
+
+});
+
 /*EXPAND BAR INIT*/
 $(document).ready(function() {
 
-    var gridItemsCont = $(".gridItems").children().length - $(".gridItems").children(".gap").length;
+    var gridItemsCont = $(".gridItems").children(".item").length;
     var c = $(".barItem").length / gridItemsCont;
     var KD = 50;
     TweenMax.set($(".barItem"), {
@@ -587,4 +731,3 @@ $(document).ready(function() {
 
 
 
-        
