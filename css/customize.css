@@ -340,7 +340,8 @@ input[type="text"]:focus {
 }
 
 .pageBlog .gridItems .itemImg{
-    height: 320px;
+    max-height: 320px;
+    overflow: hidden;
     text-align: center;
 }
 
