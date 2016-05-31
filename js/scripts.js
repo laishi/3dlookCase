@@ -1,60 +1,82 @@
-$(document).ready(function() {
 
-    $(window).scroll(function() {
-        var winTop = $(window).scrollTop();
+$(window).on('hashchange', function(e){
+    var hashUrl;
+    var origEvent = e.originalEvent;
 
-        if (winTop >= 100) {
+    var urlSplit = origEvent.newURL.split("/");
+    var urlLenght = urlSplit.length;
 
-            TweenMax.to($("header"), 0.3, {
-                height: 60,
-            }, 0.1);
+    hashUrl = urlSplit[urlLenght-1];
+    sliderPage(hashUrl);
 
-            // TweenMax.to($(".backCicle"), 0.3, {top:32} );
+    var hash = new String(document.location).indexOf("#");
 
+    // console.log(origEvent)
 
-
-        } else {
-
-            TweenMax.to($("header"), 0.3, {
-                height: 320,
-            }, 0.1);
-
-            // TweenMax.to($(".backCicle"), 0.3, {top:290} );
-
-        }
-
-    });
+});
 
 
 
 
 
-    var navItem = $(".navItem");
-    var page = $(".page");
-    var homePage = $(".pages").children().first();
+$(".navItem").click(function() {
 
-    homePage.addClass("curPage");
-    homePage.css({ "display": "block" });
+    var pageData = $(this).data("page");
 
-    var lastPage = homePage;
-    var curPage = homePage;
-    var lastTween, curTween;
+    var index = $(this).index();
+
+    
 
 
-    var clickNum = 0;
-    var pageIndex = 0;
+    sliderPage(pageData,index);
+
+    
+    countClick += 1;
+
+});
 
 
-    $(".navBlog").click(function () {
+// function ChangeUrl(page, url) {
+//     if (typeof(history.pushState) != "undefined") {
+//         var obj = { Page: page, Url: url };
+//         history.pushState(obj, obj.Page, obj.Url);
+//     } else {
+//         window.location.href = "homePage";
+//     }
+// }
+
+// ChangeUrl(pageData, pageData);
+
+
+
+
+
+var clickNum = 0;
+var clickX = 0;
+
+var countClick = 0;
+
+var pageIndex = 0;
+var clickNum = 0;
+
+function sliderPage(pageName,index) {
+
+
+    var pageData = pageName;
+    // var index = index;
+
+    var curPage = $('.' + pageData);
+    var curPageSiblings = curPage.siblings();
+
+
+
+    if (pageData == "blog") {
+
+
         $('.blogMix').mixItUp();
 
-
-
-
         var inputText;
-
         var $matching = $();
-
         var $contText = $();
 
         // Delay function
@@ -103,79 +125,117 @@ $(document).ready(function() {
             }, 200);
         });
 
-
-    })
-
+    }
 
 
 
 
+    if (curPage.hasClass("curPage")) {
+
+    } else {
+
+        $(".pages").children().removeClass("lastPage");
+        $(".curPage").removeClass("curPage").addClass("lastPage");
+        curPage.addClass("curPage");
+
+        lastPage = $(".lastPage");
+        curPage = $(".curPage");
+        var speed = 0.5;
+
+        if (pageIndex < index) {
+            goRight();
+        } else {
+            goLeft();
+        }
+
+        pageIndex = index;
+
+        clickNum++;
+
+        function goRight() {
+            TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "-100%" });
+            TweenMax.fromTo(curPage, speed, { x: "100%" }, { x: "0%", onComplete:wtotop });
+        }
+
+        function goLeft() {
+            TweenMax.fromTo(curPage, speed, { x: "-100%" }, { x: "0%" });
+            TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "100%", onComplete:wtotop });
+        }
+
+        function wtotop() {
+            $(window).scrollTop(0);
+        }
+
+
+    }
+}
 
 
 
 
 
 
-    navItem.click(sliderPage);
-
-    function sliderPage() {
 
 
 
 
-        var pageData = $(this).data("page");
-        var curPage = $('.' + pageData);
-        var curPageSiblings = curPage.siblings();
 
-        $(this).children().css({ "color": "#ccc" });
-        $(this).siblings().children().css({ "color": "#181818" });
 
-        if (curPage.hasClass("curPage")) {
+$(document).ready(function() {
+
+
+
+
+
+    $(window).scroll(function() {
+        var winTop = $(window).scrollTop();
+
+        if (winTop >= 100) {
+
+            TweenMax.to($("header"), 0.3, {
+                height: 60,
+            }, 0.1);
+
+
+
 
         } else {
 
-            $(".pages").children().removeClass("lastPage");
-            $(".curPage").removeClass("curPage").addClass("lastPage");
-            curPage.addClass("curPage");
+            TweenMax.to($("header"), 0.3, {
+                height: 320,
+            }, 0.1);
 
-            lastPage = $(".lastPage");
-            curPage = $(".curPage");
-
-
-            var speed = 0.5;
-
-            if (pageIndex < $(this).index()) {
-
-                TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "-100%" });
-                TweenMax.fromTo(curPage, speed, { x: "100%" }, { x: "0%", onComplete:wtotop });
-
-            } else {
-
-                TweenMax.fromTo(curPage, speed, { x: "-100%" }, { x: "0%" });
-                TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "100%", onComplete:wtotop });
-            }
-
-            pageIndex = $(this).index();
-
-            clickNum++;
 
         }
-    }
 
-
-    function wtotop() {
-        $(window).scrollTop(0);
-    }
+    });
 
 
 
-    var workImg = $(".pageWork").find(".itemImg").children();
 
-    workImg.each(function(index){
+
+    var navItem = $(".navItem");
+    var page = $(".page");
+    var homePage = $(".pages").children().first();
+
+    homePage.addClass("curPage");
+    homePage.css({ "display": "block" });
+
+    var lastPage = homePage;
+    var curPage = homePage;
+    var lastTween, curTween;
+
+
+
+
+
+    var workImg = $(".work").find(".itemImg").children();
+
+    workImg.each(function(index) {
 
         var imgBase = "img/workimg/0";
         var formate = ".png"
-        
+
         var imgPath = imgBase + index + formate;
         $(this).prop('src', imgPath);
 
@@ -186,9 +246,9 @@ $(document).ready(function() {
     var work3dLink = $(".3dlink");
     var go3dCicleLink = $(".go3dCicleLink");
 
-    work3dLink.each(function (index, link) {
+    work3dLink.each(function(index, link) {
         var linkBase = "assets/webgl/0";
-        var excudehtml = "/index.html"        
+        var excudehtml = "/index.html"
         var linkPath = linkBase + index + excudehtml;
         $(this).attr("href", linkPath);
 
@@ -213,14 +273,14 @@ $(document).ready(function() {
     $(".item").children(".itemImg").click(openDetail);
 
     $(".barMark").click(openDetail);
-    $(".itemTitle").click(openDetail);    
+    $(".itemTitle").click(openDetail);
 
     $(".barInfo").click(openInfo);
 
     $(".barLove").click(function() {
         $(this).children().toggleClass("barToggle");
     })
-    
+
 
 
 
@@ -239,7 +299,7 @@ $(document).ready(function() {
 
 
     function addMark() {
-        
+
     }
 
 
@@ -258,7 +318,7 @@ $(document).ready(function() {
 
             TweenMax.to($(this).parents(".item").children(".bar").find(".infoTitle"), 0.5, { ease: Elastic.easeOut.config(1, 0.75), opacity: 0, delay: 0.3 });
 
-            
+
 
 
         } else {
@@ -276,9 +336,9 @@ $(document).ready(function() {
             var itemH = $(this).parent().parent().height();
             var titleH = $(this).parent().siblings(".info").children(".infoTitle").height();
 
-            var infoContH = itemH - titleH -100;
+            var infoContH = itemH - titleH - 100;
 
-            $(this).parent().siblings(".info").children(".infoCont").css("height",infoContH);
+            $(this).parent().siblings(".info").children(".infoCont").css("height", infoContH);
         }
     }
 
@@ -289,6 +349,9 @@ $(document).ready(function() {
 
 
     function openDetail() {
+
+
+
 
         $("header").addClass("fixHeader");
 
@@ -301,36 +364,44 @@ $(document).ready(function() {
             scale: 0,
             cycle: {
                 delay: function(index) {
-                    return Math.random(index)/10;
+                    return Math.random(index) / 10;
                 }
-            }, onComplete:gototop
+            },
+            onComplete: gototop
         }, 0.01);
 
 
 
 
-        TweenMax.fromTo($(".navGrid"), 0.3, {y:0},{y:60} );
+        TweenMax.fromTo($(".navGrid"), 0.3, { y: 0 }, { y: 60 });
 
 
         function gototop() {
 
-            TweenMax.to($(this).parent().siblings(), 0.0, {display:"none"} );
+            if ($(window).innerWidth()>1080) {
+
+                var ld = ((1 - 1080/$(window).innerWidth())/2 - 0.02) *100 + "%" 
+
+                // alert(mydis);
+
+            } else {
+                var ld = 2 + "%"
+            }
+
+
+            TweenMax.to($(this).parent().siblings(), 0.0, { display: "none" });
+
+            $(".infoMax").css({ display: "block", opacity: 0 });
+            $(".backCicle").css({ display: "block" });
 
 
 
-            $(".infoMax").css({display:"block",opacity:0});
-            $(".backCicle").css({display:"block"});
-            
+            TweenMax.to($(".infoMax"), 3.2, { opacity: 1 });
+            TweenMax.fromTo($(".backCicle"), 1.3, { left: $(window).innerWidth() / 2 - 30, scale: 0, opacity: 0 },
+                            { left: ld, scale: 1, opacity: 1, ease: Elastic.easeOut.config(1, 0.75), });
 
-
-
-
-            console.log($(this));
-
-
-            TweenMax.to($(".infoMax"), 3.2, {opacity:1} );
-            TweenMax.fromTo($(".backCicle"), 1.3, {left:$(window).innerWidth()/2-30,scale:0,opacity:0},{left:"5%",scale:1,opacity:1,ease: Elastic.easeOut.config(1, 0.75),} );
-            TweenMax.fromTo($(".go3dCicle"), 1.3, {right:$(window).innerWidth()/2-30,scale:0,opacity:0},{right:"5%",scale:1,opacity:1,ease: Elastic.easeOut.config(1, 0.75),} );
+            TweenMax.fromTo($(".go3dCicle"), 1.3, { right: $(window).innerWidth() / 2 - 30, scale: 0, opacity: 0 },
+                            { right: ld, scale: 1, opacity: 1, ease: Elastic.easeOut.config(1, 0.75), });
 
 
             $(window).scrollTop(0);
@@ -365,7 +436,7 @@ $(document).ready(function() {
 
         if (getLink) {
             $(".go3dCicleLink").attr("href", getLink);
-            TweenMax.to($(".go3dCicle"), 0.0, {display:"block", delay:0.5} );
+            TweenMax.to($(".go3dCicle"), 0.0, { display: "block", delay: 0.5 });
         }
 
 
@@ -384,29 +455,29 @@ $(document).ready(function() {
         $(".detailAdditional").children().remove();
 
 
-        $("header").append( getImg );
-        $("header").append( getTag );
+        $("header").append(getImg);
+        $("header").append(getTag);
 
-        $(".detailTitle").append( getTitle );
-        $(".detailDes").append( getDes );
-        $(".detailAdditional").append( getAdditional );
+        $(".detailTitle").append(getTitle);
+        $(".detailDes").append(getDes);
+        $(".detailAdditional").append(getAdditional);
 
 
 
         // ADD IMG GO TO 3D LOOK
 
-        $("header").children("img").wrap($('<a>',{
+        $("header").children("img").wrap($('<a>', {
             href: getLink
         }));
 
-        var iframego = "<iframe src= " + getLink  + " " + "frameBorder=0 scrolling=no width='100%' height='100%'></iframe>"
+        var iframego = "<iframe src= " + getLink + " " + "frameBorder=0 scrolling=no width='100%' height='100%'></iframe>"
 
 
-        
 
 
-        TweenMax.fromTo($("header").find("img"), 1.3, {y:320}, {y:0,delay:1,ease: Elastic.easeOut.config(1, 0.75),onComplete:showIframe});
-        TweenMax.fromTo($("header").children("ul"), 2.3, {opacity:0},{opacity:1,delay:2.3});
+
+        TweenMax.fromTo($("header").find("img"), 1.3, { y: 320 }, { y: 0, delay: 1, ease: Elastic.easeOut.config(1, 0.75), onComplete: showIframe });
+        TweenMax.fromTo($("header").children("ul"), 2.3, { opacity: 0 }, { opacity: 1, delay: 2.3 });
 
 
         function showIframe() {
@@ -421,6 +492,7 @@ $(document).ready(function() {
 
     // closeDetail
     var headereyes = $(".headerCont").html();
+
     function closeDetail() {
 
 
@@ -429,24 +501,24 @@ $(document).ready(function() {
         $("header").children("a").remove();
         $("header").children("ul").remove();
         $("header").children(".headereyes").remove();
-        $("header").append( headereyes );
+        $("header").append(headereyes);
 
-        $(".navGrid").css({display:"block"});
+        $(".navGrid").css({ display: "block" });
 
-        TweenMax.fromTo($(".navGrid"), 1.2, {y:60,opacity:0},{y:0,opacity:1} );
+        TweenMax.fromTo($(".navGrid"), 1.2, { y: 60, opacity: 0 }, { y: 0, opacity: 1 });
 
 
-        TweenMax.set($(".backCicle"), {display:"none"} );
-        TweenMax.set($(".go3dCicle"), {display:"none"} );
+        TweenMax.set($(".backCicle"), { display: "none" });
+        TweenMax.set($(".go3dCicle"), { display: "none" });
 
-        $(".infoMax").css({display:"none",opacity:1});
+        $(".infoMax").css({ display: "none", opacity: 1 });
 
 
         TweenMax.staggerTo($(".item"), 0.5, {
             scale: 1,
             cycle: {
                 delay: function(index) {
-                    return Math.random(index)/10;
+                    return Math.random(index) / 10;
                 }
             },
         }, 0.01);
@@ -456,7 +528,7 @@ $(document).ready(function() {
         }
 
 
-        TweenMax.to($(".itme"), 0.0, {display:"none", delay:0.5} );
+        TweenMax.to($(".itme"), 0.0, { display: "none", delay: 0.5 });
 
     }
 
@@ -472,42 +544,29 @@ $(document).ready(function() {
 
 
 
-/*
-    for (var i = itemGrid.length - 1; i >= 0; i--) {
-        itemGrid[i]
-    }
+    /*
+        for (var i = itemGrid.length - 1; i >= 0; i--) {
+            itemGrid[i]
+        }
 
-*/
+    */
 
 
 
-    item.each(function (index,element) {
+    item.each(function(index, element) {
 
         var thisis = $(this);
 
         var eachItemTop = thisis.offset().top;
 
-        var winH = $(window).innerHeight()-itemPY;
-
-        
+        var winH = $(window).innerHeight() - itemPY;
 
 
         if (eachItemTop < eachItemTop) {
 
-            thisis.css("widht","20px");
-
-            console.log(this);
-
-
-
-
+            thisis.css("widht", "20px");
 
         }
-
-
-
-
-
 
 
     })
@@ -534,13 +593,16 @@ $(document).ready(function() {
 
         st = $(this).scrollTop();
 
+
+
+
         if (st > lastScrollTop) {
 
             tween = TweenMax.staggerTo(item, 0.3, {
                 y: -st,
                 cycle: {
                     delay: function(index) {
-                        return index%2 / 25;
+                        return index % 2 / 20;
                     }
                 }
             }, gridDelay);
@@ -552,7 +614,7 @@ $(document).ready(function() {
                 y: curentItemPY - 520,
                 cycle: {
                     delay: function(index) {
-                        return index%2 / 25;
+                        return index % 2 / 20;
                     }
                 }
             }, gridDelay);
@@ -668,28 +730,67 @@ $(document).ready(function() {
 
 
         if ($(this).hasClass("filterInput")) {
-            expandW = 100;
+
+
+            TweenMax.to($(this), 0.8, {
+                width: 75 + '%'
+            });
+
+            TweenMax.to($(this).siblings(), 0.8, {
+                width: 0 + '%'
+            })
+
+            TweenMax.to($(this).siblings().children(), 0.3, {
+                scale: 0
+            })
+
+            TweenMax.to($(this).siblings().first().children(), 0.3, {
+                scale: 1
+            })
+
+            $(".filterAll").html("搜索标题");
+
+            // $(".filterAll").children("h3").css("color","#CB0027");
+
+            TweenMax.to($(this).siblings().first(), 0.8, {
+                width: 25 + '%'
+            })
+
+
         } else {
-            expandW = 25;            
+
+
+            TweenMax.to($(this), 0.8, {
+                width: expandW + '%'
+            });
+            TweenMax.to($(this).siblings(), 0.8, {
+                width: (100 - expandW) / (filterItemL - 1) + '%'
+            })            
         }
 
-
-
-        TweenMax.to($(this), 0.8, {
-            width: expandW + '%'
-        });
-        TweenMax.to($(this).siblings(), 0.8, {
-            width: (100 - expandW) / (filterItemL - 1) + '%'
-        })
 
 
     }
 
     function out() {
+
+
+        $(".filterAll").html("显示全部");
+
+
         TweenMax.to($(".filterItem"), 0.8, {
             width: 100 / filterItemL + '%',
             ease: Back.easeOut
         })
+
+
+        TweenMax.to($(".filter").children(), 0.3, {
+            scale: 1
+        })
+
+
+
+
     }
 
 });
@@ -700,6 +801,7 @@ $(document).ready(function() {
     var gridItemsCont = $(".gridItems").children(".item").length;
     var c = $(".barItem").length / gridItemsCont;
     var KD = 50;
+
     TweenMax.set($(".barItem"), {
         width: 100 / c + '%'
     });
@@ -726,8 +828,3 @@ $(document).ready(function() {
     }
 
 });
-
-
-
-
-

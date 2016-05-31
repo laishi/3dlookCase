@@ -154,6 +154,10 @@ header li{
     cursor: pointer;
 }
 
+.item .itemImg img{
+    width: 100%;
+}
+
 .itemDetail{
 
     position: relative;
@@ -312,7 +316,9 @@ header li{
     border-radius: none;
     background-color: rgba(0,0,0,0.1);
     border: 0;
-
+        &::placeholder {
+          color: transparent;
+        }
 }
 
 

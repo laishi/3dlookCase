@@ -31,7 +31,7 @@
         <div class="headerCont">
 
             <div class="headereyes">
-                <iframe src="assets/webgl/00/index.html" frameBorder=0 scrolling=no width="100%" height="100%"></iframe>
+                <iframe src="assets/webgl/00/eyes.html" frameBorder=0 scrolling=no width="100%" height="100%"></iframe>
                 <h1>3dlook</h1>
                 <!-- <img src="assets/img/logo/3dlogo.png"> -->
             </div>
@@ -42,10 +42,10 @@
 
         <nav class="navGrid">
             <ul class="navMenu">
-                <li class='navItem' data-page="pageWork">    <h3> 工作 </h3> </li>
-                <li class='navItem navBlog' data-page="pageBlog">    <h3> 博客 </h3> </li>
-                <li class='navItem' data-page="pageAbout">   <h3> 关于 </h3> </li>
-                <li class='navItem' data-page="pageContact"> <h3> 联系 </h3> </li>
+                <li v-link="{ path: '/work' }" class='navItem' data-page="work">    <h3> 工作 </h3> </li>
+                <li v-link="{ path: '/blog' }" class='navItem navBlog' data-page="blog">    <h3> 博客 </h3> </li>
+                <li v-link="{ path: '/about' }" class='navItem' data-page="about">   <h3> 关于 </h3> </li>
+                <li v-link="{ path: '/contact' }" class='navItem' data-page="contact"> <h3> 联系 </h3> </li>
             </ul>
         </nav> 
 
@@ -99,7 +99,7 @@
         <!-- pageWork========================================================================================================== -->
 
 
-        <div class="page pageWork">
+        <div class="page work">
 
 
             <div class="barMes">
@@ -783,12 +783,12 @@
 
 
 
-        <div class="page pageBlog">
+        <div class="page blog">
 
 
             <div class="blogFilter">
                 <ul>
-                    <li class="filterItem filter" data-filter="all"> <h3> All</h3> </li>
+                    <li class="filterItem filter filterAll" data-filter="all"> <h3> 显示全部 </h3> </li>
                     <li class="filterItem filter" data-filter=".threejs"> <h3> ThreeJS</h3> </li>
                     <li class="filterItem filter" data-filter=".blend4web"> <h3> Blend4Web</h3> </li>
                     <li class="filterItem filter" data-filter=".playcanvas"> <h3> PlayCanvs</h3> </li>
@@ -805,18 +805,7 @@
 
 
 
-<!-- 
-            <div class="blogFilter">
-                <label>Filter:</label>
-                <button class="filter" data-filter="all">All</button>
-                <button class="filter" data-filter=".threejs">Category 1</button>
-                <button class="filter" data-filter=".blend4web">Category 2</button>
-                <button class="filter" data-filter=".playcanvas">Category 3</button>
 
-                <h1>MixItUp: Input Search</h1>
-                <input type="text" id="input" placeholder="Type here">
-            </div>
- -->
 
 
             <div class="gridItems blogMix w80">
@@ -3452,40 +3441,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- pageAbout========================================================================================================== -->
 
 
-        <div class="gridFull page pageAbout">
+        <div class="gridFull page about">
 
 
             <div class="w80">
@@ -3503,7 +3462,7 @@
         <!-- pageContact========================================================================================================== -->
 
 
-        <div class="gridFull page pageContact">
+        <div class="gridFull page contact">
 
 
             <div class="w80">
@@ -3528,18 +3487,32 @@
 
 
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
 <script src="js/jquery-2.2.3.min.js"></script>
 <!-- <script src="js/rd-smoothscroll.min.js"></script> -->
-<script src="js/TweenMax.min.js"></script>
-<script src="incude/slidertween/js/slidertween.js"></script>
+<script src="incude/greensock/TweenMax.min.js"></script>
+<!-- <script src="incude/slidertween/js/slidertween.js"></script> -->
 
+<script src="incude/vue/vue.min.js"></script>
+<script src="incude/vue/vue-router.min.js"></script>
+<script src="incude/vue/vueconfig.js"></script>
 
 <script src='incude/mixitup/js/jquery.mixitup.min.js'></script>
-<!-- <script src='incude/malihu-custom-scrollbar/js/jquery.mCustomScrollbar.min.js'></script> -->
-<script src="incude/mixitup/js/mixitup.js"></script>
+<script src='incude/jscroll/jquery.jscroll.min.js'></script>
+
 
 <script src="js/scripts.js"></script>
-
 
 
 

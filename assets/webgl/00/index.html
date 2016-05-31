@@ -18,6 +18,9 @@
     <script src="../../../incude/common/threejs/cannon.min.js"></script>
     <script src="../../../incude/common/threejs/three.min.js"></script>
     <script src="../../../incude/common/threejs/Detector.js"></script>
+
+
+
     <script>
     if (!Detector.webgl) Detector.addGetWebGLMessage();
 
@@ -75,6 +78,15 @@
         intersectionPlane.visible = false;
         scene.add(intersectionPlane);
 
+
+
+
+
+
+
+
+
+
         // geometry
 
         ballGeometry = new THREE.SphereGeometry(0.8, 18, 18);
@@ -86,6 +98,7 @@
             path + 'py' + format, path + 'ny' + format,
             path + 'pz' + format, path + 'nz' + format
         ];
+
 
         textureCube = THREE.ImageUtils.loadTextureCube(urls);
         var texture = THREE.ImageUtils.loadTexture('../../img/eyes/eye.jpg');
@@ -102,6 +115,7 @@
             shading: THREE.SmoothShading
         });
 
+
         // physics
 
         world = new CANNON.World();
@@ -113,6 +127,10 @@
         ballBodyMaterial = new CANNON.Material();
         world.addContactMaterial(new CANNON.ContactMaterial(ballBodyMaterial, ballBodyMaterial, 0.2, 0.8));
 
+
+
+
+
         for (var i = 0; i < 10; i++) {
 
             addBall(
@@ -122,6 +140,9 @@
             );
 
         }
+
+
+
 
         // mouse
 
@@ -179,6 +200,14 @@
 
     }
 
+
+
+
+
+
+
+
+
     function move(event) {
         mouseX = event.clientX;
         mouseY = event.clientY;
@@ -199,6 +228,16 @@
 
         }
     }
+
+
+
+
+
+
+
+
+
+
 
     function addBall(x, y, z) {
 
@@ -235,12 +274,37 @@
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
     function removeBall() {
 
         scene.remove(spheres.shift());
         world.remove(bodies.shift());
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     function onWindowResized(event) {
 
@@ -250,6 +314,16 @@
         renderer.setSize(window.innerWidth, window.innerHeight);
 
     }
+
+
+
+
+
+
+
+
+
+
 
     function animate() {
 
@@ -273,6 +347,14 @@
     }
 
     function render() {
+
+
+
+
+
+
+
+
 
         time = performance.now();
 
@@ -306,9 +388,33 @@
         renderer.render(scene, camera);
 
     }
+
+
+
+
+
+
+
+
+
+
+
     </script>
 </body>
 <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 (function(i, s, o, g, r, a, m) {
     i['GoogleAnalyticsObject'] = r;
     i[r] = i[r] || function() {
