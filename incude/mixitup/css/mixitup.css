@@ -54,10 +54,10 @@
 }
 
 
-@media all and (min-width: 1279px){
+@media all and (min-width: 1200px){
   .gridItems .item,
   .gridItems .gap{
-    width: 19%;
+    width: 23.5%;
   }
 }
 

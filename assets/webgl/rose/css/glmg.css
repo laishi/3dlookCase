@@ -1,0 +1,71 @@
+body {
+    background: #1E000C;
+    color: #fff;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    font-family: georgia;
+    text-align: center;
+}
+
+.pace {
+    -webkit-pointer-events: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+.pace-inactive {
+    display: none;
+}
+
+.pace .pace-progress {
+    background-color: rgba(0, 0, 0, 0.2);
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    right: 100%;
+    bottom: 0;
+    width: 100%;
+}
+
+a {
+    color: skyblue
+}
+
+canvas {
+    pointer-events: none;
+    z-index: 10;
+    position: relative;
+}
+
+#d {
+    text-align: center;
+    z-index: 0;
+    position: absolute;
+    display: block;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.26);
+    margin: 0;
+    padding: 10px;
+    float: left;
+}
+
+#buttons {
+    margin: 0.5em 0 0 0
+}
+
+button {
+    font-family: georgia;
+    border: 0;
+    background: #222;
+    color: #fff;
+    padding: 0.2em 0.5em;
+    cursor: pointer;
+    border-radius: 3px
+}
+
+button:hover {
+    background: #333
+}

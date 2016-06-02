@@ -33,4 +33,5 @@ router.map({
 // router will create an instance of App and mount to
 // the element matching the selector navGrid.
 
-router.start(App, ".navGrid")
+router.start(App, "body");
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Puter Parts - Vue.JS Live Search and Shopping Cart</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <h1>Puter Parts</h1>
+    <form>
+        <div class="search">
+            <input type="text" v-model="searchString" placeholder="Search" />
+        </div>
+    </form>
+    <button id="GPU" class="categories" @click="selectCategory('Graphics Card')">Graphics Cards</button>
+    <button id="CPU" class="categories" @click="selectCategory('Processor')">Processors</button>
+    <button id="Mobo" class="categories" @click="selectCategory('Motherboard')">Motherboards</button>
+
+
+
+
+
+
+
+
+
+    <div id="products">
+        <ul>
+            <li v-for="i in products | searchFor searchString | filterBy selectedCategory in 'category'">
+
+                <img v-bind:src="i.image" />
+
+                <p>{{i.product}}</p>
+                
+                <p>£{{i.price}}
+                    <select v-model="quantity[i.id].quantity" number>
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    <button id="GPU" class="categories" @click="addToCart(i.id)">Add To Cart</button>
+                </p>
+
+
+            </li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div id="cart" v-show="shoppingCart.length > 0">
+        <h2>Shopping Cart</h2>
+        <ul>
+            <li v-for="i in shoppingCart">
+                <p id="cartQuan">{{i.quantity}} X {{i.name}}</p>
+                <p id="cartPrice">{{i.price}}
+                    <button @click="removeFromCart(i, i.productId)">X</button>
+                </p>
+            </li>
+            <li>Total: £{{ totalPrice }}</li>
+        </ul>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.21/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.11.2/lodash.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>
