@@ -604,7 +604,7 @@ input[type="text"]:focus {
 }
 
 .lastPage {
-    display: block;
+    display: none;
 }
 
 .pageHome {

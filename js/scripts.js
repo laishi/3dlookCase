@@ -1,37 +1,36 @@
-
-$(window).on('hashchange', function(e){
-    var hashUrl;
-    var origEvent = e.originalEvent;
-
-    var urlSplit = origEvent.newURL.split("/");
-    var urlLenght = urlSplit.length;
-
-    hashUrl = urlSplit[urlLenght-1];
-    sliderPage(hashUrl);
-
-    var hash = new String(document.location).indexOf("#");
-});
-
-
-
-
-
-
-
-
-
-
 $(document).ready(function() {
 
+    $(window).on('hashchange', function(e){
+        var hashUrl;
+        var origEvent = e.originalEvent;
 
-    var getTitle;
-    var getTag;
+        var urlSplit = origEvent.newURL.split("/");
+        var urlLenght = urlSplit.length;
 
-    $(".navItem").click(function() {
-        var pageData = $(this).data("page");
-        var index = $(this).index();
-        sliderPage(pageData,index);    
+        hashUrl = urlSplit[urlLenght-1];
+        sliderPage(hashUrl);
+
+        var hash = new String(document.location).indexOf("#");
     });
+
+
+
+
+
+    var getTitle=null;
+    var getTag=null;
+
+
+
+
+
+
+
+
+
+
+
+
 
     $(window).scroll(function() {
 
@@ -86,10 +85,9 @@ $(document).ready(function() {
 
     $(".backCicle").click(closeDetail);
 
-    $(".item").children(".itemImg").click(openDetail);
 
-    $(".barMark").click(openDetail);
-    $(".itemTitle").click(openDetail);
+    // $(".barMark").click(openDetail);
+    // $(".itemTitle").click(openDetail);
 
     $(".barInfo").click(openInfo);
 
@@ -114,9 +112,11 @@ $(document).ready(function() {
     var curentItemPY = itemPY - scrollY;
     var lastScrollTop = 0;  
 
-    var scrollFixH = parseInt($("header").css("height"),10) + parseInt($(".gridItems").css("padding-top"),10);
 
-    // alert(typeof scrollFixH)
+
+
+
+
 
     $(window).scroll(function() {
 
@@ -318,13 +318,13 @@ $(document).ready(function() {
 
 
 
-        TweenMax.to($(".infoMax"), 3.2, { opacity: 1 });
+        TweenMax.to($(".infoMax"), 0.5, { opacity: 1 });
 
         TweenMax.fromTo($(".backCicle"), 1.2, { left: $(window).innerWidth() / 2 - 30, scale: 0, opacity: 0 },
-                        { left: ld, scale: 1, opacity: 1, ease: Elastic.easeOut.config(1, 0.75), });
+                        { left: "5%", scale: 1, opacity: 1, ease: Elastic.easeOut.config(1, 0.75), });
 
         TweenMax.fromTo($(".go3dCicle"), 1.2, { right: $(window).innerWidth() / 2 - 30, scale: 0, opacity: 0 },
-                        { right: ld, scale: 1, opacity: 1, ease: Elastic.easeOut.config(1, 0.75), });
+                        { right: "5%", scale: 1, opacity: 1, ease: Elastic.easeOut.config(1, 0.75), });
 
 
         $(window).scrollTop(0);
@@ -343,47 +343,7 @@ $(document).ready(function() {
         $(this).parents(".item").children(".bar").children(".barMark").children().addClass("barToggle");
 
 
-        TweenMax.staggerTo($(".item"), 0.3, {
-            scale: 0,
-            cycle: {
-                delay: function(index) {
-                    return Math.random(index) / 10;
-                }
-            },
-            onComplete: gototop
-        }, 0.01);
 
-
-
-        var headereyes = $(".headerCont").html();
-
-        //GET ITEM DATA
-
-        getHeaderCont = $(".headerCont").html();
-
-        var getImg        = $(this).parents(".item").children(".itemImg").html();
-        getTitle      = $(this).parents(".item").children(".itemTitle").html();
-        getTag        = $(this).parents(".item").children(".itemTag").html();
-        var getDes        = $(this).parents(".item").children(".itemDes").html();
-        var getAdditional = $(this).parents(".item").children(".itemAdditional").html();
-
-
-        //CHANGE MORE LINK
-
-        var getLink = $(this).parents(".item").children(".bar").find(".moreLink").attr("href");
-
-
-
-        if (getLink) {
-            $(".btnCicleMore").attr("href", getLink);
-        }
-
-        $(".headerCont").children().remove();
-
-        $(".headerCont").append(getImg);
-        $(".headerCont").append(getTag);
-        $(".detailTitle").append(getTitle);
-        $(".detailAdditional").append(getAdditional);
 
 
 
@@ -399,30 +359,14 @@ $(document).ready(function() {
         var pageFormat = ".html";
         var pageURL = pagePath + pageName + pageFormat;
         var pageLoad = pagePath + pageName + pageFormat + " ." + pageName;
+
+        
         $(".detailDes").load(pageLoad);
 
 
 
 
 
-
-
-        // var iframego = "<iframe src= " + getLink + " " + "frameBorder=0 scrolling=no width='100%' height='100%'></iframe>"
-
-        function showIframe() {
-            // $(".detail3d").append(iframego);
-        }
-
-
-
-        //NAV MENU    
-        TweenMax.fromTo($(".navGrid"), 0.3, { y: 0, opacity: 1 }, { y: 60, opacity: 0 });
-
-        //HEADER IMG
-        TweenMax.fromTo($("header").find("img"), 1.2, { y: 320 }, { y: 0, delay: 1, ease: Elastic.easeOut.config(1, 0.75), onComplete: showIframe });
-
-        //HEADER TAG
-        TweenMax.fromTo($("header").find("ul"), 1.2, { opacity: 0 }, { opacity: 1, delay: 1.2 });
 
 
 
