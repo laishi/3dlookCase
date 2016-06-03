@@ -32,8 +32,8 @@
         <div class="headerCont">
 
             <div class="headereyes">
-                <iframe src="assets/webgl/webgl/index.html" frameBorder=0 scrolling=no width="100%" height="100%"></iframe>
-                <!-- <h1>3dlook</h1> -->
+                <!-- <iframe src="assets/webgl/webgl/index.html" frameBorder=0 scrolling=no width="100%" height="100%"></iframe> -->
+                <h1>3dlook</h1>
                 <!-- <img src="assets/img/logo/3dlogo.png"> -->
             </div>
             
@@ -107,12 +107,16 @@
                         </div>
 
                         <div class="itemTag">
-                            <ul class="tagName">
-                                <li><h3> 标签 </h3> </li>
-                                <li><h3 class="pageName"> {{data.name}} </h3> </li>
-                                <li><h3> {{data.tag}} </h3> </li>
-                            </ul>
-                                                                         
+                            <div class="tagTitle">                               
+
+                                <ul class="tagName">
+                                    <li class="tagTip"><h3> 标签: </h3> </li>
+                                    <li><h3 class="pageName"> {{data.name}} </h3> </li>
+                                    <li><h3> {{data.tag}} </h3> </li>
+                                </ul>
+                                <div class="titlePos"> <h3>titlePos</h3> </div>
+
+                            </div>
                         </div>
 
 
