@@ -38,15 +38,15 @@
 
 
 
-/*
-@media all and (min-width: 420px){
+
+@media (min-width: 420px){
   .gridItems .item,
   .gridItems .gap{
     width: 32%;
   }
 }
 
-@media all and (min-width: 640px){
+@media (min-width: 640px){
   .gridItems .item,
   .gridItems .gap{
     width: 23.5%;
@@ -54,14 +54,14 @@
 }
 
 
-@media all and (min-width: 1200px){
+@media (min-width: 1200px){
   .gridItems .item,
   .gridItems .gap{
     width: 23.5%;
   }
 }
 
-*/
+
 
 
 

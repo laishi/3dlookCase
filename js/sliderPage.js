@@ -74,13 +74,13 @@ function sliderPage(pageName,index) {
     pageIndex = index;
 
     function goRight() {
-        TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "-100%" });
-        TweenMax.fromTo(curPage, speed, { x: "100%" }, { x: "0%", onComplete:wtotop });
+        TweenMax.fromTo(lastPage, speed, { left: "0%" }, { left: "-100%" });
+        TweenMax.fromTo(curPage, speed, { left: "100%" }, { left: "0%", onComplete:wtotop });
     }
 
     function goLeft() {
-        TweenMax.fromTo(curPage, speed, { x: "-100%" }, { x: "0%" });
-        TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "100%", onComplete:wtotop });
+        TweenMax.fromTo(curPage, speed, { left: "-100%" }, { left: "0%" });
+        TweenMax.fromTo(lastPage, speed, { left: "0%" }, { left: "100%", onComplete:wtotop });
     }
 
     function wtotop() {
