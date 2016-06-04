@@ -1,44 +1,52 @@
 
+$(window).on('hashchange', function(e){
+    var hashUrl;
+    var origEvent = e.originalEvent;
 
+    var urlSplit = origEvent.newURL.split("/");
+    var urlLenght = urlSplit.length;
 
+    hashUrl = urlSplit[urlLenght-1];
+    sliderPage(hashUrl);
 
-
-// $(window).on('hashchange', function(e){
-//     var hashUrl;
-//     var origEvent = e.originalEvent;
-
-//     var urlSplit = origEvent.newURL.split("/");
-//     var urlLenght = urlSplit.length;
-
-//     hashUrl = urlSplit[urlLenght-1];
-
-
-//     sliderPage(hashUrl, -1);
-
-//     var hash = new String(document.location).indexOf("#");
-
-//     // console.log(hashUrl)
-// });
-
-
-
-
-
-
-var page = $(".page");
-var homePage = $(".pages").children().first().addClass("curPage");
-
-var lastPage = homePage;
-var curPage = homePage;
-var pageIndex = 0;
-
+    var hash = new String(document.location).indexOf("#");
+    // console.log(origEvent)
+});
 
 
 $(".navItem").click(function() {
     var pageData = $(this).data("page");
+
     var index = $(this).index();
-    sliderPage(pageData,index);
+
+    sliderPage(pageData,index);    
+    countClick += 1;
 });
+
+
+// function ChangeUrl(page, url) {
+//     if (typeof(history.pushState) != "undefined") {
+//         var obj = { Page: page, Url: url };
+//         history.pushState(obj, obj.Page, obj.Url);
+//     } else {
+//         window.location.href = "homePage";
+//     }
+// }
+
+// ChangeUrl(pageData, pageData);
+
+
+
+
+
+var pageIndex = 0;
+var clickNum = 0;
+
+var page = $(".page");
+var homePage = $(".pages").children().first();
+
+homePage.addClass("curPage");
+homePage.css({ "display": "block" });
 
 
 
@@ -47,58 +55,59 @@ $(".navItem").click(function() {
 function sliderPage(pageName,index) {
 
 
-    console.log(index);
-
+    var pageData = pageName;
+    // var index = index;
 
     var curPage = $('.' + pageName);
     var curPageSiblings = curPage.siblings();
 
 
-    $(".pages").children().removeClass("lastPage");
-    $(".curPage").removeClass("curPage").addClass("lastPage");
-    curPage.addClass("curPage");
 
-    lastPage = $(".lastPage");
-    curPage = $(".curPage");
+    if (curPage.hasClass("curPage")) {
 
-    var speed = 0.5;
 
-    if (index < 0) {goRight();}
 
-    if (pageIndex < index) {goRight();}
-    if (pageIndex > index) {goLeft();}
-    if (pageIndex === index) {
-        curPage.css("display","block");
+    } else {
+
+        $(".pages").children().removeClass("lastPage");
+        $(".curPage").removeClass("curPage").addClass("lastPage");
+        curPage.addClass("curPage");
+
+        lastPage = $(".lastPage");
+        curPage = $(".curPage");
+        var speed = 0.5;
+
+        if (pageIndex < index) {
+            goRight();
+        } else {
+            goLeft();
+        }
+
+        pageIndex = index;
+
+        clickNum++;
+
+        function goRight() {
+            TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "-100%" });
+            TweenMax.fromTo(curPage, speed, { x: "100%" }, { x: "0%", onComplete:wtotop });
+        }
+
+        function goLeft() {
+            TweenMax.fromTo(curPage, speed, { x: "-100%" }, { x: "0%" });
+            TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "100%", onComplete:wtotop });
+        }
+
+        function wtotop() {
+            $(window).scrollTop(0);
+        }
+
+
     }
 
-    pageIndex = index;
-
-    function goRight() {
-        TweenMax.fromTo(lastPage, speed, { left: "0%" }, { left: "-100%" });
-        TweenMax.fromTo(curPage, speed, { left: "100%" }, { left: "0%", onComplete:wtotop });
-    }
-
-    function goLeft() {
-        TweenMax.fromTo(curPage, speed, { left: "-100%" }, { left: "0%" });
-        TweenMax.fromTo(lastPage, speed, { left: "0%" }, { left: "100%", onComplete:wtotop });
-    }
-
-    function wtotop() {
-        $(window).scrollTop(0);
-    }
 
 
 
-
-
-
-
-
-
-
-
-
-    if (pageName == "blog") {
+    if (pageData == "blog") {
 
 
         $('.blogMix').mixItUp();
@@ -155,5 +164,12 @@ function sliderPage(pageName,index) {
 
     }
 
+
+
+
+
 }
+
+
+
 

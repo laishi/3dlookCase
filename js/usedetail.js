@@ -25,7 +25,7 @@ $(document).ready(function() {
 
         //CHANGE MORE LINK
 
-        var getLink = $(this).parents(".item").children(".bar").find(".moreLink").attr("href");
+        getLink = $(this).parents(".item").children(".bar").find(".moreLink").attr("href");
 
         if (getLink) {
             $(".btnCicleMore").attr("href", getLink);
@@ -38,6 +38,14 @@ $(document).ready(function() {
         $(".detailTitle").append(getTitle);
         $(".detailAdditional").append(getAdditional);
 
+
+
+        // ADD IMG GO TO 3D LOOK
+        $("header").find("img").wrap($('<a>', {
+            href: getLink
+        }));
+
+        var iframego = "<iframe src= " + getLink + " " + "frameBorder=0 scrolling=no width='100%' height='100%'></iframe>"
 
 
         //USE PAGES DATA
@@ -85,6 +93,17 @@ $(document).ready(function() {
         })
 
         TweenMax.fromTo($(".item"), 0.3, { scale: 0}, { scale: 1});
+
+
+        // UPDATE IFRAME
+
+        // $("header").find("iframe").prop('src', getLink);
+
+
+
+
+
+
     }
 
 

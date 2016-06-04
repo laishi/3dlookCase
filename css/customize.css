@@ -67,6 +67,7 @@ header {
 
 .w80{
     width: 80%;
+    max-width: 1200px;
     margin: 0 auto;
     min-height: 100vh;
     /*background-color: #2484B0;*/
@@ -75,6 +76,7 @@ header {
 
 .navGrid .navMenu{
     width: 80%;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
