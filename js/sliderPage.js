@@ -7,20 +7,33 @@ $(window).on('hashchange', function(e){
     var urlLenght = urlSplit.length;
 
     hashUrl = urlSplit[urlLenght-1];
-    sliderPage(hashUrl);
+
+    if (hashUrl === "detail") {
+        console.log("detail Page")
+    } else{
+        // closeDetail();
+        sliderPage(hashUrl);        
+    }
+
 
     var hash = new String(document.location).indexOf("#");
     // console.log(origEvent)
 });
 
 
+
+
+
 $(".navItem").click(function() {
+
     var pageData = $(this).data("page");
-
     var index = $(this).index();
+    sliderPage(pageData,index);
 
-    sliderPage(pageData,index);    
-    countClick += 1;
+    if (pageData === "blog") {
+        mixConf();
+    }
+
 });
 
 
@@ -104,72 +117,102 @@ function sliderPage(pageName,index) {
 
     }
 
-
-
-
-    if (pageData == "blog") {
-
-
-        $('.blogMix').mixItUp();
-
-        var inputText;
-        var $matching = $();
-        var $contText = $();
-
-        // Delay function
-        var delay = (function() {
-            var timer = 0;
-            return function(callback, ms) {
-                clearTimeout(timer);
-                timer = setTimeout(callback, ms);
-            };
-        })();
-
-        $("#input").keyup(function() {
-            delay(function() {
-                inputText = $("#input").val().toLowerCase();
-
-                if ((inputText.length) > 0) {
-                    $('.mix').each(function() {
-                        $this = $("this");
-
-
-                        if ($(this).children('.itemTitle').text().toLowerCase().match(inputText)) {
-                            $matching = $matching.add(this);
-                        } else if ($(this).children('.itemDes').text().toLowerCase().match(inputText)) {
-                            $contText = $contText.add(this);
-                        } else {
-                            // removes any previously matched item
-                            $matching = $matching.not(this);
-                        }
-                    });
-
-
-
-                    $(".blogMix").mixItUp('filter', $matching);
-                    // $(".blogMix").mixItUp('filter', $contText);
-
-
-
-                } else {
-                    // resets the filter to show all item if input is empty
-                    $(".blogMix").mixItUp('filter', 'all');
-                }
-
-
-
-
-            }, 200);
-        });
-
-    }
-
-
-
-
-
 }
 
 
 
 
+
+
+
+
+function mixConf() {
+
+    var layout = 'grid',
+        $container = $('.blogMix'),
+        $changeLayout = $('#ChangeLayout');
+
+    $container.mixItUp({
+        animation: {
+            animateChangeLayout: true,
+            animateResizeTargets: true,
+            effects: 'fade scale rotateX(-40deg) translateY(-1000px)'
+        },
+        layout: {
+            containerClass: 'grid'
+        }
+    });
+
+
+
+    $changeLayout.on('click', function() {
+
+
+        if (layout == 'list') {
+            $(".itemTotal").toggleClass("repos");
+
+            layout = 'grid';    
+            $changeLayout.text('List');
+            $container.mixItUp('changeLayout', {
+                containerClass: layout
+            });
+
+
+
+        } else {
+            $(".itemTotal").toggleClass("repos");
+
+            layout = 'list';
+
+            $changeLayout.text('Grid');
+            $container.mixItUp('changeLayout', {
+                containerClass: layout
+            });
+        }
+
+    });
+
+
+
+    var inputText;
+    var $matching = $();
+    var $contText = $();
+
+    // Delay function
+    var delay = (function() {
+        var timer = 0;
+        return function(callback, ms) {
+            clearTimeout(timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+
+    $("#input").keyup(function() {
+        delay(function() {
+            inputText = $("#input").val().toLowerCase();
+
+            if ((inputText.length) > 0) {
+                $('.mix').each(function() {
+                    $this = $("this");
+
+
+                    if ($(this).children().children('.itemTitle').text().toLowerCase().match(inputText)) {
+                        $matching = $matching.add(this);
+                    } else if ($(this).children().children('.itemTitle').text().toLowerCase().match(inputText)) {
+                        $contText = $contText.add(this);
+                    } else {
+                        // removes any previously matched item
+                        $matching = $matching.not(this);
+                    }
+                });
+
+                $(".blogMix").mixItUp('filter', $matching);
+
+            } else {
+                // resets the filter to show all item if input is empty
+                $(".blogMix").mixItUp('filter', 'all');
+            }
+        }, 200);
+    });
+
+}

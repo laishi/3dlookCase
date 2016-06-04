@@ -65,7 +65,7 @@ $(document).ready(function() {
                 scale: 1
             })
 
-            $(".filterAll").html("搜索标题");
+            $(".ChangeLayout").html("搜索标题");
 
             // $(".filterAll").children("h3").css("color","#CB0027");
 
@@ -92,7 +92,7 @@ $(document).ready(function() {
     function out() {
 
 
-        $(".filterAll").html("显示全部");
+        $("ChangeLayout").html("显示全部");
 
 
         TweenMax.to($(".filterItem"), 0.8, {

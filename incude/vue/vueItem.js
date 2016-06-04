@@ -25,33 +25,33 @@ var workTitles = [];
 
 
 
-// $.each(workNames,function (index,title) {
+$.each(workNames,function (index,title) {
 
-//     var workHtmlUrl = workHtmlFolder + title + HtmlFormat
-//     var imgkUrl = workImgFolder + title + imgFormat
+    var workHtmlUrl = workHtmlFolder + title + HtmlFormat
+    var imgkUrl = workImgFolder + title + imgFormat
 
-//     workHtmlUrls.push(workHtmlUrl);
-//     imgkUrls.push(imgkUrl);
-
-
+    workHtmlUrls.push(workHtmlUrl);
+    imgkUrls.push(imgkUrl);
 
 
 
-//     $.ajax({  
-//           url: workHtmlUrl,  
-//           async: false,  
-//           success: function(data){  
-//             title = $(data).filter('title').text();
-//             workTitles.push(title);
-//           }  
-//     });  
+
+
+    $.ajax({  
+          url: workHtmlUrl,  
+          async: false,  
+          success: function(data){  
+            title = $(data).filter('title').text();
+            workTitles.push(title);
+          }  
+    });  
 
 
 
 
     
 
-// })
+})
 
 
 

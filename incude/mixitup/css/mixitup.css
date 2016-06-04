@@ -63,55 +63,18 @@
 
 
 
+/**
+ * List Styles
+ */
 
-
-
-
-
-
-
-
-
-/*.gridItems{
-  margin: 0 auto;
-  text-align: justify;
+.blogMix.list .mix{
+  width: 100%;
 }
 
-
-.gridItems .item,
-.gridItems .gap{
-  position: relative;
-  text-align: justify;
-  margin-bottom: 2%;
-  cursor: pointer;
-  border-radius: 5px;
-  display: inline-block;
+.blogMix.list .mix img{
+  width: 320px;
 }
 
-
-
-
-
-
-
-
-@media all and (min-width: 640px){
-  .gridItems .item,
-  .gridItems .gap{
-    width: 49%;
-  }
+.blogMix.list .mix:before{
+  padding-top: 40px;
 }
-
-@media all and (min-width: 768px){
-  .gridItems .item,
-  .gridItems .gap{
-    width: 32%;
-  }
-}
-
-@media all and (min-width: 1279px){
-  .gridItems .item,
-  .gridItems .gap{
-    width: 19.5%;
-  }
-}*/

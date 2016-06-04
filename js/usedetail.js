@@ -17,11 +17,13 @@ $(document).ready(function() {
         //GET ITEM DATA
         var getHeaderCont = $(".headerCont").html();
 
-        var getImg        = $(this).parents(".item").children(".itemImg").html();
-        var getTitle      = $(this).parents(".item").children(".itemTitle").html();
-        var getTag        = $(this).parents(".item").children(".itemTag").html();
-        var getDes        = $(this).parents(".item").children(".itemDes").html();
-        var getAdditional = $(this).parents(".item").children(".itemAdditional").html();
+        var getImg        = $(this).parents(".item").find(".itemImg").html();
+        var getTitle      = $(this).parents(".item").find(".itemTitle").html();
+        var getTag        = $(this).parents(".item").find(".itemTag").html();
+        var getDes        = $(this).parents(".item").find(".itemDes").html();
+        var getAdditional = $(this).parents(".item").find(".itemAdditional").html();
+
+        var getPageLink   = $(this).parents(".item").find(".pageLink").html();
 
         //CHANGE MORE LINK
 
@@ -34,6 +36,8 @@ $(document).ready(function() {
         
 
         $(".headerCont").append(getImg);
+        $(".headerCont").append(getPageLink);
+
         $(".headerCont").append(getTag);
         $(".detailTitle").append(getTitle);
         $(".detailAdditional").append(getAdditional);
@@ -75,6 +79,8 @@ $(document).ready(function() {
     }
 
     function closeDetail() {
+
+        $(window).scrollTop(0);
 
         $(".infoMax").css("display","none");
         $(".btnCicle").css("display","none");

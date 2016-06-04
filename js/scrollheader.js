@@ -29,7 +29,6 @@ $(document).ready(function() {
             var title = $.trim($(".detailTitle").html());
             var tag   = $("header").find(".tagTip").html();
 
-
             $(".titlePos").html(title);
 
             TweenMax.to($("header").find(".tagTitle"), 0.3, { y: -320 } );
