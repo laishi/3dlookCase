@@ -179,7 +179,7 @@
                     <li class="filterItem filter" data-filter=".blend4web"> <h3> Blend4Web</h3> </li>
                     <li class="filterItem filter" data-filter=".playcanvas"> <h3> PlayCanvs</h3> </li>
                     <li class="filterItem filterInput" >
-                        <input type="text" id="input" placeholder="搜索标题">
+                        <input type="text" id="input" placeholder="&#xf075; Search" style="font-family:Arial, FontAwesome">
                         <i class="fa fa-search" aria-hidden="true"></i>
                     </li>
                 </ul>
@@ -193,7 +193,7 @@
                     <div class="item mix mixItem threejs mdl-js-button  mdl-js-ripple-effect">
 
                         <div class="itemImg">
-                            <img src="img/blogImg/title.jpg">                        
+                            <img v-bind:src="data.image" />
                         </div>
 
                         <div class="itemTotal">                            
@@ -207,11 +207,12 @@
                             </div>
 
                             <div class="itemTitle">
-                                <h3>three js blend4web</h3>
+                                <h3>{{data.title}}</h3>
                             </div>
 
+
                             <div class="itemDes">
-                                <p>Web3D技术是实现网页中虚拟现实的一种最新技术。VRML是互联网3D图形的开放标准。VRML是3D图形和多媒体技术通用交换的文件格式，它基于建模技术，描述交互式的3D对象和场景，不仅应用在互联网上，也可以用在本地客户系统中，应用范围极广。由于网上传输的是模型文件，故其传输量大大小于视频图像。</p>
+                                <p> {{data.summary}} </p>
                             </div>
 
                             <ul class="info">
@@ -229,12 +230,12 @@
                                     <div> <i class="fa fa-file-text" aria-hidden="true"></i> </div>
                                 </li>
 
-                                <li class="barItem"><i class="fa fa-film" aria-hidden="true"></i></li>
+                                <li class="barItem">
+                                    <dir> <a class="moreLink" v-bind:href="data.url"> <h3> 3D </h3> </a> </dir>
+                                </li>
 
                                 <li class="barItem barInfo">
-                                    <div>
-                                        <i class="fa fa-info"></i> 
-                                    </div>
+                                    <div> <i class="fa fa-info"></i> </div>
                                 </li>
                             </ul>
                         </div>

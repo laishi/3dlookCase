@@ -133,6 +133,11 @@ function mixConf() {
         $changeLayout = $('#ChangeLayout');
 
     $container.mixItUp({
+        callbacks: {
+            onMixStart: function(state, futureState){
+                console.log("start")
+            }
+        },
         animation: {
             animateChangeLayout: true,
             animateResizeTargets: true,
@@ -142,7 +147,6 @@ function mixConf() {
             containerClass: 'grid'
         }
     });
-
 
 
     $changeLayout.on('click', function() {

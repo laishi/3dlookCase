@@ -1,7 +1,13 @@
-
+.pageTitle{
+    width: 960px;
+    text-align: center;
+    padding: 32px 0;
+    background-color: #3963DA;
+    margin: 0 auto;
+}
 
 .titleCont{
-	padding: 32px;
+	padding: 0px;
 }
 
 pre code{
