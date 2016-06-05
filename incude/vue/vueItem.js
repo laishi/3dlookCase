@@ -51,7 +51,8 @@ var blogHtmlUrls = [];
 var blogTitles = [];
 var blogSummary = [];
 
-$.each(blogNames,function (index,title) {
+$.each(blogNames, function (index,title) {
+
 
     var blogHtmlUrl = blogHtmlFolder + title + HtmlFormat;
     var blogimgkUrl = blogImgFolder + title + jpg;
@@ -71,7 +72,7 @@ $.each(blogNames,function (index,title) {
             blogTitles.push(title);
             blogSummary.push(summary);
 
-            console.log(summary)
+            // console.log(summary)
           }
     });     
 
@@ -81,6 +82,7 @@ $.each(blogNames,function (index,title) {
 
 
 
+    console.log(blogImgkUrls[0])
 
 
 
@@ -348,10 +350,32 @@ new Vue({
 
 
     ready: function () {
-        this.workItemData();
+        // this.workItemData();
+        this.showName();
     },
 
     methods: {
+
+
+
+        showName: function (index, event) {
+            var name = this.blog;
+
+
+            this.works.forEach(function(item) {
+                console.log("this is" + item.name)
+            })
+
+
+            $.each(name,function (index,data) {
+                // body...
+            })
+
+        },
+
+
+
+
         workItemData: function(id) {
            var id = id
             var index = this.workPageName.length

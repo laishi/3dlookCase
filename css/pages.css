@@ -5,6 +5,9 @@
     background-color: #3963DA;
     margin: 0 auto;
 }
+img{
+    vertical-align:top;
+}
 
 .titleCont{
 	padding: 0px;

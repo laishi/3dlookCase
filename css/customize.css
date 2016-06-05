@@ -12,6 +12,9 @@ ul li img h3{
     padding: 0;
     list-style-type: none;
 }
+img{
+    vertical-align:top;
+}
 
 
 /*background-color: #E6003F;*/
@@ -187,7 +190,7 @@ header h1 {
 }
 
 
-.go3dCicle{
+.goPageCicle{
     position: fixed;
     right: 0%;
     top: 290px;
@@ -202,7 +205,7 @@ header h1 {
     box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1), 0 3px 12px rgba(0, 0, 0, 0.05);
 }
 
-.go3dCicle h3{
+.goPageCicle h3{
     width: 60px;
     height: 60px;
     line-height: 60px;
