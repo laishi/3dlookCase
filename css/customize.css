@@ -214,14 +214,7 @@ header h1 {
 }
 
 
-.infoMax{
-    position: relative;
-    top: 320px;
-    width: 100%;
-    display: none;
-    z-index: 1;
-    
-}
+
 
 
 
@@ -232,17 +225,14 @@ header h1 {
 }
 
 .item .itemImg img{
-    width: 320px;
+    width: 100%;
 }
 
-.itemDetail{
-
-    position: relative;
-    width: 80%;
-    max-width: 960px;
-    margin: 0 auto;
-    /*background: #1D86AC;*/
+.blog .itemImg img{
+    width: 100%;
 }
+
+
 
 
 .detailTag{
@@ -255,9 +245,28 @@ header h1 {
 }
 
 
+.infoMax{
+    position: relative;
+    top: 320px;
+    width: 100%;
+    display: none;
+    z-index: 1;
+    background-color: #93AC1D;
+    
+}
+
+.itemDetail{
+
+    position: relative;
+    width: 80%;
+    max-width: 960px;
+    margin: 0 auto;
+    background: #1D86AC;
+}
+
 .itemTitle:hover{
     cursor: pointer;
-    /*background-color: #1D86AC;*/
+    background-color: #1D86AC;
 }
 
 .itemTag li{
@@ -343,7 +352,7 @@ header h1 {
 }
 .detail3d{
     width: 100%;
-    height: 520px;
+    /*height: 520px;*/
     margin: 0 auto;
     padding: 0px;
     overflow: hidden;
@@ -358,7 +367,7 @@ header h1 {
 
 .detailAdditional{
     width: 100%;
-    height: 520px;
+    /*height: 520px;*/
     margin: 0 auto;
     padding: 50px 0;
     /*background: #AC9E1D;*/
@@ -397,6 +406,14 @@ header h1 {
     position: relative;
     padding-top: 200px;
     max-width: 1200px;
+    height: 200px;
+    /*background: #14BBED;*/
+}
+
+
+.work .gridItems{
+
+    overflow: hidden;
 }
 
 
@@ -728,6 +745,7 @@ input[type="text"]:focus {
     display: none;
     z-index: 0;
     margin-top: 320px;
+    background: #64A83A;
 /*    background-image: url(../img/pgy.png);
     background-repeat: no-repeat;
     background-position: right-bottom;*/
@@ -739,7 +757,7 @@ input[type="text"]:focus {
 }
 
 .lastPage {
-    display: block;
+    display: none;
 }
 
 .pageHome {

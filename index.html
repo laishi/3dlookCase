@@ -30,8 +30,9 @@
             <div class="headereyes">
                 <!-- <iframe src="http://lmv.rocks/viewer/?url=http://lmv.rocks/data/racecar/Design.svf" frameBorder=0 scrolling=no width="100%" height="100%"></iframe> -->
                 <!-- <iframe src="assets/webgl/webgl/index.html" frameBorder=0 scrolling=no width="100%" height="100%"></iframe> -->
-                <h1>3dlook</h1>
+                <!-- <router-view></router-view> -->
                 <!-- <img src="assets/img/logo/3dlogo.png"> -->
+                <h1>3dLook</h1>
             </div>
             
         </div>
@@ -39,10 +40,10 @@
 
         <nav class="navGrid">
             <ul class="navMenu">
-                <li v-link="'work'" class='navItem' data-page="work">    <h3> 工作 </h3> </li>
-                <li v-link="'blog'" class='navItem navBlog' data-page="blog">    <h3> 博客 </h3> </li>
-                <li v-link="'about'" class='navItem' data-page="about">   <h3> 关于 </h3> </li>
-                <li v-link="'contact'" class='navItem' data-page="contact"> <h3> 联系 </h3> </li>
+                <li v-link = "{ path: '/work'    }" class='navItem' data-page="work">    <h3> 工作 </h3> </li>
+                <li v-link = "{ path: '/blog'    }" class='navItem  navBlog' data-page="blog"> <h3> 博客  </h3> </li>
+                <li v-link = "{ path: '/about'   }" class='navItem' data-page="about">   <h3> 关于 </h3> </li>
+                <li v-link = "{ path: '/contact' }" class='navItem' data-page="contact"> <h3>  联系 </h3> </li>
             </ul>
 
         </nav> 
@@ -53,11 +54,16 @@
 
 
 
+    <div class="btns">       
 
-    <!-- <div class="btnCicle menuCicle"> <i class="fa fa-bars" aria-hidden="true"></i> </div> -->
+        <div v-link="'/' + 'work'" class='btnCicle backCicle backWork' > <i class='fa fa-angle-left' aria-hidden='true'></i> </div>
 
-    <div class="btnCicle backCicle"> <i class="fa fa-angle-left" aria-hidden="true"></i> </div>
-    <div class="btnCicle goPageCicle"> <a class="btnCicleMore" href="#"><h3>3D</h3></a> </div>
+        <div v-link="'/' + 'blog'" class='btnCicle backCicle backBlog'> <i class='fa fa-angle-left' aria-hidden='true'></i> </div>
+
+        <div class="btnCicle goPageCicle"> <a class="btnCicleMore" href="#"><h3>3D</h3></a> </div>
+        
+    </div>
+
 
 
     <div class="infoMax">
@@ -100,9 +106,13 @@
 
                         <!-- <a v-link="{ name: 'user', params: { userId: 123 }}">User</a> -->
 
+                        <!-- <a v-link="{ path: 'relative/path', append: true }"></a> -->
 
+                        <!-- <a v-link="/home/{{one}}">{{one}}</a> -->
 
-                        <div class="itemImg">
+                        <!-- <a v-link="'/home/' + one">{{ one }}</a> -->
+
+                        <div v-link="'/detail/' + 'work'" class="itemImg">
                             <img v-bind:src="data.image" />
                         </div>
 
@@ -192,7 +202,7 @@
                     <div class="item mix mixItem threejs mdl-js-button  mdl-js-ripple-effect">
 
 
-                        <div class="itemImg">
+                        <div v-link="'/detail/' + 'blog'" class="itemImg">
                             <img v-bind:src="data.image" />
                         </div>
 
@@ -215,15 +225,18 @@
                                 <p> {{data.summary}} </p>
                             </div>
 
-                            <ul class="info">
-                                <li class="infoItem infoTitle">
-                                    <h3>什么是WebGL？<h3>
-                                </li>
-                                <li class="infoItem infoCont">
-                                    <h3>创建于2015-5-13</h3>
-                                    <h3>作者：laishi</h3>
-                                </li>
-                            </ul>
+                            <div class="itemTag">
+                                <div class="tagTitle">                               
+
+                                    <ul class="tagName">
+                                        <li class="tagTip"><h3> 标签: </h3> </li>
+                                        <li><h3 class="pageName"> {{data.name}} </h3> </li>
+                                        <li><h3> {{data.tag}} </h3> </li>
+                                    </ul>
+
+                                    <div class="titlePos"> <h3>titlePos</h3> </div>
+                                </div>
+                            </div>
 
                             <ul class="bar">
                                 <li class="barItem barLove">
@@ -272,10 +285,9 @@
 
 
             <div class="w80">
-                <h3>pageAbout</h3>
+                <h1>about</h1>
                 
             </div>
-
         </div>
 
 
@@ -290,7 +302,75 @@
 
 
             <div class="w80">
-                <h3>pageContact</h3>
+                <h1>
+到百度首页
+乞丐留存款现亲人
+百度一下
+百度首页消息设置来使886
+网页新闻贴吧知道音乐图片视频地图文库更多»
+收起工具时间不限所有网页和文件站点内检索
+搜索工具百度为您找到相关结果约124,000个
+乞丐留存款现亲人的最新相关信息
+乞丐死后留百万存款“亲人”涌现 遭批都是为钱来的
+
+泰国中部SamutSakhon地区,一位85岁乞丐PunAnoma,1日于寺庙辞世后。... 泰国中部Samut Sakhon地区,一位85岁乞丐Pun Anoma,1日于寺庙辞世后。当局发现... 
+环球网  9小时前
+9小时前 乞丐死后留有数十万存款 “亲人”突然涌现  环球网
+1天前 乞丐死后留有百万存款 自称亲人者突然涌...  大众网
+1天前 乞丐死后留有百万元存款 “亲人”突然涌现  新浪新闻
+1天前 泰国乞丐死后留有逾百万存款 自称亲人者...  中时电子报
+乞丐死后留有百万存款 “亲人”突然涌现_新闻_腾讯网
+1天前 - 乞丐死后留有百万存款 “亲人”突然涌现社会万象中国台湾网 [微博] ...LOL现版本最强势的打野TOP10 盲僧竟不是第一位?快报下载快报APP 彭德怀...
+news.qq.com/a/20160604...  - 百度快照 - 824条评价
+今日头条新闻乞丐死后留百万存款“亲人”涌现 遭批都是为钱来的,...
+
+1天前 - 您的位置: 汽车中国=>汽车资讯网=>今日头条新闻乞丐死后留百万存款“亲人...科技的日新月异,车钥匙已经不再像只是开车门和启动汽车的一个物品,现...
+new.qi-che.com/shehuir...  - 百度快照 - 32条评价
+乞丐死后留有数十万存款 “亲人”突然涌现-乞丐|留存款|..._东北网
+13分钟前 - 泰国中部Samut Sakhon地区,一位85岁乞丐Pun Anoma,1日于寺庙辞世后。当局发现他遗留有150万泰铢(约为28万人民币)银行存款,于是设法寻找其亲属,以便...
+international.dbw.cn/s...  - 百度快照 - 57条评价
+乞丐留存款现亲人的最新微博结果
+
+猫扑 ： 【乞丐死后留有百万元存款 “亲人”突然涌现】泰国一位85岁乞丐1日于寺庙辞世,当局发现他遗留有150万泰铢(约为28万人民币)银行存款,于是设法寻找其亲属送还这笔遗产。消息传出后,便有女子自称其大嫂现身认亲,并愿意让子女验DNA。当局决定先代管该笔遗产,直至找到确定亲属。 http://t.cn/R5qnqfj 查看全文>>
+转发(41)   |   评论(104)
+20小时前 - 新浪微博
+
+邢凯先生 ： #乞丐死后留有百万存款 “亲人”突然涌现# 据台湾《中时电子报》报道,泰国中部SamutSakhon地区,一位85岁乞丐PunAnoma,1日于寺庙辞世后。该妇人说,最初从媒体得知Anoma死讯时,并不想现身,因为怕被人误会她是为了Anoma的遗产。 http://t.cn/R55RoX5 查看全文>>
+转发(0)   |   评论(0)
+52分钟前 - 新浪微博
+查看更多相关微博>>
+乞丐死后留有百万存款 自称亲人者突然涌现_资讯_紫荆网
+1天前 - [提要]消息传出之后,随即有自称Anoma大嫂的女子现身认亲。该妇人说,最初从媒体得知Anoma死讯时,并不想现身,因为怕被人误会她是为了Anoma的遗产。不过...
+www.zijing.org/news/20...  - 百度快照 - 评价
+乞丐死后留有百万存款 自称亲人者突然涌现 - 博览 - 东南网
+1天前 - 自称是Pun Anoma亲属者突然现身认亲。(图片来源:台湾《中时电子报》) 自称是Pun Anoma亲属者突然现身认亲。(图片来源:台湾《中时电子报》) 中国台湾...
+news.fjsen.com/2016-06...  - 百度快照 - 41条评价
+乞丐死后留有百万存款 自称亲人者突然涌现(图)_国内外最..._大众网
+1天前 - 自称是Pun Anoma亲属者突然现身认亲。(图片来源:台湾《中时电子报》) 中国台湾网6月4日讯 据台湾《中时电子报》报道,泰国中部Samut Sakhon地区,一位...
+www.dzwww.com/xinwen/x...  - 百度快照 - 236条评价
+乞丐死后留有百万元存款 “亲人”突然涌现|乞丐|遗产|亲人_新浪新闻
+1天前 - 自称是Pun Anoma亲属者突然现身认亲。(图片来源:台湾《中时电子报》) 自称是Pun Anoma亲属者突然现身认亲。(图片来源:台湾《中时电子报》) 中国台湾...
+news.sina.com.cn/w/sy/...  - 百度快照 - 190条评价
+乞丐生前无人照顾 死后留百万存款 “亲人”突然涌现_二..._百度贴吧
+
+1天前 - 乞丐生前无人照顾 死后留百万存款 “亲人”突然涌现 只看楼主收藏回复 ...据台湾《中时电子报》报道,泰国中...
+tieba.baidu.com/p/4589...  - 百度快照
+相关搜索
+亲人去世存款如何取出      乞丐三大不留点     老乞丐收留疯女
+祖先给我们留下亲人       保留亲人遗物有无禁忌      亲人的遗物可以留吗
+如果你的亲人弥留之际      亲人进了拘留所     去世 亲人 留 头发
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+下一页>
+帮助举报给百度提建议</h1>
                 
             </div>
 
@@ -339,7 +419,7 @@
 
 
 
-<script src="js/rd-smoothscroll.min.js"></script>
+<!-- <script src="js/rd-smoothscroll.min.js"></script> -->
 <script src="incude/greensock/TweenMax.min.js"></script>
 
 <script src="incude/vue/vue.min.js"></script>

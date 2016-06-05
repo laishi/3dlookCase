@@ -20,17 +20,47 @@
 
 
 
-$(".itemImg").click(openDetail);
+
+$(".itemImg").click(function () {
+
+    // titleUrl = $(this).parents(".item").find(".itemTitle").text();
+    var item = $(this);
+    openDetail(item);
+
+});
+
+
+
 $(".backCicle").click(closeDetail);
 
 
-
+ // = that.parents(".item").find(".itemTitle").text()
 
 var headereyes = $(".headerCont").html();
 
-function openDetail() {
+function openDetail(item) {
+
+    var that = item;
 
     $("header").addClass("fixHeader");
+
+
+    $(".gridItems").css({"display":"none"});
+    $(".blogFilter").css({"display":"none"});
+
+    if (that.parents(".page").hasClass("work")) {
+        $(".btnCicle").css({"display":"block","opacity":0});
+        $(".backBlog").css({"display":"none","opacity":0});
+        $(".btnCicleMore").find("h3").text("3D");
+    }
+
+    if (that.parents(".page").hasClass("blog")) {
+        $(".btnCicle").css({"display":"block","opacity":0});
+        $(".backWork").css({"display":"none","opacity":0});        
+        $(".btnCicleMore").find("h3").text("GO");
+    }
+
+
 
 
     TweenMax.fromTo($(".item"), 0.3, { scale: 1}, { scale: 0, onComplete: gototop});
@@ -40,18 +70,18 @@ function openDetail() {
     //GET ITEM DATA
     var getHeaderCont = $(".headerCont").html();
 
-    var getImg        = $(this).parents(".item").find(".itemImg").html();
-    var getTitle      = $(this).parents(".item").find(".itemTitle").html();
-    var getTag        = $(this).parents(".item").find(".itemTag").html();
-    var getDes        = $(this).parents(".item").find(".itemDes").html();
-    var getAdditional = $(this).parents(".item").find(".itemAdditional").html();
+    var getImg        = that.parents(".item").find(".itemImg").html();
+    var getTitle      = that.parents(".item").find(".itemTitle").html();
+    var getTag        = that.parents(".item").find(".itemTag").html();
+    var getDes        = that.parents(".item").find(".itemDes").html();
+    var getAdditional = that.parents(".item").find(".itemAdditional").html();
 
 
 
 
     //CHANGE MORE LINK
 
-    getLink = $(this).parents(".item").find(".moreLink").attr("href");
+    getLink = that.parents(".item").find(".moreLink").attr("href");
 
 
     if (getLink) {
@@ -60,16 +90,8 @@ function openDetail() {
     }
 
 
-    if ($(this).parents(".page").hasClass("blog")) {
-        $(".btnCicleMore").find("h3").text("GO");
-
-        console.log("blog")
 
 
-    } else{
-    }
-
-        console.log($(this).parents(".page").html())
     
 
     $(".headerCont").append(getImg);
@@ -89,17 +111,19 @@ function openDetail() {
 
     //USE PAGES DATA
 
-    if ($(this).parents(".page").hasClass("work")) {
+    if (that.parents(".page").hasClass("work")) {
         var pagePath = "pages/work/";
     }
-    if ($(this).parents(".page").hasClass("blog")) {
+    if (that.parents(".page").hasClass("blog")) {
         var pagePath = "pages/blog/";
     }
 
-    var pageName = $.trim( $(this).parents(".item").find(".pageName").text() );
+    var pageName = $.trim( that.parents(".item").find(".pageName").text() );
     var pageFormat = ".html";
     var pageURL = pagePath + pageName + pageFormat;
     var pageLoad = pagePath + pageName + pageFormat + " ." + pageName;
+
+    // console.log(pageURL)
 
     
     $(".detailDes").load(pageLoad);
@@ -111,11 +135,16 @@ function openDetail() {
     //HEADER TAG
     TweenMax.fromTo($("header").find("ul"), 1.2, { opacity: 0 }, { opacity: 1, delay: 1.2 });
 
+        console.log(that)
+
 }
 
 function closeDetail() {
 
     $(window).scrollTop(0);
+
+    $(".gridItems").css({"display":"block"});
+    $(".blogFilter").css({"display":"block"});
 
     $(".infoMax").css("display","none");
     $(".btnCicle").css("display","none");
@@ -154,7 +183,11 @@ function gototop() {
 
 
 
-    $(".btnCicle").css("display","block");
+    
+
+    TweenMax.to($(".scrollItem"), 0.3, { y: 520});
+
+
     TweenMax.fromTo($(".infoMax"), 0.3, { opacity: 0}, { opacity: 1});
 
     $(".infoMax").css("display","block");        

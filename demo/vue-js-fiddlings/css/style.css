@@ -1,0 +1,276 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Open Sans;
+}
+
+.wrapper {
+  text-align: center;
+}
+.wrapper div button {
+  margin: 0.5em;
+  padding: 0.5em;
+  font-size: 1em;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background: transparent;
+  border: 1px solid black;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  cursor: pointer;
+  vertical-align: middle;
+}
+.wrapper div button:hover {
+  color: white;
+  background: black;
+}
+.wrapper div input {
+  margin: 0.25em;
+  padding: 0.5em;
+  font-size: 1em;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 1px solid black;
+  vertical-align: middle;
+  width: 100%;
+  max-width: 15em;
+}
+.wrapper div img {
+  display: block;
+  width: calc(100% - 1em);
+  max-width: 700px;
+  margin: 1em auto;
+}
+.wrapper div.flexwrap {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  max-width: 21em;
+  margin: 0 auto;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.wrapper div.flexwrap .cell {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.wrapper div.flexwrap .cell:nth-of-type(1n) {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 80%;
+}
+.wrapper div.flexwrap .cell:nth-of-type(2n) {
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 20%;
+}
+.wrapper div.flexwrap .cell button {
+  margin-right: 0;
+}
+.wrapper nav {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 40vh;
+  min-height: 150px;
+  padding: 1em;
+  background: rgba(0, 0, 0, 0.25);
+}
+.wrapper nav h1 {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  text-align: left;
+  -webkit-box-align: top;
+  -webkit-align-items: top;
+      -ms-flex-align: top;
+          align-items: top;
+  width: 40%;
+  color: white;
+  cursor: pointer;
+}
+.wrapper nav h1 img {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.25em;
+  vertical-align: middle;
+}
+.wrapper nav .nav {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  width: 60%;
+}
+.wrapper nav .nav button {
+  margin: 0 0.25em;
+  padding: 0.75em 1em;
+  color: white;
+  border: 1px solid white;
+}
+.wrapper nav .nav button:hover {
+  color: black;
+  background: white;
+}
+@media (max-width: 767px) {
+  .wrapper nav {
+    display: block;
+    padding: 1em 0;
+  }
+  .wrapper nav h1 {
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .wrapper nav .nav {
+    width: 100%;
+    margin: 1em auto 0;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .wrapper nav .nav button {
+    margin: 0;
+    text-align: center;
+    border: none;
+    background: none;
+  }
+  .wrapper nav .nav button:hover {
+    background: none;
+    color: white;
+  }
+}
+.wrapper .headerImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40vh;
+  min-height: 150px;
+  z-index: -1;
+  background-size: cover !important;
+  background-position: center !important;
+}
+.wrapper .content {
+  margin: 0 auto;
+  padding: 1em;
+  max-width: 900px;
+  min-height: 60vh;
+}
+.wrapper .people {
+  display: block;
+  margin: 0.5em auto;
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+.wrapper .people .person {
+  display: inline-block;
+  position: relative;
+  margin: 0.5em;
+  padding: 1em;
+  color: white;
+  font-weight: bold;
+  font-size: 1.25em;
+  cursor: pointer;
+  box-shadow: 0px 0px 6px gray;
+  vertical-align: middle;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.wrapper .people .person:nth-of-type(1n) {
+  background-color: #dd2222;
+}
+.wrapper .people .person:nth-of-type(2n) {
+  background-color: #20b207;
+}
+.wrapper .people .person:nth-of-type(3n) {
+  background-color: #448ae3;
+}
+.wrapper .people .person:nth-of-type(4n) {
+  background-color: #ffc425;
+}
+.wrapper .people .person:nth-of-type(5n) {
+  background-color: #f67100;
+}
+.wrapper .people .person:nth-of-type(6n) {
+  background-color: #7e3878;
+}
+.wrapper .people .person .name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.wrapper .people .person .hidden {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+.wrapper .people .person:hover {
+  box-shadow: 0px 0px 15px #676767;
+}
+.wrapper .people .person:hover .name {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translate(-50%, -100%);
+          transform: translate(-50%, -100%);
+}
+.wrapper .people .person:hover .hidden {
+  opacity: 1;
+  visibility: visible;
+}
+.wrapper .dummyText {
+  text-align: left;
+}
+.wrapper footer {
+  width: 100%;
+  background: black;
+  color: gray;
+  text-align: left;
+  padding: 1em;
+}

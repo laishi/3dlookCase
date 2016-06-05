@@ -20,6 +20,9 @@ $(document).ready(function() {
     var lastScrollTop = 0;  
 
 
+
+    // $(".gridItems").css("height",0);
+
     $(window).scroll(function() {
 
         curentItemPY = itemPY - $(window).scrollTop();
@@ -29,6 +32,13 @@ $(document).ready(function() {
 
 
         st = $(this).scrollTop();
+
+
+        // TweenMax.to($(".gridItems"),0.1,{y:st});
+        
+
+
+
 
         if (st > lastScrollTop) {
 

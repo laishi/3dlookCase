@@ -1,37 +1,115 @@
-// define some components
-var Work = Vue.extend({
-  template: '<p>This is work!</p>'
+
+var notFound = Vue.extend({
+   template: '<h1>Not Found</h1>' +
+   '<router-view></router-view>'
 })
 
-var Blog = Vue.extend({
-  template: '<p>This is blog!</p>'
+var workComponent = Vue.extend({
+    template: 
+            '<h1>Work</h1>' +
+            '<router-view></router-view>'
 })
 
-// the router needs a root component to render.
-// for demo purposes, we will just use an empty one
-// because we are using the HTML as the app template.
-var App = Vue.extend({})
+var blogComponent = Vue.extend({
+   template: 
+            '<h1>Blog</h1>' +
+            '<router-view></router-view>'
+})
 
-// create a router instance
-// you can pass in additional options here, but
-// let's keep it simple for now.
-var router = new VueRouter()
+var aboutComponent = Vue.extend({
+   template: 
+            '<h1> aboutComponent </h1>' +
+            '<a v-link="{ path: \'/subroute\' }" class="btn btn-lg btn-primary" role="button">View SubRoute</a>' +
+            '<router-view></router-view>'
+})
 
-// define some routes.
-// each route should map to a component.
-// we'll talk about nested routes later.
+var contactComponent = Vue.extend({
+   template: 
+            '<h1> 联系 </h1>' +
+            '<router-view></router-view>'
+})
+
+
+
+var detail = Vue.extend({
+   template: 
+               '<h1>Navbar example</h1>' +
+               '<p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>' +
+               '<p>To see the difference between static and fixed top navbars, just scroll.</p>'
+})
+
+
+
+
+Vue.use(VueRouter)
+
+var router = new VueRouter({
+   history: false,
+   hashbang:true,
+   root: '/'
+})
+
 router.map({
-  '/work': {
-    component: Work
-  },
-  '/blog': {
-    component: Blog
+   '*': {
+      component: notFound
+   },
+
+   '/': {
+      component: workComponent,
+      
+      subRoutes: {
+      '/detail': {
+           component: detail
+         }
+      }
+   },
+
+   '/work': {
+      component: workComponent,
+      
+      subRoutes: {
+      '/detail': {
+           component: detail
+         }
+      }
+   },
+
+   '/blog': {
+      component: blogComponent,
+      
+      subRoutes: {
+      '/detail': {
+           component: detail
+         }
+      }
+   },
+
+   '/about': {
+      component: aboutComponent,
+      subRoutes: {
+      '/detail': {
+           component: detail
+         }
+      }
+   },
+
+   '/contact': {
+      component: contactComponent
+   },
+
+
+  '/detail/:itemName': {
+    name: 'detail', // 给这条路径加上一个名字
+    component: detail
   }
-})
 
-// now we can start the app!
-// router will create an instance of App and mount to
-// the element matching the selector navGrid.
 
-router.start(App, "body");
 
+
+
+
+});
+
+var App = Vue.extend()
+
+router.start(App, 'body')

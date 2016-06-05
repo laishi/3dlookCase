@@ -57,6 +57,8 @@ $.each(blogNames, function (index,title) {
     var blogHtmlUrl = blogHtmlFolder + title + HtmlFormat;
     var blogimgkUrl = blogImgFolder + title + jpg;
 
+
+
     var useClass = "." + title;
 
     blogHtmlUrls.push(blogHtmlUrl);
@@ -73,6 +75,7 @@ $.each(blogNames, function (index,title) {
             blogSummary.push(summary);
 
             // console.log(summary)
+
           }
     });     
 
@@ -82,7 +85,6 @@ $.each(blogNames, function (index,title) {
 
 
 
-    console.log(blogImgkUrls[0])
 
 
 
@@ -224,115 +226,115 @@ new Vue({
 
         blog: [
             {
-                "id"    : "0",
-                "name"  : blogNames[0],
-                "title" : blogTitles[0],
-                "image" : blogImgkUrls[0],
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[0],
-                "url"   : blogHtmlUrls[0],
-                "date"  : Date.now(),
+                "id"      : "0",
+                "name"    : blogNames[0],
+                "title"   : blogTitles[0],
+                "image"   : blogImgkUrls[0],
+                "tag"     : "webgl web3d 三维产品展示",
+                "info"    : "webgl web3d 三维产品展示",
+                "summary" : blogSummary[0],
+                "url"     : blogHtmlUrls[0],
+                "date"    : Date.now(),
             },{
-                "id"    : "1",
-                "name"  : blogNames[1],
-                "title" : blogTitles[1],
-                "image" : blogImgkUrls[1],
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "x51 webgl 3drender",
-                "summary"  : blogSummary[1],
-                "url"   : blogHtmlUrls[1],
-                "date"  : Date.now(),
+                "id"      : "1",
+                "name"    : blogNames[1],
+                "title"   : blogTitles[1],
+                "image"   : blogImgkUrls[1],
+                "tag"     : "webgl web3d 三维产品展示",
+                "info"    : "x51 webgl 3drender",
+                "summary" : blogSummary[1],
+                "url"     : blogHtmlUrls[1],
+                "date"    : Date.now(),
             },{
-                "id"    : "2",
-                "name"  : blogNames[2],
-                "title" : blogTitles[2],
-                "image" : blogImgkUrls[2],
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[2],
-                "url"   : blogHtmlUrls[2],
-                "date"  : Date.now(),
+                "id"      : "2",
+                "name"    : blogNames[2],
+                "title"   : blogTitles[2],
+                "image"   : blogImgkUrls[2],
+                "tag"     : "webgl web3d 三维产品展示",
+                "info"    : "webgl web3d 三维产品展示",
+                "summary" : blogSummary[2],
+                "url"     : blogHtmlUrls[2],
+                "date"    : Date.now(),
             },{
-                "id"    : "3",
-                "name"  : blogNames[3],
-                "title" : blogTitles[3],
-                "image" : blogImgkUrls[3],
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[3],
-                "url"   : blogHtmlUrls[3],
-                "date"  : Date.now(),
+                "id"      : "3",
+                "name"    : blogNames[3],
+                "title"   : blogTitles[3],
+                "image"   : blogImgkUrls[3],
+                "tag"     : "webgl web3d 三维产品展示",
+                "info"    : "webgl web3d 三维产品展示",
+                "summary" : blogSummary[3],
+                "url"     : blogHtmlUrls[3],
+                "date"    : Date.now(),
             },{
-                "id"    : "4",
-                "name"  : blogNames[4],
-                "title" : blogTitles[4],
-                "image" : blogImgkUrls[4],
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[4],
-                "url"   : blogHtmlUrls[4],
-                "date"  : Date.now(),
+                "id"      : "4",
+                "name"    : blogNames[4],
+                "title"   : blogTitles[4],
+                "image"   : blogImgkUrls[4],
+                "tag"     : "webgl web3d 三维产品展示",
+                "info"    : "webgl web3d 三维产品展示",
+                "summary" : blogSummary[4],
+                "url"     : blogHtmlUrls[4],
+                "date"    : Date.now(),
             },{
-                "id"    : "5",
-                "name"  : blogNames[5],
-                "title" : blogTitles[5],
-                "image" : blogImgkUrls[5],
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[5],
-                "url"   : blogHtmlUrls[5],
-                "date"  : Date.now(),
+                "id"      : "5",
+                "name"    : blogNames[5],
+                "title"   : blogTitles[5],
+                "image"   : blogImgkUrls[5],
+                "tag"     : "webgl web3d 三维产品展示",
+                "info"    : "webgl web3d 三维产品展示",
+                "summary" : blogSummary[5],
+                "url"     : blogHtmlUrls[5],
+                "date"    : Date.now(),
             },{
-                "id"    : "6",
-                "name"  : blogNames[6],
-                "title" : blogTitles[6],
-                "image" : blogImgkUrls[6],
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[6],
-                "url"   : blogHtmlUrls[6],
-                "date"  : Date.now(),
+                "id"      : "6",
+                "name"    : blogNames[6],
+                "title"   : blogTitles[6],
+                "image"   : blogImgkUrls[6],
+                "tag"     : "webgl web3d 三维产品展示",
+                "info"    : "webgl web3d 三维产品展示",
+                "summary" : blogSummary[6],
+                "url"     : blogHtmlUrls[6],
+                "date"    : Date.now(),
             },{
-                "id"    : "7",
-                "name"  : blogNames[7],
-                "title" : blogTitles[7],
-                "image" : blogImgkUrls[7],
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[7],
-                "url"   : blogHtmlUrls[7],
-                "date"  : Date.now(),
+                "id"      : "7",
+                "name"    : blogNames[7],
+                "title"   : blogTitles[7],
+                "image"   : blogImgkUrls[7],
+                "tag"     : "webgl web3d 三维产品展示",
+                "info"    : "webgl web3d 三维产品展示",
+                "summary" : blogSummary[7],
+                "url"     : blogHtmlUrls[7],
+                "date"    : Date.now(),
             },{
-                "id"    : "8",
-                "name"  : blogNames[8],
-                "title" : blogTitles[8],
-                "image" : blogImgkUrls[8],
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[8],
-                "url"   : blogHtmlUrls[8],
-                "date"  : Date.now(),
+                "id"      : "8",
+                "name"    : blogNames[8],
+                "title"   : blogTitles[8],
+                "image"   : blogImgkUrls[8],
+                "tag"     : "webgl web3d 三维产品展示",
+                "info"    : "webgl web3d 三维产品展示",
+                "summary" : blogSummary[8],
+                "url"     : blogHtmlUrls[8],
+                "date"    : Date.now(),
             },{
-                "id"    : "9",
-                "name"  : blogNames[9],
-                "title" : blogTitles[9],
-                "image" : blogImgkUrls[9],
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[9],
-                "url"   : blogHtmlUrls[9],
-                "date"  : Date.now(),
+                "id"      : "9",
+                "name"    : blogNames[9],
+                "title"   : blogTitles[9],
+                "image"   : blogImgkUrls[9],
+                "tag"     : "webgl web3d 三维产品展示",
+                "info"    : "webgl web3d 三维产品展示",
+                "summary" : blogSummary[9],
+                "url"     : blogHtmlUrls[9],
+                "date"    : Date.now(),
             },{
-                "id"    : "10",
-                "name"  : blogNames[10],
-                "title" : blogTitles[10],
-                "image" : blogImgkUrls[10],
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[10],
-                "url"   : blogHtmlUrls[10],
-                "date"  : Date.now(),
+                "id"      : "10",
+                "name"    : blogNames[10],
+                "title"   : blogTitles[10],
+                "image"   : blogImgkUrls[10],
+                "tag"     : "webgl web3d 三维产品展示",
+                "info"    : "webgl web3d 三维产品展示",
+                "summary" : blogSummary[10],
+                "url"     : blogHtmlUrls[10],
+                "date"    : Date.now(),
             }
         ]
     },
@@ -363,7 +365,6 @@ new Vue({
 
 
             this.works.forEach(function(item) {
-                console.log("this is" + item.name)
             })
 
 
@@ -412,7 +413,6 @@ new Vue({
 
             return workDataAll;
 
-            console.log(workDataAll);
 
         },
 
@@ -424,7 +424,6 @@ new Vue({
 
         updatData: function(i, productId) {
 
-            console.log(this.products[id]);
         }
 
 

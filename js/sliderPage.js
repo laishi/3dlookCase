@@ -1,23 +1,34 @@
 
 $(window).on('hashchange', function(e){
-    var hashUrl;
-    var origEvent = e.originalEvent;
 
-    var urlSplit = origEvent.newURL.split("/");
-    var urlLenght = urlSplit.length;
+    var origEvent  = e.originalEvent;
 
-    hashUrl = urlSplit[urlLenght-1];
+    var CurURL     = origEvent.newURL;
+    var urlSplit   = CurURL.split("/");
+    var urlLenght  = urlSplit.length;
+    var curUrlName = urlSplit[urlLenght-1];
 
-    if (hashUrl === "detail") {
-        console.log("detail Page")
-    } else{
-        // closeDetail();
-        sliderPage(hashUrl);        
+    var oldURL     = origEvent.oldURL;
+    var OurlSplit  = oldURL.split("/");
+    var OurlLenght = OurlSplit.length;
+
+    var oldUrlName = OurlSplit[OurlLenght-2];
+
+
+
+    if ( curUrlName === "work" || curUrlName === "blog" || curUrlName === "about" || curUrlName === "contact" ) {
+
+        sliderPage(curUrlName);
+    } 
+
+
+    if (oldUrlName === "detail") {
+        
+        closeDetail();
     }
 
 
     var hash = new String(document.location).indexOf("#");
-    // console.log(origEvent)
 });
 
 
@@ -28,7 +39,19 @@ $(".navItem").click(function() {
 
     var pageData = $(this).data("page");
     var index = $(this).index();
+
+    var curPage = $('.' + pageData);
+
+
+
+    
     sliderPage(pageData,index);
+
+
+
+
+
+    $(".work .gridItems").css({"height":0, "overflow": "hidden"})
 
     if (pageData === "blog") {
         mixConf();
@@ -74,8 +97,8 @@ function sliderPage(pageName,index) {
     var curPage = $('.' + pageName);
     var curPageSiblings = curPage.siblings();
 
-
-
+    curPage.css({"display":"block"});
+    
     if (curPage.hasClass("curPage")) {
 
 
@@ -88,6 +111,12 @@ function sliderPage(pageName,index) {
 
         lastPage = $(".lastPage");
         curPage = $(".curPage");
+
+
+
+
+
+
         var speed = 0.5;
 
         if (pageIndex < index) {
@@ -103,15 +132,27 @@ function sliderPage(pageName,index) {
         function goRight() {
             TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "-100%" });
             TweenMax.fromTo(curPage, speed, { x: "100%" }, { x: "0%", onComplete:wtotop });
+
+
+
+
         }
 
         function goLeft() {
             TweenMax.fromTo(curPage, speed, { x: "-100%" }, { x: "0%" });
             TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "100%", onComplete:wtotop });
+
+
         }
 
         function wtotop() {
             $(window).scrollTop(0);
+
+            $(".curPage").siblings().css({"display":"none"});
+
+            // console.log(curPage);
+
+
         }
 
 
@@ -135,7 +176,6 @@ function mixConf() {
     $container.mixItUp({
         callbacks: {
             onMixStart: function(state, futureState){
-                console.log("start")
             }
         },
         animation: {

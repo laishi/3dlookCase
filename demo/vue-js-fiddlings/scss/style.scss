@@ -1,0 +1,256 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Open Sans;
+}
+
+$colorArray: #dd2222,
+  #20b207,
+  #448ae3,
+  #ffc425,
+  #f67100,
+  #7e3878;
+
+$min-header-height: 150px;
+
+.wrapper {
+  text-align: center;
+
+  div {
+    button {
+      margin: 0.5em;
+      padding: 0.5em;
+      font-size: 1em;
+      appearance: none;
+      background: transparent;
+      border: 1px solid black;
+      transition: all 0.1s;
+      cursor: pointer;
+      vertical-align: middle;
+
+      &:hover {
+        color: white;
+        background: black;
+      }
+    }
+
+    input {
+      margin: 0.25em;
+      padding: 0.5em;
+      font-size: 1em;
+      appearance: none;
+      border: 1px solid black;
+      vertical-align: middle;
+      width: 100%;
+      max-width: 15em;
+    }
+
+    img {
+      display: block;
+      width: calc(100% - 1em);
+      max-width: 700px;
+      margin: 1em auto;
+    }
+
+    &.flexwrap {
+      display: flex;
+      width: 100%;
+      max-width: 21em;
+      margin: 0 auto;
+      justify-content: center;
+
+      .cell {
+        display: flex;
+        align-items: center;
+
+        &:nth-of-type(1n) {
+          justify-content: flex-start;
+          width: 80%;
+        }
+
+        &:nth-of-type(2n) {
+          justify-content: flex-end;
+          width: 20%;
+        }
+
+        button {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  nav {
+    display: flex;
+    width: 100%;
+    height: 40vh;
+    min-height: $min-header-height;
+    padding: 1em;
+    background: rgba(0,0,0,0.25);
+
+    h1 {
+      display: inline-flex;
+      justify-content: flex-start;
+      text-align: left;
+      align-items: top;
+      width: 40%;
+      color: white;
+      cursor: pointer;
+      
+      img {
+        width: 40px;
+        height: 40px;
+        margin-right: 0.25em;
+        vertical-align: middle;
+      }
+    }
+
+    .nav {
+      display: inline-flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+      width: 60%;
+
+      button {
+        margin: 0 0.25em;
+        padding: 0.75em 1em;
+        color: white;
+        border: 1px solid white;
+
+        &:hover {
+          color: black;
+          background: white;
+        }
+      }
+    }
+
+    @media (max-width: 767px) {
+      & {
+        display: block;
+        padding: 1em 0;
+        
+        h1 {
+          display: inline-block;
+          text-align: center;
+          margin: 0 auto;
+          width: 100%;
+        }
+
+        .nav {
+          width: 100%;
+          margin: 1em auto 0;
+          background: rgba(0,0,0,0.5);
+          justify-content: center;
+          align-items: center;
+          
+          button {
+            margin: 0;
+            text-align: center;
+            border: none;
+            background: none;
+            
+            &:hover {
+              background: none;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .headerImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40vh;
+    min-height: $min-header-height;
+    z-index: -1;
+    background-size: cover !important;
+    background-position: center !important;
+  }
+
+  .content {
+    margin: 0 auto;
+    padding: 1em;
+    max-width: 900px;
+    min-height: 60vh;
+  }
+
+  .people {
+    display: block;
+    margin: 0.5em auto;
+    width: 100%;
+    max-width: 900px;
+    text-align: center;
+
+    .person {
+      display: inline-block;
+      position: relative;
+      margin: 0.5em;
+      padding: 1em;
+      color: white;
+      font-weight: bold;
+      font-size: 1.25em;
+      cursor: pointer;
+      box-shadow: 0px 0px 6px gray;
+      vertical-align: middle;
+      transition: all 0.25s;
+
+      $i: 1;
+      @while $i < length($colorArray)+1 {
+        &:nth-of-type(#{$i}n) {
+          $color: nth($colorArray, $i);
+          background-color: $color;
+          $i: $i + 1;
+        }
+      }
+
+      .name {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.25s;
+      }
+
+      .hidden {
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.25s;
+      }
+
+      &:hover {
+        box-shadow: 0px 0px 15px darken(gray, 10%);
+
+        .name {
+          opacity: 0;
+          visibility: hidden;
+          transform: translate(-50%, -100%);
+        }
+
+        .hidden {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  .dummyText {
+    text-align: left;
+  }
+
+  footer {
+    width: 100%;
+    background: black;
+    color: gray;
+    text-align: left;
+    padding: 1em;
+
+  }
+}

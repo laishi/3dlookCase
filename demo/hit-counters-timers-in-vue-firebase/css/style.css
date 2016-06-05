@@ -1,0 +1,201 @@
+* {
+  font-family: "Helvetica", sans-serif;
+  box-sizing: border-box;
+}
+
+input, button {
+  appearance: none;
+  border: 1px solid black;
+  padding: 1em;
+  font-size: 1em;
+}
+
+button {
+  background: transparent;
+  transition: all 0.1s;
+  cursor: pointer;
+}
+button:hover {
+  color: white;
+  background: black;
+}
+
+.hero {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 0;
+}
+
+.hitsWrapper, .timersWrapper {
+  margin: 0 auto;
+  text-align: center;
+}
+.hitsWrapper .newHit, .hitsWrapper .backToHits, .hitsWrapper .backToTimers, .timersWrapper .newHit, .timersWrapper .backToHits, .timersWrapper .backToTimers {
+  position: fixed;
+  bottom: 1em;
+  left: 1em;
+}
+.hitsWrapper .newTimer, .timersWrapper .newTimer {
+  position: fixed;
+  bottom: 5.5em;
+  left: 1em;
+}
+.hitsWrapper h3, .timersWrapper h3 {
+  margin-bottom: 0.25em;
+  text-decoration: underline;
+}
+.hitsWrapper .currentHits, .hitsWrapper .currentTimers, .timersWrapper .currentHits, .timersWrapper .currentTimers {
+  display: block;
+}
+.hitsWrapper h2, .hitsWrapper .original, .timersWrapper h2, .timersWrapper .original {
+  margin: 0.25em;
+}
+.hitsWrapper .original, .timersWrapper .original {
+  margin-bottom: 1.5em;
+}
+.hitsWrapper .hitsFlexContainer, .hitsWrapper .timersFlexContainer, .timersWrapper .hitsFlexContainer, .timersWrapper .timersFlexContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.hitsWrapper .hitsFlexContainer .hit, .hitsWrapper .hitsFlexContainer .timer, .hitsWrapper .timersFlexContainer .hit, .hitsWrapper .timersFlexContainer .timer, .timersWrapper .hitsFlexContainer .hit, .timersWrapper .hitsFlexContainer .timer, .timersWrapper .timersFlexContainer .hit, .timersWrapper .timersFlexContainer .timer {
+  position: relative;
+  background: gray;
+  padding: 1em;
+  padding-left: 0.5em;
+  margin: 0.5em;
+  min-height: 120px;
+  background: rgba(198, 198, 198, 0.1);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+  transition: all 0.1s, border 0.25s ease-out;
+  flex-grow: 1;
+}
+.hitsWrapper .hitsFlexContainer .hit[data-color="gray"], .hitsWrapper .hitsFlexContainer .timer[data-color="gray"], .hitsWrapper .timersFlexContainer .hit[data-color="gray"], .hitsWrapper .timersFlexContainer .timer[data-color="gray"], .timersWrapper .hitsFlexContainer .hit[data-color="gray"], .timersWrapper .hitsFlexContainer .timer[data-color="gray"], .timersWrapper .timersFlexContainer .hit[data-color="gray"], .timersWrapper .timersFlexContainer .timer[data-color="gray"] {
+  border-left: 4px solid rgba(198, 198, 198, 0.9);
+}
+.hitsWrapper .hitsFlexContainer .hit[data-color="yellow"], .hitsWrapper .hitsFlexContainer .timer[data-color="yellow"], .hitsWrapper .timersFlexContainer .hit[data-color="yellow"], .hitsWrapper .timersFlexContainer .timer[data-color="yellow"], .timersWrapper .hitsFlexContainer .hit[data-color="yellow"], .timersWrapper .hitsFlexContainer .timer[data-color="yellow"], .timersWrapper .timersFlexContainer .hit[data-color="yellow"], .timersWrapper .timersFlexContainer .timer[data-color="yellow"] {
+  border-left: 4px solid #ffba00;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.hitsWrapper .hitsFlexContainer .hit[data-color="green"], .hitsWrapper .hitsFlexContainer .timer[data-color="green"], .hitsWrapper .timersFlexContainer .hit[data-color="green"], .hitsWrapper .timersFlexContainer .timer[data-color="green"], .timersWrapper .hitsFlexContainer .hit[data-color="green"], .timersWrapper .hitsFlexContainer .timer[data-color="green"], .timersWrapper .timersFlexContainer .hit[data-color="green"], .timersWrapper .timersFlexContainer .timer[data-color="green"] {
+  border-left: 4px solid #7ad03a;
+  box-shadow: 0 6px 6px 0 rgba(0, 0, 0, 0.25);
+}
+.hitsWrapper .hitsFlexContainer .hit[data-color="red"], .hitsWrapper .hitsFlexContainer .timer[data-color="red"], .hitsWrapper .timersFlexContainer .hit[data-color="red"], .hitsWrapper .timersFlexContainer .timer[data-color="red"], .timersWrapper .hitsFlexContainer .hit[data-color="red"], .timersWrapper .hitsFlexContainer .timer[data-color="red"], .timersWrapper .timersFlexContainer .hit[data-color="red"], .timersWrapper .timersFlexContainer .timer[data-color="red"] {
+  border-left: 4px solid #ea0000;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.15);
+}
+.hitsWrapper .hitsFlexContainer .hit .left, .hitsWrapper .hitsFlexContainer .timer .left, .hitsWrapper .timersFlexContainer .hit .left, .hitsWrapper .timersFlexContainer .timer .left, .timersWrapper .hitsFlexContainer .hit .left, .timersWrapper .hitsFlexContainer .timer .left, .timersWrapper .timersFlexContainer .hit .left, .timersWrapper .timersFlexContainer .timer .left {
+  display: inline-block;
+  width: 3.5em;
+}
+.hitsWrapper .hitsFlexContainer .hit .left .upvote, .hitsWrapper .hitsFlexContainer .timer .left .upvote, .hitsWrapper .timersFlexContainer .hit .left .upvote, .hitsWrapper .timersFlexContainer .timer .left .upvote, .timersWrapper .hitsFlexContainer .hit .left .upvote, .timersWrapper .hitsFlexContainer .timer .left .upvote, .timersWrapper .timersFlexContainer .hit .left .upvote, .timersWrapper .timersFlexContainer .timer .left .upvote {
+  display: inline-block;
+  position: relative;
+  padding: 1em;
+  cursor: pointer;
+}
+.hitsWrapper .hitsFlexContainer .hit .left .upvote:after, .hitsWrapper .hitsFlexContainer .timer .left .upvote:after, .hitsWrapper .timersFlexContainer .hit .left .upvote:after, .hitsWrapper .timersFlexContainer .timer .left .upvote:after, .timersWrapper .hitsFlexContainer .hit .left .upvote:after, .timersWrapper .hitsFlexContainer .timer .left .upvote:after, .timersWrapper .timersFlexContainer .hit .left .upvote:after, .timersWrapper .timersFlexContainer .timer .left .upvote:after {
+  content: "";
+  width: 0;
+  height: 0;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid black;
+}
+.hitsWrapper .hitsFlexContainer .hit .left .hitCounter, .hitsWrapper .hitsFlexContainer .timer .left .hitCounter, .hitsWrapper .timersFlexContainer .hit .left .hitCounter, .hitsWrapper .timersFlexContainer .timer .left .hitCounter, .timersWrapper .hitsFlexContainer .hit .left .hitCounter, .timersWrapper .hitsFlexContainer .timer .left .hitCounter, .timersWrapper .timersFlexContainer .hit .left .hitCounter, .timersWrapper .timersFlexContainer .timer .left .hitCounter {
+  margin: 0.25em 0;
+  font-size: 1.25em;
+  font-weight: bold;
+  text-align: center;
+}
+.hitsWrapper .hitsFlexContainer .hit .left .downvote, .hitsWrapper .hitsFlexContainer .timer .left .downvote, .hitsWrapper .timersFlexContainer .hit .left .downvote, .hitsWrapper .timersFlexContainer .timer .left .downvote, .timersWrapper .hitsFlexContainer .hit .left .downvote, .timersWrapper .hitsFlexContainer .timer .left .downvote, .timersWrapper .timersFlexContainer .hit .left .downvote, .timersWrapper .timersFlexContainer .timer .left .downvote {
+  display: inline-block;
+  position: relative;
+  padding: 1em;
+  cursor: pointer;
+}
+.hitsWrapper .hitsFlexContainer .hit .left .downvote:after, .hitsWrapper .hitsFlexContainer .timer .left .downvote:after, .hitsWrapper .timersFlexContainer .hit .left .downvote:after, .hitsWrapper .timersFlexContainer .timer .left .downvote:after, .timersWrapper .hitsFlexContainer .hit .left .downvote:after, .timersWrapper .hitsFlexContainer .timer .left .downvote:after, .timersWrapper .timersFlexContainer .hit .left .downvote:after, .timersWrapper .timersFlexContainer .timer .left .downvote:after {
+  content: "";
+  width: 0;
+  height: 0;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid black;
+}
+.hitsWrapper .hitsFlexContainer .hit .right, .hitsWrapper .hitsFlexContainer .timer .right, .hitsWrapper .timersFlexContainer .hit .right, .hitsWrapper .timersFlexContainer .timer .right, .timersWrapper .hitsFlexContainer .hit .right, .timersWrapper .hitsFlexContainer .timer .right, .timersWrapper .timersFlexContainer .hit .right, .timersWrapper .timersFlexContainer .timer .right {
+  display: inline-block;
+  margin-left: 0.5em;
+  padding-right: 2em;
+  vertical-align: top;
+  text-align: left;
+  width: calc(100% - 4em);
+}
+.hitsWrapper .hitsFlexContainer .hit .right h2, .hitsWrapper .hitsFlexContainer .hit .right p, .hitsWrapper .hitsFlexContainer .timer .right h2, .hitsWrapper .hitsFlexContainer .timer .right p, .hitsWrapper .timersFlexContainer .hit .right h2, .hitsWrapper .timersFlexContainer .hit .right p, .hitsWrapper .timersFlexContainer .timer .right h2, .hitsWrapper .timersFlexContainer .timer .right p, .timersWrapper .hitsFlexContainer .hit .right h2, .timersWrapper .hitsFlexContainer .hit .right p, .timersWrapper .hitsFlexContainer .timer .right h2, .timersWrapper .hitsFlexContainer .timer .right p, .timersWrapper .timersFlexContainer .hit .right h2, .timersWrapper .timersFlexContainer .hit .right p, .timersWrapper .timersFlexContainer .timer .right h2, .timersWrapper .timersFlexContainer .timer .right p {
+  margin: 0;
+}
+.hitsWrapper .hitsFlexContainer .hit .right h2, .hitsWrapper .hitsFlexContainer .timer .right h2, .hitsWrapper .timersFlexContainer .hit .right h2, .hitsWrapper .timersFlexContainer .timer .right h2, .timersWrapper .hitsFlexContainer .hit .right h2, .timersWrapper .hitsFlexContainer .timer .right h2, .timersWrapper .timersFlexContainer .hit .right h2, .timersWrapper .timersFlexContainer .timer .right h2 {
+  margin-bottom: 0.5em;
+}
+.hitsWrapper .hitsFlexContainer .hit .right .removeHit, .hitsWrapper .hitsFlexContainer .hit .right .removeTimer, .hitsWrapper .hitsFlexContainer .timer .right .removeHit, .hitsWrapper .hitsFlexContainer .timer .right .removeTimer, .hitsWrapper .timersFlexContainer .hit .right .removeHit, .hitsWrapper .timersFlexContainer .hit .right .removeTimer, .hitsWrapper .timersFlexContainer .timer .right .removeHit, .hitsWrapper .timersFlexContainer .timer .right .removeTimer, .timersWrapper .hitsFlexContainer .hit .right .removeHit, .timersWrapper .hitsFlexContainer .hit .right .removeTimer, .timersWrapper .hitsFlexContainer .timer .right .removeHit, .timersWrapper .hitsFlexContainer .timer .right .removeTimer, .timersWrapper .timersFlexContainer .hit .right .removeHit, .timersWrapper .timersFlexContainer .hit .right .removeTimer, .timersWrapper .timersFlexContainer .timer .right .removeHit, .timersWrapper .timersFlexContainer .timer .right .removeTimer {
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  top: 1em;
+  right: 1em;
+  cursor: pointer;
+}
+.hitsWrapper .hitsFlexContainer .hit .right .removeHit:before, .hitsWrapper .hitsFlexContainer .hit .right .removeTimer:before, .hitsWrapper .hitsFlexContainer .timer .right .removeHit:before, .hitsWrapper .hitsFlexContainer .timer .right .removeTimer:before, .hitsWrapper .timersFlexContainer .hit .right .removeHit:before, .hitsWrapper .timersFlexContainer .hit .right .removeTimer:before, .hitsWrapper .timersFlexContainer .timer .right .removeHit:before, .hitsWrapper .timersFlexContainer .timer .right .removeTimer:before, .timersWrapper .hitsFlexContainer .hit .right .removeHit:before, .timersWrapper .hitsFlexContainer .hit .right .removeTimer:before, .timersWrapper .hitsFlexContainer .timer .right .removeHit:before, .timersWrapper .hitsFlexContainer .timer .right .removeTimer:before, .timersWrapper .timersFlexContainer .hit .right .removeHit:before, .timersWrapper .timersFlexContainer .hit .right .removeTimer:before, .timersWrapper .timersFlexContainer .timer .right .removeHit:before, .timersWrapper .timersFlexContainer .timer .right .removeTimer:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 100%;
+  height: 6px;
+  background: black;
+}
+.hitsWrapper .hitsFlexContainer .hit .right .removeHit:after, .hitsWrapper .hitsFlexContainer .hit .right .removeTimer:after, .hitsWrapper .hitsFlexContainer .timer .right .removeHit:after, .hitsWrapper .hitsFlexContainer .timer .right .removeTimer:after, .hitsWrapper .timersFlexContainer .hit .right .removeHit:after, .hitsWrapper .timersFlexContainer .hit .right .removeTimer:after, .hitsWrapper .timersFlexContainer .timer .right .removeHit:after, .hitsWrapper .timersFlexContainer .timer .right .removeTimer:after, .timersWrapper .hitsFlexContainer .hit .right .removeHit:after, .timersWrapper .hitsFlexContainer .hit .right .removeTimer:after, .timersWrapper .hitsFlexContainer .timer .right .removeHit:after, .timersWrapper .hitsFlexContainer .timer .right .removeTimer:after, .timersWrapper .timersFlexContainer .hit .right .removeHit:after, .timersWrapper .timersFlexContainer .hit .right .removeTimer:after, .timersWrapper .timersFlexContainer .timer .right .removeHit:after, .timersWrapper .timersFlexContainer .timer .right .removeTimer:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 100%;
+  height: 6px;
+  background: black;
+}
+.hitsWrapper .hitsFlexContainer .hit .right .timestampHistoryWrapper, .hitsWrapper .hitsFlexContainer .timer .right .timestampHistoryWrapper, .hitsWrapper .timersFlexContainer .hit .right .timestampHistoryWrapper, .hitsWrapper .timersFlexContainer .timer .right .timestampHistoryWrapper, .timersWrapper .hitsFlexContainer .hit .right .timestampHistoryWrapper, .timersWrapper .hitsFlexContainer .timer .right .timestampHistoryWrapper, .timersWrapper .timersFlexContainer .hit .right .timestampHistoryWrapper, .timersWrapper .timersFlexContainer .timer .right .timestampHistoryWrapper {
+  max-height: 100px;
+  overflow: scroll;
+}
+.hitsWrapper .hitsFlexContainer .hit .right .historyTitle, .hitsWrapper .hitsFlexContainer .timer .right .historyTitle, .hitsWrapper .timersFlexContainer .hit .right .historyTitle, .hitsWrapper .timersFlexContainer .timer .right .historyTitle, .timersWrapper .hitsFlexContainer .hit .right .historyTitle, .timersWrapper .hitsFlexContainer .timer .right .historyTitle, .timersWrapper .timersFlexContainer .hit .right .historyTitle, .timersWrapper .timersFlexContainer .timer .right .historyTitle {
+  margin-top: 0.5em;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.hitsWrapper .hitsFlexContainer .timer .left, .hitsWrapper .timersFlexContainer .timer .left, .timersWrapper .hitsFlexContainer .timer .left, .timersWrapper .timersFlexContainer .timer .left {
+  width: 9em;
+}
+.hitsWrapper .hitsFlexContainer .timer .left h2, .hitsWrapper .timersFlexContainer .timer .left h2, .timersWrapper .hitsFlexContainer .timer .left h2, .timersWrapper .timersFlexContainer .timer .left h2 {
+  margin-top: 1em;
+}
+.hitsWrapper .hitsFlexContainer .timer .right, .hitsWrapper .timersFlexContainer .timer .right, .timersWrapper .hitsFlexContainer .timer .right, .timersWrapper .timersFlexContainer .timer .right {
+  width: calc(100% - 10em);
+}
