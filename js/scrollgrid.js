@@ -1,4 +1,45 @@
+$(window).load(function() {
+
+
+    var gridItemsH = $(document).height() - $(window).height() - 520;
+
+    // TweenMax.set($(".work .gridItems"), {"height":gridItemsH});
+
+
+    $(".work .gridItems").css({"height":gridItemsH});
+
+
+    TweenMax.set($(".work .gridItems"), {"overflow":"hidden"});
+
+
+    console.log("document" + " " + $(document).height())
+    console.log("window" + " " + $(window).height())
+    console.log(gridItemsH)
+
+
+});
+
+
+
+
+
+
+
+
 $(document).ready(function() {
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     var item = $('.scrollItem');
@@ -13,6 +54,18 @@ $(document).ready(function() {
 
 
     $(window).scroll(function() {
+
+
+
+
+
+
+
+
+
+
+
+
 
         curentItemPY = itemPY - $(window).scrollTop();
         itemNum = Math.floor(1 / (item.width() / window.innerWidth));

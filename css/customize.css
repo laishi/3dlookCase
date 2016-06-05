@@ -115,8 +115,12 @@ header h1 {
     width: 80%;
     max-width: 1200px;
     margin: 0 auto;
-    min-height: 100vh;
     /*background-color: #2484B0;*/
+}
+
+
+.work .w80{
+    min-height: 100vh;
 }
 
 
@@ -251,7 +255,7 @@ header h1 {
     width: 100%;
     display: none;
     z-index: 1;
-    background-color: #93AC1D;
+    /*background-color: #93AC1D;*/
     
 }
 
@@ -261,12 +265,12 @@ header h1 {
     width: 80%;
     max-width: 960px;
     margin: 0 auto;
-    background: #1D86AC;
+    /*background: #1D86AC;*/
 }
 
 .itemTitle:hover{
     cursor: pointer;
-    background-color: #1D86AC;
+    /*background-color: #1D86AC;*/
 }
 
 .itemTag li{
@@ -288,7 +292,7 @@ header h1 {
     margin-top: 11px;
     line-height: 38px;
     border-radius: 5px;
-    background-color: #22A0A6;
+    /*background-color: #22A0A6;*/
     display: none;
 }
 
@@ -313,6 +317,7 @@ header h1 {
     top: 0px;
     z-index: 1;
     display: none;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1), 0 3px 12px rgba(0, 0, 0, 0.05);
 }
 
 
@@ -406,6 +411,7 @@ header h1 {
     position: relative;
     padding-top: 200px;
     max-width: 1200px;
+    min-height: 100vh;
     height: 200px;
     /*background: #14BBED;*/
 }
@@ -413,7 +419,8 @@ header h1 {
 
 .work .gridItems{
 
-    overflow: hidden;
+    /*overflow: hidden;*/
+    /*height: 200vh;*/
 }
 
 
@@ -503,17 +510,6 @@ input[type="text"]:focus {
     right: 0;
     top: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -745,7 +741,7 @@ input[type="text"]:focus {
     display: none;
     z-index: 0;
     margin-top: 320px;
-    background: #64A83A;
+    /*background: #64A83A;*/
 /*    background-image: url(../img/pgy.png);
     background-repeat: no-repeat;
     background-position: right-bottom;*/

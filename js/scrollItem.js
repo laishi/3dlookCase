@@ -21,6 +21,13 @@ $(document).ready(function() {
 
 
 
+
+
+
+
+
+
+
     // $(".gridItems").css("height",0);
 
     $(window).scroll(function() {
@@ -34,8 +41,16 @@ $(document).ready(function() {
         st = $(this).scrollTop();
 
 
-        // TweenMax.to($(".gridItems"),0.1,{y:st});
+        // TweenMax.to($(".gridItems"),0.1,{height:st});
         
+
+
+        if (st == window.innerHeight) {
+
+
+        }
+
+        console.log($(window).scrollTop());
 
 
 

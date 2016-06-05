@@ -98,7 +98,7 @@ function sliderPage(pageName,index) {
     var curPageSiblings = curPage.siblings();
 
     curPage.css({"display":"block"});
-    
+
     if (curPage.hasClass("curPage")) {
 
 
@@ -176,6 +176,11 @@ function mixConf() {
     $container.mixItUp({
         callbacks: {
             onMixStart: function(state, futureState){
+
+                if (layout == 'list') {
+                    $(".itemTotal").addClass("repos");
+
+                }
             }
         },
         animation: {
@@ -200,8 +205,6 @@ function mixConf() {
             $container.mixItUp('changeLayout', {
                 containerClass: layout
             });
-
-
 
         } else {
             $(".itemTotal").toggleClass("repos");

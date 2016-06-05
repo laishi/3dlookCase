@@ -45,7 +45,7 @@ function openDetail(item) {
     $("header").addClass("fixHeader");
 
 
-    $(".gridItems").css({"display":"none"});
+    
     $(".blogFilter").css({"display":"none"});
 
     if (that.parents(".page").hasClass("work")) {
@@ -135,7 +135,6 @@ function openDetail(item) {
     //HEADER TAG
     TweenMax.fromTo($("header").find("ul"), 1.2, { opacity: 0 }, { opacity: 1, delay: 1.2 });
 
-        console.log(that)
 
 }
 
@@ -144,6 +143,8 @@ function closeDetail() {
     $(window).scrollTop(0);
 
     $(".gridItems").css({"display":"block"});
+
+
     $(".blogFilter").css({"display":"block"});
 
     $(".infoMax").css("display","none");
@@ -181,12 +182,7 @@ function closeDetail() {
 
 function gototop() {
 
-
-
-    
-
-    TweenMax.to($(".scrollItem"), 0.3, { y: 520});
-
+    $(".gridItems").css({"display":"none"});
 
     TweenMax.fromTo($(".infoMax"), 0.3, { opacity: 0}, { opacity: 1});
 
