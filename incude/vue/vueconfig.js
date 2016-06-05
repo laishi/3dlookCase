@@ -50,9 +50,9 @@ var router = new VueRouter({
 })
 
 router.map({
-   '*': {
-      component: notFound
-   },
+   // '*': {
+   //    component: notFound
+   // },
 
    '/': {
       component: workComponent,
@@ -101,8 +101,12 @@ router.map({
   '/detail/:itemName': {
     name: 'detail', // 给这条路径加上一个名字
     component: detail
-  }
+  },
 
+
+   '/admin': {
+      component: contactComponent
+   },
 
 
 

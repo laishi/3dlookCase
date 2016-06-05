@@ -178,15 +178,19 @@ function mixConf() {
             onMixStart: function(state, futureState){
 
                 if (layout == 'list') {
-                    $(".itemTotal").addClass("repos");
+                    if ($(".itemTotal").hasClass("repos")) {
 
+                    } else {
+
+                        $(".itemTotal").addClass("repos");
+                    }
                 }
             }
         },
         animation: {
             animateChangeLayout: true,
             animateResizeTargets: true,
-            effects: 'fade scale rotateX(-40deg) translateY(-1000px)'
+            effects: 'fade scale '
         },
         layout: {
             containerClass: 'grid'

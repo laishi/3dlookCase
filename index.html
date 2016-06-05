@@ -104,16 +104,11 @@
 
                     <div class="item scrollItem">
 
-                        <!-- <a v-link="{ name: 'user', params: { userId: 123 }}">User</a> -->
-
-                        <!-- <a v-link="{ path: 'relative/path', append: true }"></a> -->
-
-                        <!-- <a v-link="/home/{{one}}">{{one}}</a> -->
-
-                        <!-- <a v-link="'/home/' + one">{{ one }}</a> -->
 
                         <div v-link="'/detail/' + 'work'" class="itemImg">
-                            <img v-bind:src="data.image" />
+                            <div class="gridImg workImg">
+                                <img v-bind:src="data.image" />                                
+                            </div>
                         </div>
 
                         <div class="itemTitle">
@@ -179,14 +174,15 @@
 
         <div class="page blog">
 
-            <div class="blogFilter">
+            <div class="blogFilter"> 
                 <ul>
                     <!-- <li id="ChangeLayout"> <button >Grid</button> </li> -->
                     <li id="ChangeLayout" class="filterItem" data-filter="all"> <i class="fa fa-list" aria-hidden="true"></i> </li>
                     <li class="filterItem filter filterAll" data-filter="all"> <h3> 显示全部 </h3> </li>
-                    <li class="filterItem filter" data-filter=".threejs"> <h3> ThreeJS</h3> </li>
+                    <li class="filterItem filter" data-filter=".threeJS"> <h3> ThreeJS</h3> </li>
                     <li class="filterItem filter" data-filter=".blend4web"> <h3> Blend4Web</h3> </li>
-                    <li class="filterItem filter" data-filter=".playcanvas"> <h3> PlayCanvs</h3> </li>
+                    <li class="filterItem filter" data-filter=".playCanvas"> <h3> PlayCanvs</h3> </li>
+                    <li class="filterItem filter" data-filter=".playCanvas"> <h3> pbr</h3> </li>
                     <li class="filterItem filterInput" >
                         <input type="text" id="input" placeholder="&#xf075; Search" style="font-family:Arial, FontAwesome">
                         <i class="fa fa-search" aria-hidden="true"></i>
@@ -199,22 +195,17 @@
 
                 <template v-for="data in blog" >
 
-                    <div class="item mix mixItem threejs mdl-js-button  mdl-js-ripple-effect">
+                    <div class="{{data.name}} item mix mixItem mdl-js-button  mdl-js-ripple-effect">
 
 
                         <div v-link="'/detail/' + 'blog'" class="itemImg">
-                            <img v-bind:src="data.image" />
+                            <div class="gridImg blogImg">
+                                <img v-bind:src="data.image" />                                
+                            </div>
                         </div>
 
                         <div class="itemTotal">                            
 
-                            <div class="itemTag">
-                                <ul>
-                                    <li><h3>标签:</h3></li>
-                                    <li class="pageTag"><h3>lamp</h3></li>
-                                    <li><h3>WebGL</h3></li>
-                                </ul>                        
-                            </div>
 
                             <div class="itemTitle">
                                 <h3>{{data.title}}</h3>
@@ -224,6 +215,7 @@
                             <div class="itemDes">
                                 <p> {{data.summary}} </p>
                             </div>
+
 
                             <div class="itemTag">
                                 <div class="tagTitle">                               

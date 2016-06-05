@@ -72,8 +72,36 @@ header nav {
     height: 320px;
     overflow: hidden;
 }
-header img{
+
+
+
+header .gridImg{
+    width: 260px;
     height: 260px;
+    margin: 0 auto;
+}
+
+
+header .gridImg img{
+    width: 260px;
+    height: 260px;
+    margin: 0 auto;
+}
+
+header .blogImg{
+    position: relative;
+    width: 320px;
+    height: 260px;
+    overflow: hidden;
+
+}
+
+
+header .blogImg img{
+    width: 320px;
+    height: 180px;
+    margin-top: 40px;
+    border-radius: 10px;
 }
 
 header ul{
@@ -231,11 +259,6 @@ header h1 {
 .item .itemImg img{
     width: 100%;
 }
-
-.blog .itemImg img{
-    width: 100%;
-}
-
 
 
 
