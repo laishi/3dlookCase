@@ -29,7 +29,11 @@ $(document).ready(function() {
 
 });
 
-/*EXPAND MENU INIT*/
+
+
+/*EXPAND MENU FILTER INIT*/
+
+
 $(document).ready(function() {
 
     var filterItemL = $(".filterItem").length;
@@ -43,14 +47,22 @@ $(document).ready(function() {
 
     $(".filterItem").hover(over, out);
 
+    var getLayoutIcon;
+    
     function over() {
+
 
 
         if ($(this).hasClass("filterInput")) {
 
 
+            getLayoutIcon = $(this).siblings("#ChangeLayout").html();
+            $(this).siblings("#ChangeLayout").children().remove();
+            $(this).siblings("#ChangeLayout").append("<i class='fa fa-search' aria-hidden='true'></i>");
+
+
             TweenMax.to($(this), 0.8, {
-                width: 75 + '%'
+                width: 80 + '%'
             });
 
             TweenMax.to($(this).siblings(), 0.8, {
@@ -70,11 +82,13 @@ $(document).ready(function() {
             // $(".filterAll").children("h3").css("color","#CB0027");
 
             TweenMax.to($(this).siblings().first(), 0.8, {
-                width: 25 + '%'
+                width: 20 + '%'
             })
 
 
         } else {
+
+
 
 
             TweenMax.to($(this), 0.8, {
@@ -90,6 +104,22 @@ $(document).ready(function() {
     }
 
     function out() {
+
+
+
+
+        if ($(this).hasClass("filterInput")) {
+
+            $(this).siblings("#ChangeLayout").children().remove();
+            $(this).siblings("#ChangeLayout").append(getLayoutIcon);
+
+        }
+
+
+
+
+
+
 
 
         $("ChangeLayout").html("显示全部");

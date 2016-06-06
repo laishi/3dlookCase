@@ -360,13 +360,14 @@ header h1 {
 
 .detailTitle{
     position: relative;
-    top: 50px;
+    top: 110px;
     width: 100%;
     line-height: 100px;
     text-align: center;
     margin: 0 auto;
-    
-    /*background: #0E288A;*/
+    /* background: #0E288A; */
+    /* color: #ccc; */
+    z-index: 1;
 }
 
 
@@ -438,9 +439,39 @@ article .title{
 
 
 
+section:nth-child(1) h1,
+section:nth-child(2) h1{
+    background: #CCC;
+    /*opacity: 0;*/
+}
+
+section h1 .progress {
+
+     background: rgba(255, 255, 255, 0.0); 
+}
+
+.titleCont{
+
+    /*background-image: url(../img/bg/pattern.png);*/
+
+}
 
 
 
+section h1 {
+    position: relative;
+    height: 42px;
+    width: 960px;
+    color: #ccc;
+    font-weight: 600;
+    box-sizing: border-box;
+    margin: 0;
+    padding-left: 1em;
+    font: 16px/42px "PT Sans", sans-serif;
+    background: #3963DA;
+    cursor: pointer;
+    background-image: url(../img/bg/pattern.png);
+}
 
 
 
@@ -604,7 +635,7 @@ input[type="text"]:focus {
 
 .mixItem .itemDes{
 
-    padding: 0 20px 0 20px;
+    padding: 0 10px 0 10px;
     height: 85px;
     overflow: hidden;
     text-align: justify;

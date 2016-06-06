@@ -79,15 +79,21 @@ function openDetail(item) {
 
 
     //CHANGE MORE LINK
-
     getLink = that.parents(".item").find(".moreLink").attr("href");
-
-
     if (getLink) {
         $(".btnCicleMore").attr("href", getLink);
-
     }
 
+            
+
+
+
+
+    // $( "section" ).before( insertSec );
+
+
+
+    // console.log(insertSec)
 
 
 
@@ -98,12 +104,9 @@ function openDetail(item) {
     $(".detailTitle").append(getTitle);
     $(".detailAdditional").append(getAdditional);
 
+    
 
 
-    // ADD IMG GO TO 3D LOOK
-    $("header").find("img").wrap($('<a>', {
-        href: getLink
-    }));
 
     var iframego = "<iframe src= " + getLink + " " + "frameBorder=0 scrolling=no width='100%' height='100%'></iframe>"
 
@@ -124,7 +127,32 @@ function openDetail(item) {
 
 
     
-    $(".detailDes").load(pageLoad);
+    $(".detailDes").load(pageLoad,function (argument) {
+        console.log("loaddata");
+
+        $( "article" ).prepend(
+            "<section><div class='space'><h1> </h1></div></section>" + " " +
+            "<section><div class='space'><h1> </h1></div></section>"
+        );
+
+        console.log($("article").html());
+        
+    });
+
+
+
+
+    // ADD IMG GO TO 3D LOOK
+    $("header").find("img").wrap($('<a>', {
+        href: getLink
+    }));
+
+
+
+
+
+
+
 
     //NAV MENU    
     TweenMax.fromTo($(".navGrid"), 0.3, { y: 0, opacity: 1 }, { y: 60, opacity: 0 });

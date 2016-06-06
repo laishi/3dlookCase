@@ -3,6 +3,7 @@ function slinkyPage() {
 
     function getTop(element) {
         var top = 0;
+
         do {
             top += element.offsetTop || 0;
             element = element.offsetParent;
@@ -11,6 +12,7 @@ function slinkyPage() {
         return top;
     }
 
+    console.log(top)
 
 
 
@@ -54,7 +56,7 @@ function slinkyPage() {
         var topLatch = i * 42;
         var top = getTop(section);
 
-        h1.innerHTML = '<span class="progress"></span><span class="text">' + h1.textContent + '</span>';
+        h1.innerHTML = '<span class="progress"></span><h3 class="text">' + h1.textContent + '</h3>';
         progress = h1.querySelector('.progress');
         // todo: messy, but easy to override
         h1.onclick = function() { smoothScroll(top - topLatch); };
@@ -157,7 +159,7 @@ function slinkyPage() {
 
     var article = document.querySelector('article');
 
-    console.log(article)
+    // console.log(article)
 
     var sections = Array.prototype.slice.call(article.querySelectorAll('section'), 0);
 
