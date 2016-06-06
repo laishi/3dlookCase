@@ -1,3 +1,12 @@
+var wURL = window.location.href.split("/");
+
+var wURLADD = wURL[wURL.length - 1];
+
+
+
+
+    console.log(wURLADD)
+
 
 $(window).on('hashchange', function(e){
 
@@ -12,7 +21,8 @@ $(window).on('hashchange', function(e){
     var OurlSplit  = oldURL.split("/");
     var OurlLenght = OurlSplit.length;
 
-    var oldUrlName = OurlSplit[OurlLenght-2];
+    oldUrlName = OurlSplit[OurlLenght-2];
+
 
 
 
@@ -30,6 +40,12 @@ $(window).on('hashchange', function(e){
 
     var hash = new String(document.location).indexOf("#");
 });
+
+
+
+
+
+
 
 
 

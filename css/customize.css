@@ -49,6 +49,8 @@ header {
   z-index: 100;
   background-image: url(../img/bg/pattern.png);
 
+  /*display: none;*/
+
 
 }
 
@@ -363,8 +365,23 @@ header h1 {
     line-height: 100px;
     text-align: center;
     margin: 0 auto;
+    
     /*background: #0E288A;*/
 }
+
+
+
+
+article .title{
+
+    /*margin-top: 60px;*/
+
+}
+
+
+
+
+
 
 .detailTitle img{
     width: 240px;

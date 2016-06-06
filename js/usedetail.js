@@ -76,7 +76,6 @@ function openDetail(item) {
     var getDes        = that.parents(".item").find(".itemDes").html();
     var getAdditional = that.parents(".item").find(".itemAdditional").html();
 
-    console.log(getImg)
 
 
     //CHANGE MORE LINK
@@ -123,7 +122,6 @@ function openDetail(item) {
     var pageURL = pagePath + pageName + pageFormat;
     var pageLoad = pagePath + pageName + pageFormat + " ." + pageName;
 
-    // console.log(pageURL)
 
     
     $(".detailDes").load(pageLoad);
@@ -134,6 +132,13 @@ function openDetail(item) {
     TweenMax.fromTo($("header").find(".gridImg"), 1.2, { y: 320 }, { y: 0, delay: 1, ease: Elastic.easeOut.config(1, 0.75) });
     //HEADER TAG
     TweenMax.fromTo($("header").find("ul"), 1.2, { opacity: 0 }, { opacity: 1, delay: 1.2 });
+
+
+
+
+
+
+   // 
 
 
 }
@@ -205,6 +210,8 @@ function gototop() {
 
 
     $(window).scrollTop(0);
+
+    slinkyPage();
 
 
 };

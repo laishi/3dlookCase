@@ -1,4 +1,13 @@
+
 $(document).ready(function() {
+
+
+    $('pre code')
+    $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
+
 
     var winTop = 0;
 
@@ -20,37 +29,6 @@ $(document).ready(function() {
             TweenMax.to($("header"), 0.3, { height: 320, }, 0.1);
             TweenMax.to($("header").find(".tagTitle"), 0.3, { y: 0 } );
         }
-
-
-        var detailTitleT = $(".detailTitle").offset().top - $(window).scrollTop();
-
-        if (detailTitleT < 0) {
-
-            var title = $.trim($(".detailTitle").html());
-            var tag   = $("header").find(".tagTip").html();
-
-            $(".titlePos").html(title);
-
-            TweenMax.to($("header").find(".tagTitle"), 0.3, { y: -320 } );
-            // TweenMax.to($(".titlePos"), 0.3, { y: -320 } );
-
-            
-        } else {
-
-
-
-        }
-
-
-
-
-
     });
-
-
-
-
-
-
 
 });
