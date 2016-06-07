@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据库 loadCollection</title>
+    <script src="../../../bower_components/lokijs/build/lokijs.min.js"></script>
+
+</head>
+<body>
+</body>
+<script>
+
+    // 1. 以关键字作为 存储本地的key
+    var db  = new loki('testDB');
+
+    // 2. 创建一个集合
+    var tests = new loki.Collection('test',{
+
+    });
+
+    // 2.1 添加元素
+    tests.insert({t:1,a:11});
+
+    // 3  读取集合至 db中
+    db.loadCollection(tests);
+    var test2 = db.getCollection('test');
+
+    // 3.1 创建或读取 集合
+    console.log(test2.data,db.collections);
+</script>
+
+</html>

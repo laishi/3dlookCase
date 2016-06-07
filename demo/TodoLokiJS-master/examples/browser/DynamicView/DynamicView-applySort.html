@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态视图-排序</title>
+    <script src="../../../bower_components/lokijs/src/lokijs.js"></script>
+    <script src="../model/Model.Person.js"></script>
+</head>
+<body>
+
+
+</body>
+<script>
+    var db =  new loki('testDB');
+    db.loadDatabase({  });
+
+    // 获得集合
+    var persons = db.getCollection('persons');
+
+    // 添加一个 集合成员
+    persons.insert({ name : 'teen' , age :15});
+
+    // 创建动态视图 名称为  teen 使用 applyFind 操作获取 集合所有数据
+    var teensView = persons.addDynamicView('teen',{persistent : true}).applyFind();
+
+
+
+    // 排序函数
+    var func = function(obj1,obj2){
+
+        if(obj1.age > obj2.age){
+
+            return 1; // 进行排序  obj2 移到前面
+        }
+        if(obj1.age === obj2.age){
+            return 0; // 不进行排序
+        }
+        if(obj1.age < obj2.age){
+
+            return -1; //不进行排序
+        }
+    };
+
+    // 进行排序
+     teensView.applySort(func);
+
+    // 查看排序结果
+    console.log(teensView.data());
+
+
+    // 简单排序
+    // .applySimpleSort(propname [, isdesc])
+    // teen 视图 通过年龄 降序排序
+    teensView.applySimpleSort('age',true);
+    console.log(teensView.data());
+
+    // 复合排序
+    // applySortCriteria
+    // name 升序 age 降序
+    // teensView.applySortCriteria([ ["name",false], ["age", true]]);
+    // console.log(teensView.data());
+</script>
+</html>

@@ -42,7 +42,7 @@ $.each(workNames,function (index,title) {
 
 
 //  BLOG
-var blogNames = [ "blend4web", "playCanvas", "threeJS", "webglFramework", "pbr" ];
+var blogNames = [ "blend4web", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS" ];
 var blogHtmlFolder = "pages/blog/";
 var blogImgFolder = "img/blogImg/";
 

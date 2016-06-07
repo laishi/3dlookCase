@@ -22,16 +22,11 @@ $(window).on('hashchange', function(e){
 
     oldUrlName = OurlSplit[OurlLenght-2];
 
+    console.log(curUrlName)
 
+    sliderPage(curUrlName, -1);
 
-
-    if ( curUrlName === "work" || curUrlName === "blog" || curUrlName === "about" || curUrlName === "contact" ) {
-
-        sliderPage(curUrlName);
-    } 
-
-
-    if (oldUrlName === "detail") {
+    if (oldUrlName == "detail") {
         
         closeDetail();
     }
@@ -99,10 +94,6 @@ var homePage = $(".pages").children().first();
 homePage.addClass("curPage");
 homePage.css({ "display": "block" });
 
-
-
-
-
 function sliderPage(pageName,index) {
 
 
@@ -128,12 +119,7 @@ function sliderPage(pageName,index) {
         curPage = $(".curPage");
 
 
-
-
-
-
         var speed = 0.5;
-
         if (pageIndex < index) {
             goRight();
         } else {
@@ -147,32 +133,19 @@ function sliderPage(pageName,index) {
         function goRight() {
             TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "-100%" });
             TweenMax.fromTo(curPage, speed, { x: "100%" }, { x: "0%", onComplete:wtotop });
-
-
-
-
         }
 
         function goLeft() {
             TweenMax.fromTo(curPage, speed, { x: "-100%" }, { x: "0%" });
             TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "100%", onComplete:wtotop });
-
-
         }
 
         function wtotop() {
             $(window).scrollTop(0);
-
             $(".curPage").siblings().css({"display":"none"});
 
-            // console.log(curPage);
-
-
         }
-
-
     }
-
 }
 
 
@@ -204,13 +177,6 @@ function mixConf() {
                 }
                 console.log(state)
             }
-
-
-
-
-
-
-
 
         },
         animation: {

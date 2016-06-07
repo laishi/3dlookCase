@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>从集合中删除一个数据</title>
+    <script src="../../../../bower_components/lokijs/build/lokijs.min.js"></script>
+    <script src="../../model/Model.Person.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+
+    // 读取或者创建 db
+    var db = new loki('testDB');
+
+    // 加载存储的collection数据
+    db.loadDatabase();
+
+    // 获取到集合名为 persons 的集合
+    var persons = db.getCollection('persons');
+
+    // 查看集合中的数据
+    console.log(persons.data);
+
+    // 删除指定的一个数据
+    persons.remove(persons.data[0]);
+
+    // 重新查看集合的数据
+    console.log(persons.data);
+
+    // removeWhere  类似于 将find的集合 进行删除
+    persons.removeWhere({ name : 'test'});
+    console.log(persons.data);
+
+    //  删除所有的集合中的数据
+    persons.removeDataOnly();
+
+</script>
+</html>

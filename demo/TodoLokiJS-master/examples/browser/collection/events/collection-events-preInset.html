@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>集合数据的事件 插入前触发 -- pre-inset</title>
+    <script src="../../../../bower_components/lokijs/build/lokijs.min.js"></script>
+    <script src="../../model/Model.Person.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    var db =  new loki('testDB');
+    db.loadDatabase({  });
+
+    // 获得集合
+    var persons = db.getCollection('persons');
+
+    // 设置一个事件处理函数
+    // 在插入前 修改对象
+    var preInset = function(obj){
+
+        obj.name += 'ager';
+    };
+
+    persons.on('pre-insert', preInset);
+    // 发出 emitted
+
+    // 添加一个 集合成员
+    persons.insert({ name : 'teen' , age :15});
+
+    // 查询 结果
+    console.log(persons.findOne({name : 'teenager'}),persons.findObject({age : 15}));
+</script>
+</html>

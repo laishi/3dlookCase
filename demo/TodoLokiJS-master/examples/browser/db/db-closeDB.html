@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关闭数据库</title>
+    <script src="../../../bower_components/lokijs/build/lokijs.min.js"></script>
+
+</head>
+<body>
+
+</body>
+<script>
+
+    function Person(){
+
+    }
+    var db = new loki('testDB'),
+        persons = db.addCollection('persons');
+    persons.insert({name : 'liyl' , age : 18});
+
+    db.saveDatabase();
+
+    db.loadDatabase({
+        persons : {
+            proto : Person,
+            inflate :  function(src,dist){
+
+                dist.name = src.name;
+                dist.age = src.age;
+                dist.desc = "姓名:" +src.name +" 年龄："+ src.age;
+            }
+        }
+    },function(){
+        console.log(db.getCollection('persons').data);
+    });
+    console.log(persons == db.getCollection("persons"));
+    persons = db.getCollection('persons');
+    db.close();
+    console.log(db);
+    console.log(persons);
+</script>
+
+</html>

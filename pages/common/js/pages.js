@@ -1,5 +1,4 @@
-
-$(document).ready(function() {
+$( window ).load(function() {
 
 
     $('pre code')
@@ -32,29 +31,4 @@ $(document).ready(function() {
 
 
 
-
-
-
-
-
-
-
-});
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", function(event) { 
-
-    function fixImgPath() {
-
-        var findImg = $( "article" ).find("img");
-
-        console.log(findImg.attr("src"))
-
-
-    }
-
-    
 });

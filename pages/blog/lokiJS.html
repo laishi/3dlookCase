@@ -1,0 +1,151 @@
+<!doctype html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="网上三维产品展示">
+    <meta name="description" content="网上三维产品展示 联系:13640566324">
+    <title>LokiJS：纯JavaScript实现的轻量级数据库</title>
+    <script src="../common/js/append.cssjs.js"></script>
+</head>
+
+<body>
+    <header class="pageTitle">
+        <img src="../../img/logo/3dlogo.png">
+        <h3>LokiJS：纯JavaScript实现的轻量级数据库</h3>
+    </header>
+    <div class="btnCicle goHome">
+        <a class="btnCicleMore" href="http://localhost:8080/#!/work"> <i class='fa fa-home' aria-hidden='true'></i> </a>
+    </div>
+    <div class="pageCont lokiJS">
+        <article>
+            <section>
+                <div class="title">
+                    <h1>摘要</h1>
+                </div>
+                <div class="titleCont">
+                    <p>
+                        <strong>
+                            LokiJS一个轻量级的面向文档的数据库，由JavaScript实现，性能高于一切。支持字段索引来实现更快的文件访问，性能也相当好（近50万OPS/ s）。
+                        </strong></br>
+                        LokiJS一个轻量级的面向文档的数据库，由JavaScript实现，性能高于一切。目的是把JavaScript对象作为文档，然后再进行存储，并且以同样的方式来检索数据。 LokiJS可以运行于Node.js和所有支持JavaScript的浏览器、移动应用程序上。 </br>
+                        LokiJS支持字段索引来实现更快的文件访问，性能也相当好（近50万OPS/ s）。其内置的DynamicView类也能用于数据子集的索引，达到更快的性能。 </br>LokiJS支持集合，很像MongoDB，并将数据以JSON格式保存到硬盘上（根据会话来恢复状态），所以你的数据是可移植的。</br>
+                    </p>
+                </div>
+            </section>
+
+
+            <section>
+                <div class="title">
+                    <h1>采用LokiJS的最理想情景：</h1>
+                </div>
+                <div class="titleCont">
+                    <p>
+                        <ul>
+                            <li> 移动应用程序——尤其是基于HTML5的（例如：Cordova，Phonegap等等）</li>
+
+                            <li>基于Node.js的小——中型应用程序的数据存储</li>
+
+                            <li>采用Node-Webkit的桌面应用程序</li>
+
+                            <li><strong>LokiJS目前还处在alpha阶段。源码托管在Github上。</strong></li>
+                        </ul>
+                    </p>
+                </div>
+            </section>
+
+
+            <section>
+                <div class="title">
+                    <h1> 使用lokiJS </h1>
+                </div>
+                <div class="titleCont">
+
+                    <h3>快速安装：</h3>
+                    <pre><code class="javascript">
+npm install lokijs  
+
+bower install lokijs  
+                    </code></pre>
+
+                    <h3>创建一个数据库：</h3>
+                    <pre><code class="javascript">
+
+var db = new loki('loki.json') 
+Pass the filename where to persist data
+ 
+                    </code></pre>
+
+
+
+
+                    <h3>创建一个集合：</h3>
+                    <pre><code class="javascript">
+
+var children = db.addCollection('children')
+                    </code></pre>
+
+                    <h3>插入一个文档：</h3>
+                    <pre><code class="javascript">
+
+[js] view plaincopy在CODE上查看代码片派生到我的代码片
+children.insert({name:'Sleipnir', legs: 8})  
+children.insert({name:'Jormungandr', legs: 0})  
+children.insert({name:'Hel', legs: 2})  
+                    </code></pre>
+
+                    <h3>检索/获取文档：</h3>
+                    <pre><code class="javascript">
+
+children.get(1); // returns Sleipnir
+children.find( {'name':'Sleipnir'} )
+children.find( { legs: { '$gt' : 2 } } )
+                    </code></pre>
+
+                    <h3>创建一个动态视图：</h3>
+                    <pre><code class="javascript">
+
+var legs = children.addDynamicView('legs');
+legs.applyFind( { legs: { '$gt' : 2 } )
+legs.applySimpleSort('legs');
+legs.data();
+MapReduce:
+[js] view plaincopy在CODE上查看代码片派生到我的代码片
+children.mapReduce(   
+  function( obj ){ return obj.legs; } ,   
+  function( array ) {   
+    var sum = 0;  
+    for (var i=0; i < array.length; i++ ){   
+      sum += array[i];  
+    }  
+    return ( sum / array.length ).toFixed(2);  
+ });  
+                     </code></pre>
+
+                </div>
+            </section>
+
+
+
+            <section>
+                <div class="title">
+                    <h1>LokiJS相关资料：</h1> </div>
+                <div class="titleCont">
+                    <ul>
+                        <li>官网：http://lokijs.org/</li>
+                        <li>托管地址：https://github.com/techfort/LokiJS</li>
+                    </ul>
+                </div>
+            </section>
+        </article>
+    </div>
+
+
+
+
+
+
+
+
+</body>
+
+</html>

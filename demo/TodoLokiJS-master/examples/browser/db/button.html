@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button id="btn">点击我一下</button>
+</body>
+
+<script>
+    var btn = document.querySelector('#btn'),
+        clickCount = 0,
+        fn  = function(){
+                clickCount++;
+
+                // 停顿300ms 如果 300ms内只发生了一次点击 则执行方法
+                setTimeout(function(){
+                    if(clickCount  == 1){
+                        console.log('你单击了一下');
+                    }
+                    // 重置计数
+                    clickCount = 0;
+                },300);
+        };
+
+    // 低版本 IE 浏览器不支持 addEventListener方法  使用 attachEvent 或者 onClick 进行绑定
+
+    btn.addEventListener('click',fn , false);
+
+    var fn2  = function(e){
+
+        console.log('你双击了一下',e.type);
+
+    };
+
+    // 双击事件
+    btn.addEventListener('dblclick',fn2, true);
+</script>
+</html>

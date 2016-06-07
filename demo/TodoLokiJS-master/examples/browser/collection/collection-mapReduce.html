@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>集合--数据 mapReduce 统计计算数据</title>
+    <script src="../../../bower_components/lokijs/build/lokijs.min.js"></script>
+    <script src="../model/Model.Person.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+
+
+    var db =  new loki('testDB');
+    db.loadDatabase({  });
+
+    function mapFun(obj){
+
+        // 如果 没有 obj.age 则返回 0
+        return obj.age || 0;
+    }
+
+
+    //
+    function reduceFun(array){
+
+        console.log(array);
+        var len = array.length;  // 拥有 年龄的 长度
+
+        var i = len;
+        var cumulator = 0;
+        while(i--){
+            cumulator += array[i];  // 年龄总和
+        }
+        return cumulator / len;
+    }
+
+    // 获得集合
+    var persons = db.getCollection('persons');
+
+    // 添加一个 集合成员
+    persons.insert({ name : 'teen' });
+
+    // 计算 出 平均年龄
+    var avgAge = persons.mapReduce(mapFun, reduceFun);
+    console.log(avgAge);
+
+</script>
+</html>

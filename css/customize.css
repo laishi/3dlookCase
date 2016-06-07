@@ -468,7 +468,7 @@ section h1 {
     box-sizing: border-box;
     margin: 0;
     padding-left: 1em;
-    background: #333;
+    background: #1E9092;
     cursor: pointer;
     background-image: url(../img/bg/pattern.png);
 }
@@ -657,6 +657,32 @@ input[type="text"]:focus {
 }
 
 
+.gridItems .itemTitle h3 {
+    text-align: center;
+    line-height: 50px;
+    color: #E6003F;
+    height: 50px;
+    overflow: hidden;
+    padding: 0 20px;
+    font-size: 14px;
+}
+
+
+
+.detailDes .titleCont p {
+    font-size: 14px;
+    line-height: 28px;
+    margin: 20px 0;
+}
+
+
+.detailDes .titleCont h3 {
+    font-size: 16px;
+    margin: 10px 0;
+    margin-left: 20px;
+    /*color: #10AA5F*/
+}
+
 
 .gridItems .infoClose{
     position: absolute;
@@ -688,6 +714,7 @@ input[type="text"]:focus {
     height: 100%;
     padding: 32px;
     display: none;
+    z-index: 1;
     /*background-color: #0A42A0;*/
 }
 
@@ -721,6 +748,7 @@ input[type="text"]:focus {
     width: 100%;
     height: 50px;
     overflow: hidden;
+    z-index: 1;
     /*background-image: url(../assets/img/bg/pattern.png);*/
     /*background-color: red;*/
 }

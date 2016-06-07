@@ -270,39 +270,90 @@ function gototop() {
 
 function openInfo() {
 
-    if ($(this).children().hasClass("barToggle")) {
 
-        $(this).parent().siblings(".info").css("display", "none");
-        TweenMax.to($(this).parent().siblings(".info").children(), 0.3, { opacity: 1 });
-        TweenMax.to($(this).parent().siblings(".itemImg"), 0.5, { ease: Elastic.easeOut.config(1, 0.75), scale: 1, delay: 0.3 });
+    if ($(this).parents(".page").hasClass("blog")) {
+
+        var getImg = $(this).parents(".item").find(".itemImg");
+        var getItemTitle = $(this).parents(".item").find(".itemTitle");
+        var getItemDes = $(this).parents(".item").find(".itemDes");
+        var getInfo = $(this).parents(".item").find(".info");
+
+        if (!$(this).children().hasClass("barToggle")) {
+
+            getInfo.css("display", "block");
+
+            TweenMax.to(getImg, 0.3, { y: "-120%", delay: 0.0 });
+            TweenMax.to(getItemTitle, 0.3, { y: "-350px", delay: 0.0 });
+            TweenMax.to(getItemDes, 0.3, { y: "200%", delay: 0.0 });
+
+            TweenMax.fromTo(getInfo, 0.3, { scale: 0 }, { scale: 1 });
+
+            $(this).children().toggleClass("barToggle");
+
+            $(this).children().children("i").removeClass("fa-info").addClass("fa-close");
+         
+        } else {
+
+            $(this).children().toggleClass("barToggle");
+
+            TweenMax.to(getImg, 0.3, { y: "0%", delay: 0.0 });
+            TweenMax.to(getItemTitle, 0.3, { y: "0%", delay: 0.0 });
+            TweenMax.to(getItemDes, 0.3, { y: "0%", delay: 0.0 });
+
+            TweenMax.fromTo(getInfo, 0.3, { scale: 1 }, { scale: 0 });
+
+        }
 
 
 
+        // console.log(getItemDes.html())
+    };
 
-        $(this).children().toggleClass("barToggle");
-        $(this).children().children("i").removeClass("fa-close").addClass("fa-info");
-        TweenMax.to($(this).parents(".item").children(".bar").find(".infoTitle"), 0.5, { ease: Elastic.easeOut.config(1, 0.75), opacity: 0, delay: 0.3 });
+    if ($(this).parents(".page").hasClass("work")) {
 
-    } else {
 
-        $(this).parent().siblings(".info").css("display", "block");
-        
-        TweenMax.to($(this).parent().siblings(".itemImg"), 0.3, { ease: Power1.easeIn, scale: 0, delay: 0.0 });
+        if (!$(this).children().hasClass("barToggle")) {
 
-        console.log($(this).parent().siblings(".itemImg"))
+            $(this).parent().siblings(".info").css("display", "block");
+            
+            TweenMax.to($(this).parent().siblings(".itemImg"), 0.3, { ease: Power1.easeIn, scale: 0, delay: 0.0 });
 
-        TweenMax.staggerFromTo($(this).parent().siblings(".info").children(), 0.3, { y: 320 }, { y: 0 }, 0.2);
-        TweenMax.staggerFromTo($(this).parent().siblings(".info").children(), 0.3, { opacity: 0 }, { opacity: 1 }, 0.2);
+            // console.log($(this).parent().siblings(".itemImg"))
 
-        $(this).children().toggleClass("barToggle");
-        $(this).children().children("i").removeClass("fa-info").addClass("fa-close");
+            TweenMax.staggerFromTo($(this).parent().siblings(".info").children(), 0.3, { y: 320 }, { y: 0 }, 0.2);
+            TweenMax.staggerFromTo($(this).parent().siblings(".info").children(), 0.3, { opacity: 0 }, { opacity: 1 }, 0.2);
 
-        //SET INFOCONT DIV HEIGHT
-        var itemH = $(this).parent().parent().height();
-        var titleH = $(this).parent().siblings(".info").children(".infoTitle").height();
+            
+            $(this).children().children("i").removeClass("fa-info").addClass("fa-close");
 
-        var infoContH = itemH - titleH - 100;
+            //SET INFOCONT DIV HEIGHT
+            var itemH = $(this).parent().parent().height();
+            var titleH = $(this).parent().siblings(".info").children(".infoTitle").height();
 
-        $(this).parent().siblings(".info").children(".infoCont").css("height", infoContH);
+            var infoContH = itemH - titleH - 100;
+
+            $(this).parent().siblings(".info").children(".infoCont").css("height", infoContH);
+         
+            $(this).children().toggleClass("barToggle");
+            
+        } else {
+
+            $(this).children().toggleClass("barToggle");
+
+            $(this).parent().siblings(".info").css("display", "none");
+            TweenMax.to($(this).parent().siblings(".info").children(), 0.3, { opacity: 1 });
+            TweenMax.to($(this).parent().siblings(".itemImg"), 0.5, { ease: Elastic.easeOut.config(1, 0.75), scale: 1, delay: 0.3 });
+
+            $(this).children().children("i").removeClass("fa-close").addClass("fa-info");
+            TweenMax.to($(this).parents(".item").children(".bar").find(".infoTitle"), 0.5, { ease: Elastic.easeOut.config(1, 0.75), opacity: 0, delay: 0.3 });
+
+        }
+
+
     }
+
+
+
+
+
 }

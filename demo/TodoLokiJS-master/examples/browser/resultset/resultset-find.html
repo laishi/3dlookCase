@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用ResultSet进行查询find</title>
+    <script src="../../../bower_components/lokijs/build/lokijs.min.js"></script>
+    <script src="../model/Model.Person.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    var db =  new loki('testDB');
+    db.loadDatabase({ persons : { proto : Person,
+        inflate : Person.create} });
+
+    //  获得集合
+    var persons = db.getCollection('persons');
+
+    //  获得 ResultSet 对象
+    var rs = persons.chain();
+
+    // 与collection 的find 功能类似
+    // 使用.data方法获取结果
+    console.log(rs.find({age:19}).data());
+
+    // 修改一个数据的名称
+    persons.findOne({ age :19}).name = "liyl";
+
+    var func = function(obj){
+
+        return  obj.name !== "liyl";
+    };
+
+    // where 与 collection where类似
+    // 在满足 age 为 19 的基础上进行筛选 找到 name 为 liyl的 数据
+    console.log(rs.where(func).data());
+
+</script>
+</html>

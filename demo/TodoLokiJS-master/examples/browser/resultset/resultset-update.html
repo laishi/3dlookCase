@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用ResultSet进行update集合</title>
+    <script src="../../../bower_components/lokijs/build/lokijs.min.js"></script>
+    <script src="../model/Model.Person.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    var db =  new loki('testDB');
+    db.loadDatabase({  });
+
+    //  获得集合
+    var persons = db.getCollection('persons');
+
+    //  获得ResultSet
+    var rs = persons.chain();
+    var func = function(obj){
+
+        // 添加 新列
+        obj.isChildren = obj.age < 18 ? true : false;
+        return obj;
+    };
+
+    rs.update(func);
+    console.log(rs.data(),persons.data);
+</script>
+</html>
