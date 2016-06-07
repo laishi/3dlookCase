@@ -264,6 +264,7 @@ header h1 {
 
 
 
+
 .detailTag{
     display: none;
 }
@@ -467,8 +468,7 @@ section h1 {
     box-sizing: border-box;
     margin: 0;
     padding-left: 1em;
-    font: 16px/42px "PT Sans", sans-serif;
-    background: #3963DA;
+    background: #333;
     cursor: pointer;
     background-image: url(../img/bg/pattern.png);
 }
@@ -509,7 +509,7 @@ section h1 {
     height: 50px;
     min-width: 960px;
     margin-top: 100px;
-    background-color: #8E8E8E;
+    background-color: #333;
 
     color: #ccc;
     font-size: 18px;

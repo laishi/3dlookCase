@@ -7,8 +7,6 @@ $(document).ready(function() {
         hljs.highlightBlock(block);
     });
 
-
-
     var winTop = 0;
 
     $(window).scroll(function() {
@@ -31,4 +29,32 @@ $(document).ready(function() {
         }
     });
 
+
+
+
+
+
+
+
+
+
+
+});
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+
+    function fixImgPath() {
+
+        var findImg = $( "article" ).find("img");
+
+        console.log(findImg.attr("src"))
+
+
+    }
+
+    
 });

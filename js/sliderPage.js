@@ -5,7 +5,6 @@ var wURLADD = wURL[wURL.length - 1];
 
 
 
-    console.log(wURLADD)
 
 
 $(window).on('hashchange', function(e){
@@ -194,14 +193,25 @@ function mixConf() {
             onMixStart: function(state, futureState){
 
                 if (layout == 'list') {
+
                     if ($(".itemTotal").hasClass("repos")) {
+
 
                     } else {
 
                         $(".itemTotal").addClass("repos");
                     }
                 }
+                console.log(state)
             }
+
+
+
+
+
+
+
+
         },
         animation: {
             animateChangeLayout: true,
@@ -218,7 +228,9 @@ function mixConf() {
 
 
         if (layout == 'list') {
+
             $(".itemTotal").toggleClass("repos");
+            $(".blogImg").toggleClass("img320");
 
             layout = 'grid';    
             $changeLayout.text('List');
@@ -227,6 +239,9 @@ function mixConf() {
             });
 
         } else {
+
+            // TweenMax.to($(".blogImg"), 0.2, {"width":"320px"});
+
             $(".itemTotal").toggleClass("repos");
 
             layout = 'list';
