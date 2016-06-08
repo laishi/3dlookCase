@@ -1,67 +1,149 @@
-// var db = new loki('blog.json');
-
-// // Add a collection to the database
-// var items = db.addCollection('items');
-
-// // Add some documents to the collection
-// items.insert({ name : 'mjolnir', owner: 'thor', maker: 'dwarves' });
-// items.insert({ name : 'gungnir', owner: 'odin', maker: 'elves' });
-// items.insert({ name : 'tyrfing', owner: 'Svafrlami', maker: 'dwarves' });
-// items.insert({ name : 'draupnir', owner: 'odin', maker: 'elves' });
-
-// items.insert({ name : 'laishi', sex: 'nan', age: '45' });
-// items.insert({ name : 'ruhua', sex: 'nv', age: '32' });
-
-// // Find and update an existing document
-// var tyrfing = items.findOne({'name': 'tyrfing'});
-// tyrfing.owner = 'arngrim';
-// items.update(tyrfing);
-
-// console.log(tyrfing)
-
-// // Find and update an existing document
-// var ruhua = items.findOne({'name': 'ruhua'});
-// ruhua.owner = 'arngrim';
-// items.update(ruhua);
-
-// console.log(ruhua.name)
 
 
 
+// 创建一个数据库，你需要给他一个文件（supermarket.json）以便通过文件名保存数据。
+var db = new loki('supermarket.json');
 
-// // These statements send to Text Output
-// // logText('tyrfing value :dwarves');
-// logObject(tyrfing);
-// logText('odins items');
-// logObject(items.find({ 'owner': 'odin' }));
+// 然后你可以开始创建一个集合了，假如你不太方便理解集合的概念的话，你可以把数据库想象成一个超市，
+// 那么， 集合就是商品的分类了。 如果还没懂， 我就要骂人了， 或者继续往下看。
 
-// // This statement sends to Inspector
-// inspectObject(db);
+var fruit = db.addCollection('fruit');
 
-
-
-// var db  = new loki('blog.json');
-// var db2 = new loki('blog.json');
-
-// var users = db.addCollection('users');
-// users.insert({
-//     name: 'joe'
-// });
-// users.insert({
-//     name: 'john'
-// });
-// users.insert({
-//     name: 'jack'
-// });
-// console.log(users.data);
-// db.saveDatabase();
-
-// db2.loadDatabase({}, function() {
-//     var users2 = db2.getCollection('users')
-//     console.log(users2.data);
-// });
+// 因为我们搞的是无本生意，水果架上还没有东西，先从果农哪里进点便宜水果，赚大钱。
 
 
-var db = new loki('blog.json');
 
-console.log(db)
+fruit.insert({ name: 'apple', place: 'xian', num: '520', pice: '38' });
+fruit.insert({ name: 'banana', place: 'hainan', num: '200', pice: '25' });
+fruit.insert({ name: 'pear', place: 'chongqing', num: '350', pice: '18' });
+
+
+console.log(fruit.data);
+
+
+// 这里我们搞到了三种水果，苹果、香蕉、梨，这三种东西相当于三篇文档。
+
+// 至此，把概念强化一下，不然今后搞数据库容易昏脑壳。
+// 数据库（超市）里面放集合（水果），一个数据库可以放N个集合。一个集合可以放N篇文档（苹果、香蕉、梨），文档就存放在集合里。
+// 现在我们的生意可以开张了。
+
+// 从实战出发，今天小习有空来我们的超市
+// 买苹果，5斤
+
+
+var findApple = fruit.findOne({ 'name': 'apple' });
+
+// Object { name: "apple", place: "xian", num: "520", pice: "38", meta: Object… }
+
+// name: "apple"
+// num: "520"
+// pice: "38"
+// place: "xian"
+
+// console.log(findApple.name);
+// console.log(findApple.num);
+// console.log(findApple.place);
+
+
+
+
+
+
+
+// var ruhua = fruit.findOne({ 'name': "apple" });
+
+
+
+// console.log(ruhua)
+
+
+
+
+
+// write some function
+
+function bill(name, num) {
+
+	var name = name;
+	var num = num;
+
+	var findCommodity = fruit.findOne({ 'name': name });
+
+
+
+
+
+	if (findCommodity) {
+
+		console.log("yes");
+
+		var commodityName = findCommodity.name;
+		var commodityNum  = findCommodity.num;
+		var commodityPice = findCommodity.pice;
+
+		var count;
+
+
+		if ( commodityNum < num ) {
+			alert("商品卖完了哦")
+		} else {
+
+			$(".buyCont").children().remove();
+
+			count = num * commodityPice;
+	
+			var buyCont = "<h3>请确认你的账单信息：</h3>" + " " + "<h5>你卖的商品是：</h5>" + " " + commodityName + "<h5>价格是：</h5>" + " " + count + "<h3>感谢你的光顾</h3>"         
+
+			$(".buyCont").append(buyCont);
+		}
+
+	} 
+
+
+	if (findCommodity === null) {
+
+		alert("没有这个商品")
+
+		console.log("no");
+
+	} else {
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+new Vue({
+
+  el: '#buy',
+  data: {
+    message: '商品名'
+  },
+  methods: {
+
+
+    buy: function () {
+
+
+		console.log(this.message)
+
+		if (this.message) {
+
+			bill(this.message, 10);
+			
+		}
+    }
+  }
+  
+})

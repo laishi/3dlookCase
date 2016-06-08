@@ -812,6 +812,8 @@ input[type="text"]:focus {
   position: relative;
   width: 80%;
   margin: 0 auto;
+  max-height: 200vh;
+  overflow: hidden;
 }
 
 

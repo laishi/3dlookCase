@@ -1,3 +1,4 @@
+
 var wURL = window.location.href.split("/");
 
 var wURLADD = wURL[wURL.length - 1];
@@ -22,7 +23,9 @@ $(window).on('hashchange', function(e){
 
     oldUrlName = OurlSplit[OurlLenght-2];
 
-    console.log(curUrlName)
+
+    GURLNAME = curUrlName;
+
 
     sliderPage(curUrlName, -1);
 
@@ -52,11 +55,12 @@ $(".navItem").click(function() {
 
     var curPage = $('.' + pageData);
 
+    CURPAGE = curPage;
+
 
 
     
     sliderPage(pageData,index);
-
 
 
 
@@ -68,6 +72,13 @@ $(".navItem").click(function() {
     }
 
 });
+
+
+
+
+
+
+
 
 
 // function ChangeUrl(page, url) {
@@ -176,7 +187,67 @@ function mixConf() {
                     }
                 }
                 console.log(state)
-            }
+            },
+
+
+
+
+            onMixEnd: function(state){
+
+                $(window).scroll(function() {
+
+
+
+
+
+                    
+
+                    $(".mixItem").each(function (index,elem) {
+
+                        var gridH = $(elem).position().top ;
+
+                        console.log(gridH)
+                    })
+
+                    var winH = $(window).innerHeight();
+
+
+
+
+
+
+
+
+
+
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }   
+
+
+
+
+
+
+
+
 
         },
         animation: {
