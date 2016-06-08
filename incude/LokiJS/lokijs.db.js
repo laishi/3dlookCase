@@ -1,6 +1,4 @@
 
-
-
 // 创建一个数据库，你需要给他一个文件（supermarket.json）以便通过文件名保存数据。
 var db = new loki('supermarket.json');
 
@@ -32,29 +30,6 @@ console.log(fruit.data);
 
 
 var findApple = fruit.findOne({ 'name': 'apple' });
-
-// Object { name: "apple", place: "xian", num: "520", pice: "38", meta: Object… }
-
-// name: "apple"
-// num: "520"
-// pice: "38"
-// place: "xian"
-
-// console.log(findApple.name);
-// console.log(findApple.num);
-// console.log(findApple.place);
-
-
-
-
-
-
-
-// var ruhua = fruit.findOne({ 'name': "apple" });
-
-
-
-// console.log(ruhua)
 
 
 
@@ -111,14 +86,6 @@ function bill(name, num) {
 	}
 
 }
-
-
-
-
-
-
-
-
 
 
 

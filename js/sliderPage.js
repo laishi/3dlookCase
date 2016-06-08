@@ -186,7 +186,6 @@ function mixConf() {
                         $(".itemTotal").addClass("repos");
                     }
                 }
-                console.log(state)
             },
 
 
@@ -206,39 +205,10 @@ function mixConf() {
 
                         var gridH = $(elem).position().top ;
 
-                        console.log(gridH)
                     })
 
                     var winH = $(window).innerHeight();
-
-
-
-
-
-
-
-
-
-
                 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             }   
 
 

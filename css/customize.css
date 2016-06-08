@@ -813,7 +813,7 @@ input[type="text"]:focus {
   width: 80%;
   margin: 0 auto;
   max-height: 200vh;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 

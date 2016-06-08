@@ -233,7 +233,7 @@
 
                                     <ul class="tagName">
                                         <li class="tagTip"><h3> 标签: </h3> </li>
-                                        <li><h3 class="pageName"> {{data.name}} </h3> </li>
+                                        <li><h3 class="pageName"> {{data.title}} </h3> </li>
                                         <li><h3> {{data.tag}} </h3> </li>
                                     </ul>
 
@@ -249,7 +249,7 @@
                                 </li>
 
                                 <li class="barItem">
-                                    <dir> <a class="moreLink" v-bind:href="data.url"> <h3> 3D </h3> </a> </dir>
+                                    <dir> <a class="moreLink" v-bind:href="data.link"> <h3> 3D </h3> </a> </dir>
                                 </li>
 
                                 <li class="barItem barInfo">
@@ -352,6 +352,9 @@
 
 <script src="incude/greensock/TweenMax.min.js"></script>
 
+<script src="incude/LokiJS/lokijs.min.js"></script>
+<!-- <script src="incude/LokiJS/lokijs.db.js"></script> -->
+
 <script src="incude/vue/vue.min.js"></script>
 <script src="incude/vue/vueItem.js"></script>
 
@@ -368,8 +371,6 @@
 <script src="js/usedetail.js"></script>
 <script src="js/scrollgrid.js"></script>
 
-<script src="incude/LokiJS/lokijs.min.js"></script>
-<script src="incude/LokiJS/lokijs.db.js"></script>
 
 <script src="js/rd-smoothscroll.min.js"></script>
 

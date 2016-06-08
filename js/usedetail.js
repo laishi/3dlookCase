@@ -128,6 +128,7 @@ function openDetail(item) {
 
     
     $(".detailDes").load(pageLoad,function (argument) {
+        
         console.log("loaddata");
 
         $( "article" ).prepend(
@@ -139,22 +140,6 @@ function openDetail(item) {
         $('pre code').each(function(i, block) {
             hljs.highlightBlock(block);
         });
-
-
-
-
-        // $( "img" ).attr({
-        //   src: "/resources/hat.gif",
-        //   title: "jQuery",
-        //   alt: "jQuery Logo"
-        // });
-        // $( "div" ).text( $( "img" ).attr( "alt" ) );
-
-         
-
-
-
-
 
 
     });
