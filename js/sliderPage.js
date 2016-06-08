@@ -67,9 +67,9 @@ $(".navItem").click(function() {
 
     $(".work .gridItems").css({"height":0, "overflow": "hidden"})
 
-    if (pageData === "blog") {
-        mixConf();
-    }
+    // if (pageData === "blog") {
+    //     mixConf();
+    // }
 
 });
 
@@ -194,12 +194,7 @@ function mixConf() {
             onMixEnd: function(state){
 
                 $(window).scroll(function() {
-
-
-
-
-
-                    
+                   
 
                     $(".mixItem").each(function (index,elem) {
 
@@ -210,12 +205,6 @@ function mixConf() {
                     var winH = $(window).innerHeight();
                 });
             }   
-
-
-
-
-
-
 
 
 

@@ -1,11 +1,10 @@
-
 var png = ".png"
 var jpg = ".jpg"
 var HtmlFormat = ".html"
 
 
 //  WORK
-var workNames = [ "webgl", "x50", "rose", "ring", "iwatch", "moto", "edge", "i8", "nike", "shave", "house" ];
+var workNames = ["webgl", "x50", "rose", "ring", "iwatch", "moto", "edge", "i8", "nike", "shave", "house"];
 var workHtmlFolder = "pages/work/";
 var workImgFolder = "img/workimg/";
 var workImgkUrls = [];
@@ -13,7 +12,7 @@ var workHtmlUrls = [];
 var workTitles = [];
 
 
-$.each(workNames,function (index,title) {
+$.each(workNames, function(index, title) {
 
     var workHtmlUrl = workHtmlFolder + title + HtmlFormat;
     var workimgkUrl = workImgFolder + title + png;
@@ -22,14 +21,14 @@ $.each(workNames,function (index,title) {
     workImgkUrls.push(workimgkUrl);
 
 
-    $.ajax({  
-          url: workHtmlUrl,  
-          async: false,  
-          success: function(data){  
+    $.ajax({
+        url: workHtmlUrl,
+        async: false,
+        success: function(data) {
             title = $(data).filter('title').text();
             workTitles.push(title);
-          }  
-    });     
+        }
+    });
 
 })
 
@@ -52,7 +51,7 @@ var blogCol = db.addCollection('blogCol');
 
 
 
-var blogNames = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "16", "17", "18",  "blend4web", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS",  ];
+var blogNames = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "16", "17", "18", "blend4web", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS", ];
 var blogHtmlFolder = "pages/blog/";
 var blogImgFolder = "img/blogImg/";
 
@@ -63,16 +62,13 @@ var blogSummary = [];
 
 
 
-$.each(blogNames, function (index,title) {
+$.each(blogNames, function(index, title) {
 
 
     var blogHtmlUrl = blogHtmlFolder + title + HtmlFormat;
     var blogimgkUrl = blogImgFolder + title + jpg;
 
-
-
-    var blogOBJ = {}; 
-
+    var blogOBJ = {};
     blogOBJ.id = index;
     blogOBJ.title = title;
     blogOBJ.link = blogHtmlUrl;
@@ -80,31 +76,40 @@ $.each(blogNames, function (index,title) {
 
 
 
-
-
     blogCol.insert(blogOBJ);
 
-
-
     var useClass = "." + title;
-
     blogHtmlUrls.push(blogHtmlUrl);
     blogImgkUrls.push(blogimgkUrl);
 
 
-    $.ajax({  
-          url: blogHtmlUrl,  
-          async: false,  
-          success: function(data){
-            title   = $(data).filter('title').text();
+    $.ajax({
+        url: blogHtmlUrl,
+        async: false,
+        success: function(data) {
+            title = $(data).filter('title').text();
             summary = $(data).filter(useClass).text();
 
             blogOBJ.summary = summary;
 
-          }
-    });     
+        }
+    });
 
 })
+
+
+
+
+
+
+
+// $.each(blogItem, function (index, finditem) {
+//     var title = finditem.link;
+//     console.log(title);
+// })
+
+
+
 
 
 
@@ -134,29 +139,28 @@ $.each(blogNames, function (index,title) {
 
 
 
-var limitNum = 25;
+// var limitNum = 25;
 
 
-// console.log(blogCol.data[0]);
-// DynamicViews (recommended approach):
+// // console.log(blogCol.data[0]);
+// // DynamicViews (recommended approach):
 
-var blogView = blogCol.addDynamicView('a_complex_view');
-blogView.applyWhere(function aCustomFilter(item) {
-
-    return item.id < limitNum;
-
-});
+// var blogView = blogCol.addDynamicView('a_complex_view');
 
 
+// blogView.applyWhere(function aCustomFilter(item) {
 
-var limitItem = blogView.applyFind({'id':{ '$lt' :limitNum }});;
+//     return item.id < limitNum;
 
-
-
-console.log(blogView.data());
+// });
 
 
 
+// var limitItem = blogCol.offset(2).limit(5);
+
+var itemChain = blogCol.chain();
+
+var blogItem = itemChain.offset(0).limit(4).data();
 
 
 new Vue({
@@ -166,138 +170,133 @@ new Vue({
         selectedCategory: "",
         shoppingCart: [],
 
-        workPageName: [ "webgl", "x50", "rose", "ring", "iwatch", "moto", "edge", "i8", "nike", "shave", "house" ],
+        workPageName: ["webgl", "x50", "rose", "ring", "iwatch", "moto", "edge", "i8", "nike", "shave", "house"],
+
+        showNum: 5,
+
+        works: [{
+            "id": "0",
+            "name": workNames[0],
+            "title": workTitles[0],
+            "image": workImgFolder + workNames[0] + ".png",
+            "tag": "webgl web3d 三维产品展示",
+            "info": "webgl web3d 三维产品展示",
+            "summary": blogSummary[0],
+            "summary": blogSummary[0],
+            "url": "assets/webgl/" + workNames[0] + "/index.html",
+            "date": Date.now(),
+        }, {
+            "id": "1",
+            "name": workNames[1],
+            "title": workTitles[1],
+            "image": workImgFolder + workNames[1] + ".png",
+            "tag": "webgl web3d 三维产品展示",
+            "info": "x51 webgl 3drender",
+            "url": "assets/webgl/" + workNames[1] + "/index.html",
+            "date": Date.now(),
+        }, {
+            "id": "2",
+            "name": workNames[2],
+            "title": workTitles[2],
+            "image": workImgFolder + workNames[2] + ".png",
+            "tag": "webgl web3d 三维产品展示",
+            "info": "webgl web3d 三维产品展示",
+            "summary": blogSummary[0],
+            "summary": blogSummary[0],
+            "url": "assets/webgl/" + workNames[2] + "/index.html",
+            "date": Date.now(),
+        }, {
+            "id": "3",
+            "name": workNames[3],
+            "title": workTitles[3],
+            "image": workImgFolder + workNames[3] + ".png",
+            "tag": "webgl web3d 三维产品展示",
+            "info": "webgl web3d 三维产品展示",
+            "summary": blogSummary[0],
+            "summary": blogSummary[0],
+            "url": "assets/webgl/" + workNames[3] + "/index.html",
+            "date": Date.now(),
+        }, {
+            "id": "4",
+            "name": workNames[4],
+            "title": workTitles[4],
+            "image": workImgFolder + workNames[4] + ".png",
+            "tag": "webgl web3d 三维产品展示",
+            "info": "webgl web3d 三维产品展示",
+            "summary": blogSummary[0],
+            "summary": blogSummary[0],
+            "url": "assets/webgl/" + workNames[4] + "/index.html",
+            "date": Date.now(),
+        }, {
+            "id": "5",
+            "name": workNames[5],
+            "title": workTitles[5],
+            "image": workImgFolder + workNames[5] + ".png",
+            "tag": "webgl web3d 三维产品展示",
+            "info": "webgl web3d 三维产品展示",
+            "summary": blogSummary[0],
+            "summary": blogSummary[0],
+            "url": "assets/webgl/" + workNames[5] + "/index.html",
+            "date": Date.now(),
+        }, {
+            "id": "6",
+            "name": workNames[6],
+            "title": workTitles[6],
+            "image": workImgFolder + workNames[6] + ".png",
+            "tag": "webgl web3d 三维产品展示",
+            "info": "webgl web3d 三维产品展示",
+            "summary": blogSummary[0],
+            "summary": blogSummary[0],
+            "url": "assets/webgl/" + workNames[6] + "/index.html",
+            "date": Date.now(),
+        }, {
+            "id": "7",
+            "name": workNames[7],
+            "title": workTitles[7],
+            "image": workImgFolder + workNames[7] + ".png",
+            "tag": "webgl web3d 三维产品展示",
+            "info": "webgl web3d 三维产品展示",
+            "summary": blogSummary[0],
+            "summary": blogSummary[0],
+            "url": "assets/webgl/" + workNames[7] + "/index.html",
+            "date": Date.now(),
+        }, {
+            "id": "8",
+            "name": workNames[8],
+            "title": workTitles[8],
+            "image": workImgFolder + workNames[8] + ".png",
+            "tag": "webgl web3d 三维产品展示",
+            "info": "webgl web3d 三维产品展示",
+            "summary": blogSummary[0],
+            "summary": blogSummary[0],
+            "url": "assets/webgl/" + workNames[8] + "/index.html",
+            "date": Date.now(),
+        }, {
+            "id": "9",
+            "name": workNames[9],
+            "title": workTitles[9],
+            "image": workImgFolder + workNames[9] + ".png",
+            "tag": "webgl web3d 三维产品展示",
+            "info": "webgl web3d 三维产品展示",
+            "summary": blogSummary[0],
+            "summary": blogSummary[0],
+            "url": "assets/webgl/" + workNames[9] + "/index.html",
+            "date": Date.now(),
+        }, {
+            "id": "10",
+            "name": workNames[10],
+            "title": workTitles[10],
+            "image": workImgFolder + workNames[10] + ".png",
+            "tag": "webgl web3d 三维产品展示",
+            "info": "webgl web3d 三维产品展示",
+            "summary": blogSummary[0],
+            "summary": blogSummary[0],
+            "url": "assets/webgl/" + workNames[10] + "/index.html",
+            "date": Date.now(),
+        }],
 
 
-        showNum:5,
-
-
-
-        works: [
-            {
-                "id"    : "0",
-                "name"  : workNames[0],
-                "title" : workTitles[0],
-                "image" : workImgFolder + workNames[0] + ".png",
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[0],
-                "summary"  : blogSummary[0],
-                "url"   : "assets/webgl/" + workNames[0] + "/index.html",
-                "date"  : Date.now(),
-            },{
-                "id"    : "1",
-                "name"  : workNames[1],
-                "title" : workTitles[1],
-                "image" : workImgFolder + workNames[1] + ".png",
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "x51 webgl 3drender",
-                "url"   : "assets/webgl/" + workNames[1] + "/index.html",
-                "date"  : Date.now(),
-            },{
-                "id"    : "2",
-                "name"  : workNames[2],
-                "title" : workTitles[2],
-                "image" : workImgFolder + workNames[2] + ".png",
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[0],
-                "summary"  : blogSummary[0],
-                "url"   : "assets/webgl/" + workNames[2] + "/index.html",
-                "date"  : Date.now(),
-            },{
-                "id"    : "3",
-                "name"  : workNames[3],
-                "title" : workTitles[3],
-                "image" : workImgFolder + workNames[3] + ".png",
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[0],
-                "summary"  : blogSummary[0],
-                "url"   : "assets/webgl/" + workNames[3] + "/index.html",
-                "date"  : Date.now(),
-            },{
-                "id"    : "4",
-                "name"  : workNames[4],
-                "title" : workTitles[4],
-                "image" : workImgFolder + workNames[4] + ".png",
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[0],
-                "summary"  : blogSummary[0],
-                "url"   : "assets/webgl/" + workNames[4] + "/index.html",
-                "date"  : Date.now(),
-            },{
-                "id"    : "5",
-                "name"  : workNames[5],
-                "title" : workTitles[5],
-                "image" : workImgFolder + workNames[5] + ".png",
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[0],
-                "summary"  : blogSummary[0],
-                "url"   : "assets/webgl/" + workNames[5] + "/index.html",
-                "date"  : Date.now(),
-            },{
-                "id"    : "6",
-                "name"  : workNames[6],
-                "title" : workTitles[6],
-                "image" : workImgFolder + workNames[6] + ".png",
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[0],
-                "summary"  : blogSummary[0],
-                "url"   : "assets/webgl/" + workNames[6] + "/index.html",
-                "date"  : Date.now(),
-            },{
-                "id"    : "7",
-                "name"  : workNames[7],
-                "title" : workTitles[7],
-                "image" : workImgFolder + workNames[7] + ".png",
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[0],
-                "summary"  : blogSummary[0],
-                "url"   : "assets/webgl/" + workNames[7] + "/index.html",
-                "date"  : Date.now(),
-            },{
-                "id"    : "8",
-                "name"  : workNames[8],
-                "title" : workTitles[8],
-                "image" : workImgFolder + workNames[8] + ".png",
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[0],
-                "summary"  : blogSummary[0],
-                "url"   : "assets/webgl/" + workNames[8] + "/index.html",
-                "date"  : Date.now(),
-            },{
-                "id"    : "9",
-                "name"  : workNames[9],
-                "title" : workTitles[9],
-                "image" : workImgFolder + workNames[9] + ".png",
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[0],
-                "summary"  : blogSummary[0],
-                "url"   : "assets/webgl/" + workNames[9] + "/index.html",
-                "date"  : Date.now(),
-            },{
-                "id"    : "10",
-                "name"  : workNames[10],
-                "title" : workTitles[10],
-                "image" : workImgFolder + workNames[10] + ".png",
-                "tag"   : "webgl web3d 三维产品展示",
-                "info"  : "webgl web3d 三维产品展示",
-                "summary"  : blogSummary[0],
-                "summary"  : blogSummary[0],
-                "url"   : "assets/webgl/" + workNames[10] + "/index.html",
-                "date"  : Date.now(),
-            }
-        ],
-
-
-        blog: limitItem.data()
+        blog: blogItem
     },
 
     computed: {
@@ -312,30 +311,68 @@ new Vue({
     },
 
 
-    ready: function () {
-        // this.workItemData();
-        // this.showName();
+
+
+
+
+
+
+    ready: function() {
+
+        var vm = this;
+
+        var lock = true;
+
+        window.addEventListener('scroll', this.updateItem);
+
     },
+
+
+
+    created: function() {
+
+
+    },
+
+
+
+
 
     methods: {
 
 
-        updateItem:function (event) {
+        updateItem: function(event) {
+
+
+            // console.log(event)
+
+
+            var winTop = $(window).scrollTop();
+
+            var limitNum = Math.round( winTop / 70 ) ;
+
+            console.log(limitNum)
 
 
 
-            limitItemm = blogView.applyFind({'id':{ '$lt' : 45 }});
+            var newitemChain = blogCol.chain();
+
+            var newblogItem = newitemChain.offset( limitNum + 4 ).limit(Math.min(4 + limitNum, 8)).data();
+
+            this.blog = newblogItem;
+
+            // console.log(this.blog)
 
 
-            if (limitItemm.data() === this.blog) {
 
-                console.log("dengyu")
- 
-            } else {
-                console.log("no")
-                this.blog = limitItemm.data();
 
-            }
+
+
+
+
+
+
+
 
         },
 
