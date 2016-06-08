@@ -52,7 +52,7 @@ var blogCol = db.addCollection('blogCol');
 
 
 
-var blogNames = [ "blend4web", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS" ];
+var blogNames = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "16", "17", "18",  "blend4web", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS",  ];
 var blogHtmlFolder = "pages/blog/";
 var blogImgFolder = "img/blogImg/";
 
@@ -60,7 +60,6 @@ var blogImgkUrls = [];
 var blogHtmlUrls = [];
 var blogTitles = [];
 var blogSummary = [];
-
 
 
 
@@ -102,11 +101,6 @@ $.each(blogNames, function (index,title) {
 
             blogOBJ.summary = summary;
 
-
-
-
-            // console.log(summary)
-
           }
     });     
 
@@ -118,30 +112,29 @@ $.each(blogNames, function (index,title) {
 
 
 
-var limitNum = 10;
-
-$(window).scroll(function() {
+// $(window).scroll(function() {
 
 
-    winTop = $(window).scrollTop();
+//     winTop = $(window).scrollTop();
 
-    limitNum = Math.round(winTop/50);
+//     limitNum = Math.round(winTop/50);
 
 
 
 
-    //view the data
-    // console.log(blogView.data()[0].image);
+//     //view the data
+//     // console.log(blogView.data()[0].image);
 
 
 
-});
+// });
 
 
 
-console.log(window.limitNum);
 
 
+
+var limitNum = 25;
 
 
 // console.log(blogCol.data[0]);
@@ -156,78 +149,11 @@ blogView.applyWhere(function aCustomFilter(item) {
 
 
 
+var limitItem = blogView.applyFind({'id':{ '$lt' :limitNum }});;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // 创建一个数据库，你需要给他一个文件（supermarket.json）以便通过文件名保存数据。
-// var db = new loki('blog.json');
-
-// // 然后你可以开始创建一个集合了，假如你不太方便理解集合的概念的话，你可以把数据库想象成一个超市，
-// // 那么， 集合就是商品的分类了。 如果还没懂， 我就要骂人了， 或者继续往下看。
-
-// var blog = db.addCollection('blog');
-
-// // 因为我们搞的是无本生意，水果架上还没有东西，先从果农哪里进点便宜水果，赚大钱。
-
-
-
-// blog.insert({ name: 'apple', place: 'xian', num: '520', pice: '38' });
-// blog.insert({ name: 'banana', place: 'hainan', num: '200', pice: '25' });
-// blog.insert({ name: 'pear', place: 'chongqing', num: '350', pice: '18' });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(blogView.data());
 
 
 
@@ -241,6 +167,9 @@ new Vue({
         shoppingCart: [],
 
         workPageName: [ "webgl", "x50", "rose", "ring", "iwatch", "moto", "edge", "i8", "nike", "shave", "house" ],
+
+
+        showNum:5,
 
 
 
@@ -368,7 +297,7 @@ new Vue({
         ],
 
 
-        blog: blogView.data()
+        blog: limitItem.data()
     },
 
     computed: {
@@ -385,78 +314,102 @@ new Vue({
 
     ready: function () {
         // this.workItemData();
-        this.showName();
+        // this.showName();
     },
 
     methods: {
 
 
-
-        showName: function (index, event) {
-            var name = this.blog;
-
-
-            this.works.forEach(function(item) {
-            })
-
-
-            $.each(name,function (index,data) {
-                // body...
-            })
-
-        },
+        updateItem:function (event) {
 
 
 
-
-        workItemData: function(id) {
-           var id = id
-            var index = this.workPageName.length
+            limitItemm = blogView.applyFind({'id':{ '$lt' : 45 }});
 
 
+            if (limitItemm.data() === this.blog) {
 
-            workDataAll = [];
+                console.log("dengyu")
+ 
+            } else {
+                console.log("no")
+                this.blog = limitItemm.data();
 
-
-
-
-            $.each(this.workPageName, function (index, title) {
-
-                workData = {
-
-                    id    : index,
-                    name  : workNames[index],
-                    title : workNames[index],
-                    image : workImgFolder     +     workNames[index] + ".png",
-                    tag   : "webgl            web3d 三维产品展示",
-                    info  : "webgl            web3d 三维产品展示",
-                    url   : "assets/webgl/"   +     workNames[index] + "/index.html",
-                    date  : Date.now()
-
-                };
-
-
-
-                workDataAll.push(workData);
-
-
-
-            })
-
-            return workDataAll;
-
+            }
 
         },
 
-        removeFromCart: function(i, productId) {
-            id = productId
-            this.products[id].inCart = false
-            this.shoppingCart.$remove(i)
-        },
 
-        updatData: function(i, productId) {
 
-        }
+
+
+
+
+        // showName: function (index, event) {
+        //     var name = this.blog;
+
+
+        //     this.works.forEach(function(item) {
+        //     })
+
+
+        //     $.each(name,function (index,data) {
+        //         // body...
+        //     })
+
+        // },
+
+
+
+
+        // workItemData: function(id) {
+        //    var id = id
+        //     var index = this.workPageName.length
+
+
+
+        //     workDataAll = [];
+
+
+
+
+        //     $.each(this.workPageName, function (index, title) {
+
+        //         workData = {
+
+        //             id    : index,
+        //             name  : workNames[index],
+        //             title : workNames[index],
+        //             image : workImgFolder     +     workNames[index] + ".png",
+        //             tag   : "webgl            web3d 三维产品展示",
+        //             info  : "webgl            web3d 三维产品展示",
+        //             url   : "assets/webgl/"   +     workNames[index] + "/index.html",
+        //             date  : Date.now()
+
+        //         };
+
+
+
+        //         workDataAll.push(workData);
+
+
+
+        //     })
+
+        //     return workDataAll;
+
+
+        // },
+
+        // removeFromCart: function(i, productId) {
+        //     id = productId
+        //     this.products[id].inCart = false
+        //     this.shoppingCart.$remove(i)
+        // },
+
+        // updatData: function(i, productId) {
+
+        // }
 
 
 

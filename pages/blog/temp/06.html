@@ -1,0 +1,109 @@
+<!doctype html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="网上三维产品展示">
+    <meta name="description" content="网上三维产品展示 联系:13640566324">
+    <title>Intro to WebGL with Three.js</title>
+    <script src="../common/js/append.cssjs..js"></script>
+</head>
+
+<body>
+    <header class="pageTitle">
+        <img src="../../img/logo/3dlogo.png">
+        <h3>Intro to WebGL with Three.js</h3>
+    </header>
+    <div class="btnCicle goHome">
+        <a class="btnCicleMore" href="http://localhost:8080/#!/work"> <i class='fa fa-home' aria-hidden='true'></i> </a>
+    </div>
+    <div class="pageCont threeJS">
+        <article>
+            <section>
+                <div class="title">
+                    <h1>ThreeJS History</h1>
+                </div>
+                <div class="titleCont">
+                    <p>
+                        Three.js 是一款运行在浏览器中的 3D 引擎，你可以用它创建各种三维场景，包括了摄影机、光影、材质等各种对象。你可以在它的主页上看到许多精彩的演示。不过，这款引擎目前还处在比较不成熟的开发阶段，其不够丰富的 API 以及匮乏的文档增加了初学者的学习难度（尤其是文档的匮乏）three.js的代码托管在github上面。
+                        现在有了英文的指导文档，好多了，有一些英文基础，就可以看懂，学起来也很简单。
+                    </p>
+                </div>
+            </section>
+            <section>
+                <div class="title">
+                    <h1>ThreeJS Features</h1>
+                </div>
+                <div class="titleCont">
+                    <p>
+                        Three.js includes the following features:[8] Effects: Anaglyph, cross-eyed and parallax barrier. Scenes: add and remove objects at run-time; fog Cameras: perspective and orthographic; controllers: trackball, FPS, path and more Animation: armatures, forward kinematics, inverse kinematics, morph and keyframe Lights: ambient, direction, point and spot lights; shadows: cast and receive Materials: Lambert, Phong, smooth shading, textures and more Shaders: access to full OpenGL Shading Language (GLSL) capabilities: lens flare, depth pass and extensive post-processing library Objects: meshes, particles, sprites, lines, ribbons, bones and more - all with Level of detail Geometry: plane, cube, sphere, torus, 3D text and more; modifiers: lathe, extrude and tube Data loaders: binary, image, JSON and scene Utilities: full set of time and 3D math functions including frustum, matrix, quaternion, UVs and more Export and import: utilities to create Three.js-compatible JSON files from within: Blender, openCTM, FBX, Max, and OBJ Support: API documentation is under construction, public forum and wiki in full operation Examples: Over 150 files of coding examples plus fonts, models, textures, sounds and other support files Debugging: Stats.js,[9] WebGL Inspector,[10] Three.js Inspector[11] Three.js runs in all browsers supported by WebGL. Three.js is made available under the MIT license.[1]
+                    </p>
+                </div>
+            </section>
+            <section>
+                <div class="title">
+                    <h1> ThreeJS Usage </h1>
+                </div>
+                <div class="titleCont">
+                    <pre><code class="javascript">
+src="js/three.min.js"
+                    </code></pre>
+                    <p>
+                        The following code creates a scene, adds a camera and a cube to the scene, creates a WebGL renderer and adds its viewport in the document.body element. Once loaded, the cube rotates about its X- and Y-axis.
+                    </p>
+                    <pre><code class="javascript">
+var camera, scene, renderer,
+geometry, material, mesh;
+
+init();
+animate();
+
+function init() {
+    scene = new THREE.Scene();
+
+    camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 10000 );
+    camera.position.z = 1000;
+
+    geometry = new THREE.BoxGeometry( 200, 200, 200 );
+    material = new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true } );
+
+    mesh = new THREE.Mesh( geometry, material );
+    scene.add( mesh );
+
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize( window.innerWidth, window.innerHeight );
+
+    document.body.appendChild( renderer.domElement );
+}
+
+function animate() {
+    requestAnimationFrame( animate );
+    render();
+}
+
+function render() {
+    mesh.rotation.x += 0.01;
+    mesh.rotation.y += 0.02;
+
+    renderer.render( scene, camera );
+}
+                    </code></pre>
+                </div>
+            </section>
+            <section>
+                <div class="title">
+                    <h1>JS javascript HILIGHT</h1> </div>
+                <div class="titleCont">
+                    <pre><code class="javascript">
+                        $(document).ready(function() {
+                          $(&#39;pre code&#39;).each(function(i, block) {
+                            hljs.highlightBlock(block);
+                          });
+                        });
+                    </code></pre>
+                </div>
+            </section>
+        </article>
+    </div>
+</body>
+
+</html>
