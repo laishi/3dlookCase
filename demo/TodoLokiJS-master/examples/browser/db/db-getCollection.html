@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据库 getCollection</title>
+    <script src="../../../bower_components/lokijs/build/lokijs.min.js"></script>
+
+</head>
+<body>
+</body>
+<script>
+
+    // 1. 以关键字作为 存储本地的key
+    var db  = new loki('testDB');
+    db.loadDatabase({});
+
+    // 2. 获取名称为persons 的集合
+    var tests = db.getCollection('persons') || db.addCollection('persons');
+
+    // 2.1 添加元素
+    tests.insert({t:1,a:11});
+
+    console.log(db.collections,tests);
+</script>
+
+</html>

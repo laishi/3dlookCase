@@ -1,13 +1,10 @@
-
-$(document).ready(function() {
+$( window ).load(function() {
 
 
     $('pre code')
     $('pre code').each(function(i, block) {
         hljs.highlightBlock(block);
     });
-
-
 
     var winTop = 0;
 
@@ -30,5 +27,8 @@ $(document).ready(function() {
             TweenMax.to($("header").find(".tagTitle"), 0.3, { y: 0 } );
         }
     });
+
+
+
 
 });

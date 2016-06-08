@@ -1,3 +1,4 @@
+
 var wURL = window.location.href.split("/");
 
 var wURLADD = wURL[wURL.length - 1];
@@ -5,7 +6,6 @@ var wURLADD = wURL[wURL.length - 1];
 
 
 
-    console.log(wURLADD)
 
 
 $(window).on('hashchange', function(e){
@@ -24,15 +24,12 @@ $(window).on('hashchange', function(e){
     oldUrlName = OurlSplit[OurlLenght-2];
 
 
+    GURLNAME = curUrlName;
 
 
-    if ( curUrlName === "work" || curUrlName === "blog" || curUrlName === "about" || curUrlName === "contact" ) {
+    sliderPage(curUrlName, -1);
 
-        sliderPage(curUrlName);
-    } 
-
-
-    if (oldUrlName === "detail") {
+    if (oldUrlName == "detail") {
         
         closeDetail();
     }
@@ -58,11 +55,12 @@ $(".navItem").click(function() {
 
     var curPage = $('.' + pageData);
 
+    CURPAGE = curPage;
+
 
 
     
     sliderPage(pageData,index);
-
 
 
 
@@ -74,6 +72,13 @@ $(".navItem").click(function() {
     }
 
 });
+
+
+
+
+
+
+
 
 
 // function ChangeUrl(page, url) {
@@ -100,10 +105,6 @@ var homePage = $(".pages").children().first();
 homePage.addClass("curPage");
 homePage.css({ "display": "block" });
 
-
-
-
-
 function sliderPage(pageName,index) {
 
 
@@ -129,12 +130,7 @@ function sliderPage(pageName,index) {
         curPage = $(".curPage");
 
 
-
-
-
-
         var speed = 0.5;
-
         if (pageIndex < index) {
             goRight();
         } else {
@@ -148,32 +144,19 @@ function sliderPage(pageName,index) {
         function goRight() {
             TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "-100%" });
             TweenMax.fromTo(curPage, speed, { x: "100%" }, { x: "0%", onComplete:wtotop });
-
-
-
-
         }
 
         function goLeft() {
             TweenMax.fromTo(curPage, speed, { x: "-100%" }, { x: "0%" });
             TweenMax.fromTo(lastPage, speed, { x: "0%" }, { x: "100%", onComplete:wtotop });
-
-
         }
 
         function wtotop() {
             $(window).scrollTop(0);
-
             $(".curPage").siblings().css({"display":"none"});
 
-            // console.log(curPage);
-
-
         }
-
-
     }
-
 }
 
 
@@ -194,14 +177,78 @@ function mixConf() {
             onMixStart: function(state, futureState){
 
                 if (layout == 'list') {
+
                     if ($(".itemTotal").hasClass("repos")) {
+
 
                     } else {
 
                         $(".itemTotal").addClass("repos");
                     }
                 }
-            }
+                console.log(state)
+            },
+
+
+
+
+            onMixEnd: function(state){
+
+                $(window).scroll(function() {
+
+
+
+
+
+                    
+
+                    $(".mixItem").each(function (index,elem) {
+
+                        var gridH = $(elem).position().top ;
+
+                        console.log(gridH)
+                    })
+
+                    var winH = $(window).innerHeight();
+
+
+
+
+
+
+
+
+
+
+                });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }   
+
+
+
+
+
+
+
+
+
         },
         animation: {
             animateChangeLayout: true,
@@ -218,7 +265,9 @@ function mixConf() {
 
 
         if (layout == 'list') {
+
             $(".itemTotal").toggleClass("repos");
+            $(".blogImg").toggleClass("img320");
 
             layout = 'grid';    
             $changeLayout.text('List');
@@ -227,6 +276,9 @@ function mixConf() {
             });
 
         } else {
+
+            // TweenMax.to($(".blogImg"), 0.2, {"width":"320px"});
+
             $(".itemTotal").toggleClass("repos");
 
             layout = 'list';

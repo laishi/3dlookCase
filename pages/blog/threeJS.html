@@ -5,79 +5,40 @@
     <meta name="keywords" content="网上三维产品展示">
     <meta name="description" content="网上三维产品展示 联系:13640566324">
     <title>Intro to WebGL with Three.js</title>
-
-    <link rel="import" href="../common/css.html">
-
+    <script src="../common/js/append.cssjs..js"></script>
 </head>
 
 <body>
-
-
-
-
     <header class="pageTitle">
         <img src="../../img/logo/3dlogo.png">
         <h3>Intro to WebGL with Three.js</h3>
     </header>
-
     <div class="btnCicle goHome">
-        <a class="btnCicleMore" href="http://localhost:8080/#!/work">  <i class='fa fa-home' aria-hidden='true'></i>  </a>
+        <a class="btnCicleMore" href="http://localhost:8080/#!/work"> <i class='fa fa-home' aria-hidden='true'></i> </a>
     </div>
-        
-
-
     <div class="pageCont threeJS">
         <article>
-
-
-
             <section>
                 <div class="title">
                     <h1>ThreeJS History</h1>
                 </div>
                 <div class="titleCont">
                     <p>
-                        Three.js was first released by Ricardo Cabello to GitHub in April 2010.[2] The origins of the library can be traced back to his involvement with the demoscene in the early 2000s. The code was first developed in ActionScript, then in 2009 ported to JavaScript. In Cabello's mind, the two strong points for the transfer to JavaScript were not having to compile the code before each run and platform independence. With the advent of WebGL, Paul Brunt was able to add the renderer for this quite easily as Three.js was designed with the rendering code as a module rather than in the core itself.[7] Cabello's contributions include API design, CanvasRenderer, SVGRenderer and being responsible for merging the commits by the various contributors into the project.</br>
-
-                        The second contributor in terms of commits, Branislav Ulicny started with Three.js in 2010 after having posted a number of WebGL demos on his own site. He wanted WebGL renderer capabilities in Three.js to exceed those of CanvasRenderer or SVGRenderer.[7] His major contributions generally involve materials, shaders and post-processing.
-
-                        Soon after the introduction of WebGL on Firefox 4 in March 2011, Joshua Koo came on board. He built his first Three.js demo for 3D text in September 2011.[7] His contributions frequently relate to geometry generation.
-
-                        There are over 390 contributors in total.[7]
+                        Three.js 是一款运行在浏览器中的 3D 引擎，你可以用它创建各种三维场景，包括了摄影机、光影、材质等各种对象。你可以在它的主页上看到许多精彩的演示。不过，这款引擎目前还处在比较不成熟的开发阶段，其不够丰富的 API 以及匮乏的文档增加了初学者的学习难度（尤其是文档的匮乏）three.js的代码托管在github上面。
+                        现在有了英文的指导文档，好多了，有一些英文基础，就可以看懂，学起来也很简单。
                     </p>
                 </div>
             </section>
-
             <section>
                 <div class="title">
                     <h1>ThreeJS Features</h1>
                 </div>
                 <div class="titleCont">
                     <p>
-                        Three.js includes the following features:[8]
-
-                        Effects: Anaglyph, cross-eyed and parallax barrier.
-                        Scenes: add and remove objects at run-time; fog
-                        Cameras: perspective and orthographic; controllers: trackball, FPS, path and more
-                        Animation: armatures, forward kinematics, inverse kinematics, morph and keyframe
-                        Lights: ambient, direction, point and spot lights; shadows: cast and receive
-                        Materials: Lambert, Phong, smooth shading, textures and more
-                        Shaders: access to full OpenGL Shading Language (GLSL) capabilities: lens flare, depth pass and extensive post-processing library
-                        Objects: meshes, particles, sprites, lines, ribbons, bones and more - all with Level of detail
-                        Geometry: plane, cube, sphere, torus, 3D text and more; modifiers: lathe, extrude and tube
-                        Data loaders: binary, image, JSON and scene
-                        Utilities: full set of time and 3D math functions including frustum, matrix, quaternion, UVs and more
-                        Export and import: utilities to create Three.js-compatible JSON files from within: Blender, openCTM, FBX, Max, and OBJ
-                        Support: API documentation is under construction, public forum and wiki in full operation
-                        Examples: Over 150 files of coding examples plus fonts, models, textures, sounds and other support files
-                        Debugging: Stats.js,[9] WebGL Inspector,[10] Three.js Inspector[11]
-                        Three.js runs in all browsers supported by WebGL.
-
-                        Three.js is made available under the MIT license.[1]
+                        Three.js includes the following features:[8] Effects: Anaglyph, cross-eyed and parallax barrier. Scenes: add and remove objects at run-time; fog Cameras: perspective and orthographic; controllers: trackball, FPS, path and more Animation: armatures, forward kinematics, inverse kinematics, morph and keyframe Lights: ambient, direction, point and spot lights; shadows: cast and receive Materials: Lambert, Phong, smooth shading, textures and more Shaders: access to full OpenGL Shading Language (GLSL) capabilities: lens flare, depth pass and extensive post-processing library Objects: meshes, particles, sprites, lines, ribbons, bones and more - all with Level of detail Geometry: plane, cube, sphere, torus, 3D text and more; modifiers: lathe, extrude and tube Data loaders: binary, image, JSON and scene Utilities: full set of time and 3D math functions including frustum, matrix, quaternion, UVs and more Export and import: utilities to create Three.js-compatible JSON files from within: Blender, openCTM, FBX, Max, and OBJ Support: API documentation is under construction, public forum and wiki in full operation Examples: Over 150 files of coding examples plus fonts, models, textures, sounds and other support files Debugging: Stats.js,[9] WebGL Inspector,[10] Three.js Inspector[11] Three.js runs in all browsers supported by WebGL. Three.js is made available under the MIT license.[1]
                     </p>
                 </div>
             </section>
-
             <section>
                 <div class="title">
                     <h1> ThreeJS Usage </h1>
@@ -86,12 +47,9 @@
                     <pre><code class="javascript">
 src="js/three.min.js"
                     </code></pre>
-
-
                     <p>
                         The following code creates a scene, adds a camera and a cube to the scene, creates a WebGL renderer and adds its viewport in the document.body element. Once loaded, the cube rotates about its X- and Y-axis.
                     </p>
-
                     <pre><code class="javascript">
 var camera, scene, renderer,
 geometry, material, mesh;
@@ -131,14 +89,6 @@ function render() {
                     </code></pre>
                 </div>
             </section>
-
-
-
-
-
-
-
-
             <section>
                 <div class="title">
                     <h1>JS javascript HILIGHT</h1> </div>
@@ -152,17 +102,8 @@ function render() {
                     </code></pre>
                 </div>
             </section>
-
-
         </article>
     </div>
 </body>
-
-<script src="../../js/jquery-2.2.3.min.js"></script>
-<script src="../../js/rd-smoothscroll.min.js"></script>
-<script src="../../incude/greensock/TweenMax.min.js"></script>
-<script src="../../incude/slinky/js/slinky.js"></script>
-<script src="../../incude/highlight/js/highlight.pack.js"></script>
-<script src="../../js/pages.js"></script>
 
 </html>

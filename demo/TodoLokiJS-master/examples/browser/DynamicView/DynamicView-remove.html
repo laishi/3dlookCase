@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态视图删除</title>
+    <script src="../../../bower_components/lokijs/src/lokijs.js"></script>
+    <script src="../model/Model.Person.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    var db =  new loki('testDB');
+    db.loadDatabase({  });
+
+    // 获得集合
+    var persons = db.getCollection('persons');
+
+    // name , [persistent]
+    // name: name of the dynamic view
+    // persistent: (optional) boolean indicating if you want this view to be persistent.
+    // Persistent views store a copy of the results in an internal array for optimal read speeds
+    // return	result: a dynamicview object addDynamicView
+
+    // 创建动态视图 名称为  teen
+    var teensView = persons.addDynamicView('teen');
+
+
+    // 获取年龄为18 的 结果
+    console.log(teensView.applyFind({'age':{ '$eq' : 18 }}).data());
+
+    // 添加一个 年龄为18 的新小伙
+    persons.insert({name:'xiaoli',age:18});
+
+    // 删除前 集合获取动态视图
+    console.log(persons.getDynamicView('teen'));
+
+    // 删除该动态视图
+    persons.removeDynamicView('teen');
+
+    // 删除后 集合无法获取动态视图  返回 null
+    console.log(persons.getDynamicView('teen'));
+
+    // teensView 引用 动态视图
+    console.log(teensView.data());
+</script>
+</html>

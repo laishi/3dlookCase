@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result兑现 限制 limit</title>
+    <script src="../../../bower_components/lokijs/src/lokijs.js"></script>
+    <script src="../model/Model.Person.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    var db =  new loki('testDB');
+    db.loadDatabase({  });
+
+    // 获得集合
+    var persons = db.getCollection('persons');
+    var rs =    persons.chain();
+
+    // 设置最尾 的 对象 的名称 为 liyl
+    persons.data[persons.data.length - 1].name = 'liyl';
+
+    // 设置返回的数据的长度
+    // 0 表示不限制
+    console.log(rs.limit(0).data());
+
+    // -1 表示  限制 length + -1 个
+    console.log(rs.limit(-1).data());
+
+    // 如果 数字与length之和 为 非正数 表示不限制
+    console.log(rs.limit(-5).data());
+
+    // 如果 为正数 则 输出限制上的个数
+    console.log(rs.limit(4).data());
+
+
+    // offset limit
+    // 获取从下标 为 4开始 1个数据
+    console.log(rs.offset(4).limit(1).data());
+</script>
+</html>

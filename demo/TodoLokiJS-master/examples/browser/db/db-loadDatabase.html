@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>读取本地数据,转换为本地数据库</title>
+    <script src="../../../bower_components/lokijs/build/lokijs.min.js"></script>
+    <script src="../model/Model.Person.js"></script>
+</head>
+<body>
+</body>
+<script>
+
+    // 1. 以关键字作为 存储本地的key
+var db = new loki('testDB');
+
+
+    // 2. 读取数据库  options  callback
+db.loadDatabase({
+    persons :{
+        proto: Person,
+        inflate: function (src, dst) {
+            dst.name = src.name;
+            dst.age  = src.age;
+        }
+    }
+
+},function(){
+
+    // 3. 获取数据库存储的 persons集合
+    var persons =  db.getCollection('persons');
+
+    // 4. 输出persons
+    console.log(persons);
+
+});
+</script>
+
+</html>

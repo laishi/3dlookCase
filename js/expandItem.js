@@ -56,13 +56,9 @@ $(document).ready(function() {
         if ($(this).hasClass("filterInput")) {
 
 
-            getLayoutIcon = $(this).siblings("#ChangeLayout").html();
-            $(this).siblings("#ChangeLayout").children().remove();
-            $(this).siblings("#ChangeLayout").append("<i class='fa fa-search' aria-hidden='true'></i>");
-
 
             TweenMax.to($(this), 0.8, {
-                width: 80 + '%'
+                width: 100 -(100 / filterItemL) + '%'
             });
 
             TweenMax.to($(this).siblings(), 0.8, {
@@ -82,44 +78,16 @@ $(document).ready(function() {
             // $(".filterAll").children("h3").css("color","#CB0027");
 
             TweenMax.to($(this).siblings().first(), 0.8, {
-                width: 20 + '%'
+                width: 100 / filterItemL + '%'
             })
 
 
-        } else {
-
-
-
-
-            TweenMax.to($(this), 0.8, {
-                width: expandW + '%'
-            });
-            TweenMax.to($(this).siblings(), 0.8, {
-                width: (100 - expandW) / (filterItemL - 1) + '%'
-            })            
-        }
-
+        } 
 
 
     }
 
     function out() {
-
-
-
-
-        if ($(this).hasClass("filterInput")) {
-
-            $(this).siblings("#ChangeLayout").children().remove();
-            $(this).siblings("#ChangeLayout").append(getLayoutIcon);
-
-        }
-
-
-
-
-
-
 
 
         $("ChangeLayout").html("显示全部");

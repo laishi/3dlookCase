@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>集合添加一个数据</title>
+    <title>lokiJS 集合 </title>
+    <script src="../../../../bower_components/lokijs/build/lokijs.min.js"></script>
+    <script src="../../model/Model.Person.js"></script>
+</head>
+<body>
+
+</body>
+<script>
+    var db = new loki('testDB'),
+        person = new Person();
+
+    db.loadDatabase({ persons : { proto : Person,
+        inflate : Person.create} });
+    var persons = db.getCollection('persons');
+/*
+    添加对象至集合中
+    person.init({name : 'test', age:19});
+    persons.insert(person);
+*/
+    db.saveDatabase();
+    console.log(persons);
+
+</script>
+</html>

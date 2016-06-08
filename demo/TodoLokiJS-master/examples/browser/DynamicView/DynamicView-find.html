@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态视图-查找find</title>
+    <script src="../../../bower_components/lokijs/src/lokijs.js"></script>
+    <script src="../model/Model.Person.js"></script>
+</head>
+<body>
+
+</body>
+
+<script>
+    var db =  new loki('testDB');
+    db.loadDatabase({  });
+
+    // 获得集合
+    var persons = db.getCollection('persons');
+
+    // 添加一个 集合成员
+    persons.insert({ name : 'teen' , age :15});
+
+    // 创建动态视图 名称为  teen 使用 applyFind 操作获取 集合所有数据
+    var teensView = persons.addDynamicView('teen');
+
+    // 获取 年龄大于 18 的 数据
+    teensView.applyFind({'age':{ '$gt' : 18 }});
+
+    // 数组格式
+    console.log(teensView.data());
+
+    // 在年龄为 18的基础上  获取 名称 为 teen 的 数据
+    var func = function(obj){
+
+        if(obj.name =="teen"){
+            return true;
+        }
+        return false;
+    };
+
+    // applyWhere
+    // 通过函数进行筛选
+    // return true  成功 return false 失败
+    teensView.applyWhere(func);
+    console.log(teensView.data());
+
+</script>
+</html>

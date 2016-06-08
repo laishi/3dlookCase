@@ -12,7 +12,6 @@ function slinkyPage() {
         return top;
     }
 
-    console.log(top)
 
 
 

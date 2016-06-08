@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lokiJS 集合 </title>
+    <script src="../../../../bower_components/lokijs/build/lokijs.min.js"></script>
+</head>
+<body>
+1. 学习LokiJS如何进行操作集合
+2. 学习clone选项的使用
+</body>
+<script>
+
+    // 1. 创建或打开一个数据库
+    var db = new loki('testDB');
+
+    // 2. 添加一个 users 集合 clone只在 addCollection 有用
+    var users = db.addCollection("users",{
+
+        // 添加在集合的数据都会通过克隆 因此修改原引用数据不影响集合内部的数据  不适用于 getCollection
+         clone : true
+    });
+
+    // 3. 创建一个原始基本数据
+    var user = { name : 'liyl'};
+
+    // 4. 插入数据在 users 集合中
+    users.insert(user);
+
+    // 5. 修改原始基本数据
+    user.name = 'abc';
+
+    // 6.  查看集合中第一个数据的名称 结果并没有改变为 abc
+    console.log(users.data[0].name);
+</script>
+
+</html>
