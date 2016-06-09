@@ -20,18 +20,36 @@
 
 
 
+    // $(".itemImg").on("click",function(){
 
-$(".itemImg").click(function () {
+    //     var item = $(this);
+    //     openDetail(item);
+    //     console.log( item);
 
-    // titleUrl = $(this).parents(".item").find(".itemTitle").text();
-    var item = $(this);
-    openDetail(item);
+    // });
 
-});
+
+
+// $('.item').on('click','.itemImg', function(){
+//     console.log('you clicked me');
+// });
+
+
+
+
+
+
+
+
 
 
 $(".barInfo").click(openInfo);
 $(".backCicle").click(closeDetail);
+
+
+
+
+
 
 
  // = that.parents(".item").find(".itemTitle").text()
@@ -178,7 +196,7 @@ function openDetail(item) {
 
 function closeDetail() {
 
-    $(window).scrollTop(0);
+    // $(window).scrollTop(0);
 
     $(".gridItems").css({"display":"block"});
 

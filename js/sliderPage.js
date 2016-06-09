@@ -176,6 +176,7 @@ function mixConf() {
         callbacks: {
             onMixStart: function(state, futureState){
 
+
                 if (layout == 'list') {
 
                     if ($(".itemTotal").hasClass("repos")) {
@@ -189,21 +190,8 @@ function mixConf() {
             },
 
 
-
-
             onMixEnd: function(state){
 
-                $(window).scroll(function() {
-                   
-
-                    $(".mixItem").each(function (index,elem) {
-
-                        var gridH = $(elem).position().top ;
-
-                    })
-
-                    var winH = $(window).innerHeight();
-                });
             }   
 
 

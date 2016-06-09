@@ -108,7 +108,7 @@
                     <div class="item scrollItem">
 
 
-                        <div v-link="'/detail/' + 'work'" class="itemImg">
+                        <div v-on:click="ImgOpen" v-link="'/detail/' + 'work'" class="itemImg">
                             <div class="gridImg workImg">
                                 <img v-bind:src="data.image" />                                
                             </div>
@@ -199,10 +199,10 @@
 
                 <template v-for="data in blog" >
 
-                    <div class="{{data.name}} item mix mixItem mdl-js-button  mdl-js-ripple-effect">
+                    <div class="item mix mixItem mdl-js-button  mdl-js-ripple-effect">
 
 
-                        <div v-link="'/detail/' + 'blog'" class="itemImg">
+                        <div v-on:click="ImgOpen" v-link="'/detail/' + 'blog'" class="itemImg">
                             <div class="gridImg blogImg">
                                 <img v-bind:src="data.image" />                                
                             </div>
@@ -374,7 +374,7 @@
 <script src="js/scrollgrid.js"></script>
 
 
-<script src="js/rd-smoothscroll.min.js"></script>
+<!-- <script src="js/rd-smoothscroll.min.js"></script> -->
 
 <script src="js/myjs.js"></script>
 
