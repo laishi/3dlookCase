@@ -1,6 +1,5 @@
 function slinkyPage() {
 
-
     function getTop(element) {
         var top = 0;
 
@@ -11,8 +10,6 @@ function slinkyPage() {
 
         return top;
     }
-
-
 
 
     function smoothScroll(top) {
@@ -31,13 +28,6 @@ function slinkyPage() {
             window.requestAnimationFrame(scroll);
         }
     }
-
-
-
-
-
-
-
 
     function initSections(section, i) {
         if (section.el) {
@@ -71,15 +61,6 @@ function slinkyPage() {
             fixed: false
         };
     }
-
-
-
-
-
-
-
-
-
 
 
     function scrollHandlerInner(section, top) {
@@ -131,12 +112,6 @@ function slinkyPage() {
             });
         }
     }
-
-
-
-
-
-
 
     function initGlobal() {
         windowHeight = window.innerHeight;

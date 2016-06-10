@@ -24,7 +24,7 @@ $(document).ready(function() {
 
         var detailTitleT = $(".detailTitle").offset().top - $(window).scrollTop();
 
-        if (detailTitleT < 0) {
+        if (detailTitleT < 10) {
 
             var title = $.trim($(".detailTitle").html());
             var tag   = $("header").find(".tagTip").html();

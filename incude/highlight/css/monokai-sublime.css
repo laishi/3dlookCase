@@ -15,6 +15,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
 .hljs-tag,
 .hljs-subst {
   color: #f8f8f2;
+  font-size: 14px;
 }
 
 .hljs-strong,

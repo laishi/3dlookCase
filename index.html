@@ -103,12 +103,12 @@
 
             <div class="gridItems w80">
 
-                <template v-for="data in works" >
+                <template v-for="data in work" id="workVUE">
 
                     <div class="item scrollItem">
 
 
-                        <div v-on:click="ImgOpen" v-link="'/detail/' + 'work'" class="itemImg">
+                        <div v-link="'/detail/' + 'work'" class="itemImg">
                             <div class="gridImg workImg">
                                 <img v-bind:src="data.image" />                                
                             </div>
@@ -123,7 +123,7 @@
 
                                 <ul class="tagName">
                                     <li class="tagTip"><h3> 标签: </h3> </li>
-                                    <li><h3 class="pageName"> {{data.name}} </h3> </li>
+                                    <li><h3 class="pageName"> {{data.useClass}} </h3> </li>
                                     <li><h3> {{data.tag}} </h3> </li>
                                 </ul>
 
@@ -148,7 +148,7 @@
                             </li>
 
                             <li class="barItem">
-                                <dir> <a class="moreLink" v-bind:href="data.url"> <h3> 3D </h3> </a> </dir>
+                                <dir> <a class="moreLink" v-bind:href="data.link3d"> <h3> 3D </h3> </a> </dir>
                             </li>
 
                             <li class="barItem barInfo">
@@ -170,6 +170,7 @@
             </div>
         </div>
 
+        
 
         <!-- pageBlog========================================================================================================== -->
 
@@ -178,7 +179,6 @@
 
             <div class="blogFilter"> 
                 <ul>
-                    <!-- <li id="ChangeLayout"> <button >Grid</button> </li> -->
                     <li id="ChangeLayout" class="filterItem" data-filter="all"> <i class="fa fa-list" aria-hidden="true"></i> </li>
                     <li class="filterItem filter filterAll" data-filter="all"> <h3> 显示全部 </h3> </li>
                     <li class="filterItem filter" data-filter=".threeJS"> <h3> ThreeJS</h3> </li>
@@ -193,16 +193,14 @@
             </div>
 
 
-            <button v-on:click="updateItem">updateItem</button>
-
             <div class="gridItems blogMix w80">
 
-                <template v-for="data in blog" >
+                <template v-for="data in blog">
 
-                    <div class="item mix mixItem mdl-js-button  mdl-js-ripple-effect">
+                    <div class="{{data.useClass}} item mix mixItem mdl-js-button  mdl-js-ripple-effect">
 
 
-                        <div v-on:click="ImgOpen" v-link="'/detail/' + 'blog'" class="itemImg">
+                        <div v-link="'/detail/' + 'blog'" class="itemImg">
                             <div class="gridImg blogImg">
                                 <img v-bind:src="data.image" />                                
                             </div>
@@ -224,7 +222,6 @@
                                 <h3>{{data.title}}</h3>
                             </div>
 
-
                             <div class="itemDes">
                                 <p> {{data.summary}} </p>
                             </div>
@@ -235,7 +232,7 @@
 
                                     <ul class="tagName">
                                         <li class="tagTip"><h3> 标签: </h3> </li>
-                                        <li><h3 class="pageName"> {{data.title}} </h3> </li>
+                                        <li><h3 class="pageName"> {{data.useClass}} </h3> </li>
                                         <li><h3> {{data.tag}} </h3> </li>
                                     </ul>
 
@@ -290,15 +287,42 @@
 
         <div class="gridFull page about">
 
-
             <div class="w80">
-                <h1>about</h1>
 
 
-<p data-height="500" data-theme-id="0" data-slug-hash="EyVgpK" data-default-tab="css,result" data-user="koenigsegg1" data-embed-version="2" class="codepen">See the Pen <a href="http://codepen.io/koenigsegg1/pen/EyVgpK/">Flexbox Google Play Music Website</a> by Kyle Lavery (<a href="http://codepen.io/koenigsegg1">@koenigsegg1</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+                <div class="item">
 
 
+                    <div class="aboutItem">
+                        <div class="aboutImg">
+                            <img src="img/logo/3dlogo.png">
+
+                        </div>
+                            <h3>about me</h3>
+                    </div>
+
+                    <h3>技能:</h3>
+
+                    <div>
+                        <p> <h5>3D</h5> Maya/Blender/Houdini</p>
+                        <p> <h5>2D</h5> Gimp/PS/AI/Inkscape</p>
+                        <p> <h5>IT</h5> HTML5 CSS JS WEBGL NodeJS</p>
+                    </div>
+
+                    <h3>擅长领域:</h3>
+
+                    <div>
+                        <h5>三维交互设计/灯光设计</h5>
+                        <p>三维模型/网站开发/3D网站应用/交互设计</p>
+                    </div>
+
+                    <h3>研究方向:</h3>
+
+                    <div>
+                        <p>三维可视化交互/虚拟实现/3D产品展示</p>
+                    </div>
+
+                </div>
                 
             </div>
         </div>
@@ -313,9 +337,30 @@
 
         <div class="gridFull page contact">
 
-
             <div class="w80">
-                <h1>contact 13640566324</h1>
+
+
+                <div class="item">
+
+
+                    <div class="aboutItem">
+                        <div class="aboutImg">
+                            <img src="img/logo/3dlogo.png">
+
+                        </div>
+                            <h3>CONTACT ME</h3>
+                    </div>
+
+                    <h3>QQ:</h3>
+                    <p> 504677424 </p>
+
+                    <h3>phone:</h3>
+                    <p> 13640566324 </p>
+
+                    <h3>ADD:</h3>
+                    <p> CHONGQING </p>                    
+
+                </div>
                 
             </div>
 

@@ -67,9 +67,9 @@ $(".navItem").click(function() {
 
     $(".work .gridItems").css({"height":0, "overflow": "hidden"})
 
-    // if (pageData === "blog") {
-    //     mixConf();
-    // }
+    if (pageData === "blog") {
+        mixConf();
+    }
 
 });
 
@@ -168,6 +168,28 @@ function sliderPage(pageName,index) {
 
 function mixConf() {
 
+
+
+
+
+    // $('.mixItem').each(function (index,item) {
+    //     // console.log(index)
+    //     // console.log($(item).index());
+
+    //     if ($(item).index()>3) {
+
+    //         $(item).addClass("markMix");
+
+    //     } else {}
+
+    // });
+
+
+    $(".markMix").siblings().css({"opacity":0})
+
+
+
+
     var layout = 'grid',
         $container = $('.blogMix'),
         $changeLayout = $('#ChangeLayout');
@@ -197,11 +219,11 @@ function mixConf() {
 
 
         },
-        animation: {
-            animateChangeLayout: true,
-            animateResizeTargets: true,
-            effects: 'fade scale '
-        },
+        // animation: {
+        //     // animateChangeLayout: true,
+        //     animateResizeTargets: true,
+        //     // effects: 'fade scale '
+        // },
         layout: {
             containerClass: 'grid'
         }

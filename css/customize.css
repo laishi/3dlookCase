@@ -262,6 +262,20 @@ header h1 {
     width: 100%;
 }
 
+.aboutItem .aboutImg {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.aboutItem h3{
+    text-align: center;
+}
+
+
+.itemImg .aboutImg img{
+    width: 128px;
+}
+
 
 
 
@@ -434,11 +448,21 @@ article .title{
 }
 
 
-.titleCont img{
-    width: 100%;
+.titleCont {
+    padding: 0px;
+    
 }
 
+.titleCont img{
+    width: 520px;
+    margin: 20px 0;
+    margin-left: 200px;
+}
 
+section p {
+
+    text-indent: 2em;
+}
 
 section:nth-child(1) h1,
 section:nth-child(2) h1{
@@ -464,7 +488,7 @@ section h1 {
     height: 42px;
     width: 960px;
     color: #ccc;
-    font-weight: 600;
+    font-size: 14px;
     box-sizing: border-box;
     margin: 0;
     padding-left: 1em;
@@ -616,7 +640,13 @@ input[type="text"]:focus {
 
 .gridItems .mixItem{
 
-    /*display: none;*/
+    display: none;
+
+}
+
+.gridItems .markMix{
+
+    display: none;
 
 }
 

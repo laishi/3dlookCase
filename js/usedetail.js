@@ -18,15 +18,21 @@
 
 // });
 
+var getSrollPos;
+
+$(".itemImg").on("click",function(){
+
+    var item = $(this);
+    openDetail(item);
 
 
-    // $(".itemImg").on("click",function(){
+    getSrollPos = $(window).scrollTop();
 
-    //     var item = $(this);
-    //     openDetail(item);
-    //     console.log( item);
+    console.log(getSrollPos)
 
-    // });
+
+
+});
 
 
 
@@ -44,6 +50,7 @@
 
 
 $(".barInfo").click(openInfo);
+
 $(".backCicle").click(closeDetail);
 
 
@@ -159,7 +166,6 @@ function openDetail(item) {
             hljs.highlightBlock(block);
         });
 
-
     });
 
 
@@ -174,9 +180,6 @@ function openDetail(item) {
 
 
 
-
-
-
     //NAV MENU    
     TweenMax.fromTo($(".navGrid"), 0.3, { y: 0, opacity: 1 }, { y: 60, opacity: 0 });
     //HEADER IMG
@@ -185,18 +188,11 @@ function openDetail(item) {
     TweenMax.fromTo($("header").find("ul"), 1.2, { opacity: 0 }, { opacity: 1, delay: 1.2 });
 
 
-
-
-
-
-   // 
-
-
 }
 
 function closeDetail() {
 
-    // $(window).scrollTop(0);
+    $(window).scrollTop(getSrollPos);
 
     $(".gridItems").css({"display":"block"});
 
