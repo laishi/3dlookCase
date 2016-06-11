@@ -5,13 +5,42 @@ var HtmlFormat = ".html"
 
 
 
+
+//GET FLODER NAME
+
+var workNames = [];
+
+var workTitleImg = "img/workImg/titleImg";
+var fileextension = ".png";
+$.ajax({
+    url: workTitleImg,
+    async: false,
+    success: function (data) {
+        $(data).find("a:contains(" + fileextension + ")").each(function (index,item) {            
+            var CurURL = this.href.replace(window.location.host, "").replace("http:///", "");
+
+            var urlSplit   = CurURL.split("/");
+            var urlLenght  = urlSplit.length;
+            var curUrlName = urlSplit[urlLenght-1].replace(/\.png/, '');
+            workNames.push(curUrlName);
+
+            // console.log(curUrlName.replace(/\.png/, ''))
+
+        });
+
+    }
+});
+
+
+
+
 //  WORK
 
 var db = new loki('workDB.json');
 var workCol = db.addCollection('workCol');
 
 
-var workNames = ["webgl", "x50", "glmg", "ring", "iwatch", "moto", "edge", "i8", "nike", "shave", "house"];
+
 var workWebglFolder = "assets/webgl/";
 var workHtmlFolder = "pages/work/";
 var workImgFolder = "img/workImg/";
