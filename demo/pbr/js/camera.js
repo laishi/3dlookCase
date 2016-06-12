@@ -10,22 +10,19 @@ pc.script.create("camera", function (context) {
         this.viewPos = new pc.Vec3();
         this.targetViewPos = new pc.Vec3();
         this.tempVec = new pc.Vec3();
-
         this.distance = 3;
         this.targetDistance = 3;
-
         this.rotX = -180;
         this.rotY = 0;
         this.targetRotX = -40;
         this.targetRotY = 30;
         this.quatX = new pc.Quat();
         this.quatY = new pc.Quat();
-
         this.transformStarted = false;
 
         // Disabling the context menu stops the browser disabling a menu when 
         // you right-click the page
-        context.mouse.disableContextMenu();
+        // context.mouse.disableContextMenu();
     };
 
     Camera.prototype = {
@@ -188,7 +185,7 @@ pc.script.create("camera", function (context) {
 
         onMouseWheel: function (event) {
             event.event.preventDefault();
-            this.dolly(event.wheel * -0.25);
+            this.dolly(event.wheel * -0.3);
         },
 
         onMouseMove: function (event) {
