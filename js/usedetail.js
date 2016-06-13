@@ -168,16 +168,10 @@ function openDetail(item) {
 
     });
 
-
-
-
     // ADD IMG GO TO 3D LOOK
     $("header").find("img").wrap($('<a>', {
         href: getLink
     }));
-
-
-
 
 
     //NAV MENU    
@@ -294,7 +288,7 @@ function openInfo() {
         } else {
 
             $(this).children().toggleClass("barToggle");
-
+            $(this).parent().siblings(".info").css("display", "none");
             TweenMax.to(getImg, 0.3, { y: "0%", delay: 0.0 });
             TweenMax.to(getItemTitle, 0.3, { y: "0%", delay: 0.0 });
             TweenMax.to(getItemDes, 0.3, { y: "0%", delay: 0.0 });

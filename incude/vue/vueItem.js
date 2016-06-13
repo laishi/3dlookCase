@@ -37,7 +37,7 @@ var db = new loki('workDB.json');
 var workCol = db.addCollection('workCol');
 
 
-var workNames = ["webgl", "x50", "glmg", "ring", "iwatch", "moto", "edge", "i8", "nike", "shave", "house"];
+var workNames = ["x50", "glmg", "ring", "iwatch", "moto", "edge", "i8", "nike", "shave", "house"];
 var workWebglFolder = "assets/webgl/";
 var workHtmlFolder = "pages/work/";
 var workImgFolder = "img/workImg/";
@@ -84,16 +84,13 @@ $.each(workNames, function(index, title) {
 
 })
 
-
-
-
 //  BLOG
 
 var db = new loki('blogDB.json');
 var blogCol = db.addCollection('blogCol');
 
 
-var blogNames = ["waveLoader", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "16", "17", "18", "blend4web", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS", ];
+var blogNames = ["waveLoader", "playcanvas-pbr", "blend4web", "playCanvas", "threeJS", "webglFramework", "pbr", "lokiJS", ];
 var blogHtmlFolder = "pages/blog/";
 var blogImgFolder = "img/blogImg/";
 

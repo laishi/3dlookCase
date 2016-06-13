@@ -97,16 +97,9 @@ function initialize() {
 
     app.start();
 
-
-
     app.setCanvasFillMode(pc.FILLMODE_FILL_WINDOW);
     app.setCanvasResolution(pc.RESOLUTION_AUTO);
-
     app.scene.ambientLight = new pc.Color(0.2, 0.2, 0.2);
-
-
-
-
 
 
     for (var mip = 0; mip < 6; mip++) {
@@ -141,13 +134,13 @@ function initialize() {
 
     app.scene.skybox = cubeMaps[0];
     app.scene.toneMapping = pc.TONEMAP_FILMIC;
-    app.scene.exposure = 5;
+    app.scene.exposure = 10;
 
     // camera
 
     var camera = new pc.Entity();
     camera.addComponent("camera", {
-        clearColor: new pc.Color(0.5, 0.5, 0.8),
+        clearColor: new pc.Color(0.5, 0.2, 0.2,0.0),
         nearClip: 0.3,
         farClip: 30
     });
@@ -160,6 +153,7 @@ function initialize() {
 
         ]
     })
+    
     app.root.addChild(camera);
 
     camera.translate(0, 0, 2);
@@ -182,7 +176,7 @@ function initialize() {
 
 
 
-    var loadFilename = "obj/shave.json";
+    var loadFilename = "obj/shaveblender.json";
 
     // var cubeModel;
 
@@ -199,7 +193,6 @@ function initialize() {
         cubeModel.model.model = asset.resource;
         app.root.addChild(cubeModel);
 
-        cubeModel.setLocalScale(0.5,0.5,0.5)
 
 
         console.log(cubeModel.model.material)

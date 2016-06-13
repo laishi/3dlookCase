@@ -1,9 +1,10 @@
 var csspath = [
 "../../incude/fontAwesome/css/font-awesome.min.css",
 "../../incude/slinky/css/slinky.css",
+"../../incude/mixitup/css/mixitup.css",
 "../../incude/highlight/css/default.css",
 "../../incude/stickyHeader/css/header.css",
-"../common/css/pages.css"
+"../../css/pages.css"
 ]
 
 
@@ -12,8 +13,10 @@ var jspath = [
 "../../js/rd-smoothscroll.min.js",
 "../../incude/greensock/TweenMax.min.js",
 "../../incude/highlight/js/highlight.pack.js",
+]
+
+var slinkyJS = [
 "../../incude/slinky/js/slinky.js",
-// "../../js/pages.js"
 ]
 
 
@@ -28,6 +31,7 @@ for (var i = 0; i < jspath.length; i++) {
 
     loadjscssfile(jspath[i], "js", "head");
 };
+
 
 
 
@@ -55,7 +59,6 @@ function loadjscssfile(filename, filetype, pos) {
 }
 
 
-
 window.onload = function() {
 
     $('pre code')
@@ -63,26 +66,25 @@ window.onload = function() {
         hljs.highlightBlock(block);
     });
 
-    var winTop = 0;
+    
+    // FIX IMG PATH
+    var findImg = $("body").find("img");
 
-    $(window).scroll(function() {
+     findImg.each(function(index,img){
 
-        winTop = $(window).scrollTop();
+        var sourPath = $(img).attr('src');
 
-        if (winTop >= 100) {
+        var fixPath = "../../" + sourPath;
 
-            TweenMax.to($("header"), 0.3, {height: 60,}, 0.1);
 
-            TweenMax.to($("header").find(".gridImg"), 0.3, { scale: 0 } );
-            TweenMax.to($("header").find(".tagTitle"), 0.3, { y: -260 } );
+        $(img).attr("src",fixPath);  
+      });
 
-        } else {
+    for (var i = 0; i < slinkyJS.length; i++) {  
 
-            TweenMax.to($("header").find(".gridImg"), 0.3, { scale: 1 } );
+        loadjscssfile(slinkyJS[i], "js", "head");
+    };
 
-            TweenMax.to($("header"), 0.3, { height: 320, }, 0.1);
-            TweenMax.to($("header").find(".tagTitle"), 0.3, { y: 0 } );
-        }
-    });   
+
 } 
 

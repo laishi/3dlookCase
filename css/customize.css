@@ -12,6 +12,8 @@ ul li img h3{
     padding: 0;
     list-style-type: none;
 }
+
+
 img{
     vertical-align:top;
 }
@@ -133,10 +135,17 @@ header h1 {
 }
 
 
-.itemDetail h1{
-    color: #ccc;
-    
-}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -363,16 +372,6 @@ header h1 {
 
 
 
-
-
-
-
-
-
-
-
-
-
 .detailTitle{
     position: relative;
     top: 110px;
@@ -380,18 +379,7 @@ header h1 {
     line-height: 100px;
     text-align: center;
     margin: 0 auto;
-    /* background: #0E288A; */
-    /* color: #ccc; */
-    z-index: 1;
-}
-
-
-
-
-article .title{
-
-    /*margin-top: 60px;*/
-
+    z-index: 2;
 }
 
 
@@ -453,16 +441,9 @@ article .title{
     
 }
 
-.titleCont img{
-    width: 520px;
-    margin: 20px 0;
-    margin-left: 200px;
-}
 
-section p {
 
-    text-indent: 2em;
-}
+
 
 section:nth-child(1) h1,
 section:nth-child(2) h1{
@@ -699,19 +680,7 @@ input[type="text"]:focus {
 
 
 
-.detailDes .titleCont p {
-    font-size: 14px;
-    line-height: 28px;
-    margin: 20px 0;
-}
 
-
-.detailDes .titleCont h3 {
-    font-size: 16px;
-    margin: 10px 0;
-    margin-left: 20px;
-    /*color: #10AA5F*/
-}
 
 
 .gridItems .infoClose{
@@ -845,20 +814,6 @@ input[type="text"]:focus {
   max-height: 200vh;
   /*overflow: hidden;*/
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
