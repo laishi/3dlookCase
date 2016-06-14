@@ -647,7 +647,7 @@ input[type="text"]:focus {
 .mixItem .itemDes{
 
     padding: 0 10px 0 10px;
-    height: 85px;
+    height: 60px;
     overflow: hidden;
     text-align: justify;
     display: none;
