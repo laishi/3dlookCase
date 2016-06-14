@@ -30,7 +30,7 @@ $(window).on('hashchange', function(e){
     sliderPage(curUrlName, -1);
 
     if (oldUrlName == "detail") {
-        
+
         closeDetail();
     }
 
@@ -47,7 +47,7 @@ $(window).on('hashchange', function(e){
 
 
 
-
+var firstBlog = 1;
 $(".navItem").click(function() {
 
     var pageData = $(this).data("page");
@@ -57,42 +57,16 @@ $(".navItem").click(function() {
 
     CURPAGE = curPage;
 
-
-
-    
     sliderPage(pageData,index);
 
+    $(".work .gridItems").css({"height":0, "overflow": "hidden"});
 
-
-
-    $(".work .gridItems").css({"height":0, "overflow": "hidden"})
-
-    if (pageData === "blog") {
+    if (pageData === "blog" && firstBlog == 1) {
         mixConf();
+        firstBlog = 0;
     }
 
 });
-
-
-
-
-
-
-
-
-
-// function ChangeUrl(page, url) {
-//     if (typeof(history.pushState) != "undefined") {
-//         var obj = { Page: page, Url: url };
-//         history.pushState(obj, obj.Page, obj.Url);
-//     } else {
-//         window.location.href = "homePage";
-//     }
-// }
-
-// ChangeUrl(pageData, pageData);
-
-
 
 
 
@@ -168,62 +142,49 @@ function sliderPage(pageName,index) {
 
 function mixConf() {
 
-
-
-
-
-    // $('.mixItem').each(function (index,item) {
-    //     // console.log(index)
-    //     // console.log($(item).index());
-
-    //     if ($(item).index()>3) {
-
-    //         $(item).addClass("markMix");
-
-    //     } else {}
-
-    // });
-
-
     $(".markMix").siblings().css({"opacity":0})
-
-
-
 
     var layout = 'grid',
         $container = $('.blogMix'),
         $changeLayout = $('#ChangeLayout');
 
+        var imgWidth = 0;
+
     $container.mixItUp({
         callbacks: {
             onMixStart: function(state, futureState){
 
+              console.log(imgWidth);
 
                 if (layout == 'list') {
 
+                    if (imgWidth > 0) {
+                        $(".blogImg").find("img").css({"width":imgWidth});
+                    }
                     if ($(".itemTotal").hasClass("repos")) {
 
-
                     } else {
-
                         $(".itemTotal").addClass("repos");
+
+
                     }
                 }
             },
 
-
             onMixEnd: function(state){
 
-            }   
+                imgWidth = $(".blogImg").width();
+
+            }
 
 
 
         },
-        // animation: {
-        //     // animateChangeLayout: true,
-        //     animateResizeTargets: true,
-        //     // effects: 'fade scale '
-        // },
+        animation: {
+            animateChangeLayout: true,
+            animateResizeTargets: true,
+            // effects: 'fade scale '
+        },
         layout: {
             containerClass: 'grid'
         }
@@ -238,8 +199,9 @@ function mixConf() {
             $(".itemTotal").toggleClass("repos");
             $(".blogImg").toggleClass("img320");
 
-            layout = 'grid';    
-            $changeLayout.text('List');
+            layout = 'grid';
+            $(".itemDes").css({"display":"none"});
+            $changeLayout.html("<i class='fa fa-bars' aria-hidden='true'></i>");
             $container.mixItUp('changeLayout', {
                 containerClass: layout
             });
@@ -252,7 +214,9 @@ function mixConf() {
 
             layout = 'list';
 
-            $changeLayout.text('Grid');
+            $(".itemDes").css({"display":"block"});
+
+            $changeLayout.html("<i class='fa fa-th' aria-hidden='true'></i>");
             $container.mixItUp('changeLayout', {
                 containerClass: layout
             });

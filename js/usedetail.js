@@ -1,62 +1,15 @@
 
-
-// $(window).bind("popstate", function() {
-
-
-//     var origUrl = window.location.href;
-
-//     var urlSplit = origUrl.split("/");
-//     var urlLenght = urlSplit.length;
-
-//     var curUrl = urlSplit[urlLenght-1];
- 
-//     if (curUrl === detailUrl) {
-        
-//     } else {
-//         closeDetail;
-//     }
-
-// });
-
 var getSrollPos;
 
 $(".itemImg").on("click",function(){
-
     var item = $(this);
     openDetail(item);
-
-
     getSrollPos = $(window).scrollTop();
-
-    console.log(getSrollPos)
-
-
-
 });
 
 
-
-// $('.item').on('click','.itemImg', function(){
-//     console.log('you clicked me');
-// });
-
-
-
-
-
-
-
-
-
-
 $(".barInfo").click(openInfo);
-
 $(".backCicle").click(closeDetail);
-
-
-
-
-
 
 
  // = that.parents(".item").find(".itemTitle").text()
@@ -66,11 +19,8 @@ var headereyes = $(".headerCont").html();
 function openDetail(item) {
 
     var that = item;
-
     $("header").addClass("fixHeader");
 
-
-    
     $(".blogFilter").css({"display":"none"});
 
     if (that.parents(".page").hasClass("work")) {
@@ -81,17 +31,14 @@ function openDetail(item) {
 
     if (that.parents(".page").hasClass("blog")) {
         $(".btnCicle").css({"display":"block","opacity":0});
-        $(".backWork").css({"display":"none","opacity":0});        
+        $(".backWork").css({"display":"none","opacity":0});
         $(".btnCicleMore").find("h3").text("GO");
     }
-
-
-
 
     TweenMax.fromTo($(".item"), 0.3, { scale: 1}, { scale: 0, onComplete: gototop});
     $(".headerCont").children().remove();
 
-   
+
     //GET ITEM DATA
     var getHeaderCont = $(".headerCont").html();
 
@@ -101,40 +48,18 @@ function openDetail(item) {
     var getDes        = that.parents(".item").find(".itemDes").html();
     var getAdditional = that.parents(".item").find(".itemAdditional").html();
 
-
-
     //CHANGE MORE LINK
     getLink = that.parents(".item").find(".moreLink").attr("href");
     if (getLink) {
         $(".btnCicleMore").attr("href", getLink);
     }
 
-            
-
-
-
-
-    // $( "section" ).before( insertSec );
-
-
-
-    // console.log(insertSec)
-
-
-
-    
-
     $(".headerCont").append(getImg);
     $(".headerCont").append(getTag);
     $(".detailTitle").append(getTitle);
     $(".detailAdditional").append(getAdditional);
 
-    
-
-
-
     var iframego = "<iframe src= " + getLink + " " + "frameBorder=0 scrolling=no width='100%' height='100%'></iframe>"
-
 
     //USE PAGES DATA
 
@@ -151,9 +76,9 @@ function openDetail(item) {
     var pageLoad = pagePath + pageName + pageFormat + " ." + pageName;
 
 
-    
+
     $(".detailDes").load(pageLoad,function (argument) {
-        
+
         console.log("loaddata");
 
         $( "article" ).prepend(
@@ -174,7 +99,7 @@ function openDetail(item) {
     }));
 
 
-    //NAV MENU    
+    //NAV MENU
     TweenMax.fromTo($(".navGrid"), 0.3, { y: 0, opacity: 1 }, { y: 60, opacity: 0 });
     //HEADER IMG
     TweenMax.fromTo($("header").find(".gridImg"), 1.2, { y: 320 }, { y: 0, delay: 1, ease: Elastic.easeOut.config(1, 0.75) });
@@ -186,6 +111,20 @@ function openDetail(item) {
 
 function closeDetail() {
 
+
+    var headerEyes = "<iframe src='assets/webgl/webgl/index.html' frameBorder=0 scrolling=no width='100%' height='100%'></iframe>";
+    var headerLogo = "<img src='assets/img/logo/3dlogo.png'>";
+    var header3dlook = " <h1>3dLook</h1>  ";
+
+
+    var headerUse = [];
+    headerUse.push(headerEyes, headerLogo, header3dlook);
+    var useRandom = Math.floor(Math.random()*headerUse.length);
+
+    var headerShow = headerUse[useRandom];
+
+
+
     $(window).scrollTop(getSrollPos);
 
     $(".gridItems").css({"display":"block"});
@@ -196,20 +135,27 @@ function closeDetail() {
     $(".infoMax").css("display","none");
     $(".btnCicle").css("display","none");
 
+
     $(".headerCont").children().remove();
     TweenMax.fromTo($(".infoMax"), 0.3, { opacity: 1}, { opacity: 0});
 
-    $(".headerCont").append(headereyes);
 
-
-    //NAV MENU    
+    //NAV MENU
     TweenMax.fromTo($(".navGrid"), 0.3, { y: 60, opacity: 0 }, { y: 0, opacity: 1 });
 
     $(".itemDetail").children().each(function (index,elem) {
         $(elem).children().remove();
     })
 
-    TweenMax.fromTo($(".item"), 0.3, { scale: 0}, { scale: 1});
+    TweenMax.fromTo($(".item"), 0.3, { scale: 0}, { scale: 1,onComplete:showEyes});
+
+
+    function showEyes() {
+
+      $(".headerCont").append(headerEyes);
+      TweenMax.fromTo($(".headerCont"), 0.3, { opacity: 0 }, { opacity: 1 });
+
+    }
 
 
     // UPDATE IFRAME
@@ -232,12 +178,12 @@ function gototop() {
 
     TweenMax.fromTo($(".infoMax"), 0.3, { opacity: 0}, { opacity: 1});
 
-    $(".infoMax").css("display","block");        
+    $(".infoMax").css("display","block");
     TweenMax.fromTo($(".infoMax"), 1.3, { opacity: 0}, { opacity: 1});
 
     // SET BTN POS
     if ($(window).innerWidth()>1080) {
-        var ld = ((1 - 1080/$(window).innerWidth())/2 - 0.02) *100 + "%" 
+        var ld = ((1 - 1080/$(window).innerWidth())/2 - 0.02) *100 + "%"
     } else {
         var ld = 2 + "%"
     }
@@ -284,7 +230,7 @@ function openInfo() {
             $(this).children().toggleClass("barToggle");
 
             $(this).children().children("i").removeClass("fa-info").addClass("fa-close");
-         
+
         } else {
 
             $(this).children().toggleClass("barToggle");
@@ -293,6 +239,7 @@ function openInfo() {
             TweenMax.to(getItemTitle, 0.3, { y: "0%", delay: 0.0 });
             TweenMax.to(getItemDes, 0.3, { y: "0%", delay: 0.0 });
 
+            $(this).children().children("i").removeClass("fa-close").addClass("fa-info");
             TweenMax.fromTo(getInfo, 0.3, { scale: 1 }, { scale: 0 });
 
         }
@@ -304,11 +251,9 @@ function openInfo() {
 
     if ($(this).parents(".page").hasClass("work")) {
 
-
         if (!$(this).children().hasClass("barToggle")) {
 
             $(this).parent().siblings(".info").css("display", "block");
-            
             TweenMax.to($(this).parent().siblings(".itemImg"), 0.3, { ease: Power1.easeIn, scale: 0, delay: 0.0 });
 
             // console.log($(this).parent().siblings(".itemImg"))
@@ -316,7 +261,7 @@ function openInfo() {
             TweenMax.staggerFromTo($(this).parent().siblings(".info").children(), 0.3, { y: 320 }, { y: 0 }, 0.2);
             TweenMax.staggerFromTo($(this).parent().siblings(".info").children(), 0.3, { opacity: 0 }, { opacity: 1 }, 0.2);
 
-            
+
             $(this).children().children("i").removeClass("fa-info").addClass("fa-close");
 
             //SET INFOCONT DIV HEIGHT
@@ -326,9 +271,9 @@ function openInfo() {
             var infoContH = itemH - titleH - 100;
 
             $(this).parent().siblings(".info").children(".infoCont").css("height", infoContH);
-         
+
             $(this).children().toggleClass("barToggle");
-            
+
         } else {
 
             $(this).children().toggleClass("barToggle");

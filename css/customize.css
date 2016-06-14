@@ -47,7 +47,7 @@ header {
   -o-transition: all 0.5s ease;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;*/
-  
+
   z-index: 100;
   background-image: url(../img/bg/pattern.png);
 
@@ -226,7 +226,7 @@ header h1 {
 .backCicle i{
     width: 100%;
     font-size: 38px;
-    line-height: 60px;            
+    line-height: 60px;
     font-weight: 300;
     text-align: center;
     color: #ccc;
@@ -305,7 +305,7 @@ header h1 {
     display: none;
     z-index: 1;
     /*background-color: #93AC1D;*/
-    
+
 }
 
 .itemDetail{
@@ -330,7 +330,7 @@ header h1 {
 
 .useTitle li{
     display: inline-block;
-    height: 60px;    
+    height: 60px;
 }
 
 
@@ -438,7 +438,7 @@ header h1 {
 
 .titleCont {
     padding: 0px;
-    
+
 }
 
 
@@ -453,7 +453,7 @@ section:nth-child(2) h1{
 
 section h1 .progress {
 
-     background: rgba(255, 255, 255, 0.0); 
+     background: rgba(255, 255, 255, 0.0);
 }
 
 .titleCont{
@@ -514,7 +514,7 @@ section h1 {
     height: 50px;
     min-width: 960px;
     margin-top: 100px;
-    background-color: #333;
+    background-color: #1E9092;
 
     color: #ccc;
     font-size: 18px;
@@ -582,7 +582,7 @@ input[type="text"]:focus {
     position: absolute;
     width: 70%;
     height: 320px;
-    background-color: #33AF92;
+    background-color: #1E9092;
     right: 0;
     top: 0;
 }
@@ -697,7 +697,7 @@ input[type="text"]:focus {
     background-color: #E6003F;
     border-radius: 100%;
     line-height: 25px;
-    text-align: center;    
+    text-align: center;
 }
 
 .infoClose h3{
@@ -878,5 +878,3 @@ input[type="text"]:focus {
     margin: 0;
     padding: 0;
 }
-
-

@@ -80,15 +80,15 @@
 
                     <h3>快速安装：</h3>
                     <pre><code class="javascript">
-npm install lokijs  
+npm install lokijs
 
-bower install lokijs  
+bower install lokijs
                     </code></pre>
 
-                
+
             </section>
 
-            
+
             <section>
                 <div class="title">
                     <h1> 使用lokiJS </h1>
@@ -155,12 +155,12 @@ function bill(name, num) {
             $(".buyCont").children().remove();
 
             count = num * commodityPice;
-    
-            var buyCont = "<h3>请确认你的账单信息：</h3>" + " " + "<h5>你卖的商品是：</h5>" + " " + commodityName + "<h5>价格是：</h5>" + " " + count + "<h3>感谢你的光顾</h3>"         
+
+            var buyCont = "<h3>请确认你的账单信息：</h3>" + " " + "<h5>你卖的商品是：</h5>" + " " + commodityName + "<h5>价格是：</h5>" + " " + count + "<h3>感谢你的光顾</h3>"
 
             $(".buyCont").append(buyCont);
         }
-    } 
+    }
 
 
     if (findCommodity === null) {
@@ -191,15 +191,15 @@ new Vue({
         if (this.message) {
 
             bill(this.message, 10);
-            
+
         }
     }
   }
-  
-})
-                    </code></pre>                   
 
-                
+})
+                    </code></pre>
+
+
             </section>
 
 

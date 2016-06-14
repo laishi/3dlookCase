@@ -100,9 +100,7 @@ $.each(blogNames, function(index, title) {
         async: false,
         success: function(data) {
             title = $(data).filter('title').text();
-            summary = $(data).find('.summary').text().substring(0,125) + "...";
-
-
+            summary = $(data).find('.summary').text().substring(0,200) + "...";
             blogOBJ.title = title;
             blogOBJ.summary = summary;
         }
@@ -151,7 +149,7 @@ var lookVue = new Vue({
 
     computed: {
     },
-    created: function() {        
+    created: function() {
     },
     ready: function() {
     },
@@ -190,26 +188,26 @@ var notFound = Vue.extend({
 })
 
 var workComponent = Vue.extend({
-    template: 
+    template:
             '<h1>Work</h1>' +
             '<router-view></router-view>'
 })
 
 var blogComponent = Vue.extend({
-   template: 
+   template:
             '<h1>Blog</h1>' +
             '<router-view></router-view>'
 })
 
 var aboutComponent = Vue.extend({
-   template: 
+   template:
             '<h1> aboutComponent </h1>' +
             '<a v-link="{ path: \'/subroute\' }" class="btn btn-lg btn-primary" role="button">View SubRoute</a>' +
             '<router-view></router-view>'
 })
 
 var contactComponent = Vue.extend({
-   template: 
+   template:
             '<h1> 联系 </h1>' +
             '<router-view></router-view>'
 })
@@ -217,7 +215,7 @@ var contactComponent = Vue.extend({
 
 
 var detail = Vue.extend({
-   template: 
+   template:
                '<h1>Navbar example</h1>' +
                '<p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>' +
                '<p>To see the difference between static and fixed top navbars, just scroll.</p>'
@@ -269,7 +267,7 @@ router.map({
 
    '/': {
       component: workComponent,
-      
+
       subRoutes: {
       '/detail': {
            component: detail
@@ -279,7 +277,7 @@ router.map({
 
    '/work': {
       component: workComponent,
-      
+
       subRoutes: {
       '/detail': {
            component: detail
@@ -289,7 +287,7 @@ router.map({
 
    '/blog': {
       component: blogComponent,
-      
+
       subRoutes: {
       '/detail': {
            component: detail

@@ -2,9 +2,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="keywords" content="webgl web3d 网上3d,3d网站建设制作,三维网站开发,三维产品展示,3d产品演示,三维交互动画,三维虚拟展示,3d展示商城,,三维交互式产品演示,网上三维商城,三维交互网站。">
-    <meta name="description" content="3dlook提供：webgl web3d 网上3d,3d网站建设制作,三维网站开发,三维产品展示,3d产品演示,三维交互动画,三维虚拟展示,3d展示商城,,三维交互式产品演示,网上三维商城,三维交互网站。360°解决方案。请联系:13640566324">
-    <title>3dlook提供：webgl web3d 网上3d,3d网站建设制作,三维网站开发,三维产品展示,3d产品演示,三维交互动画,三维虚拟展示,3d展示商城,,三维交互式产品演示,网上三维商城,三维交互网站。</title>
+    <meta name="keywords" content="3dlook 三维在线演示,三维产品展示,产品虚拟实现,3d交互动画,3d网站制作,webgl,web3d网上交互解决方案">
+    <meta name="description" content="3dlook提供：三维在线演示,三维产品展示,产品虚拟实现,3d交互动画,3d网站制作,webgl,web3d网上交互解决方案。提供技术支持,案例分享 Tel：13640566324">
+    <title>3dlook 三维在线演示,三维产品展示,产品虚拟实现,3d交互动画,3d网站制作,webgl,web3d网上交互解决方案</title>
     <link rel="shortcut icon" href="img/logo/favicon.ico" type="image/x-icon" />
 
     <link rel="stylesheet" href="incude/fontAwesome/css/font-awesome.min.css" />
@@ -15,15 +15,9 @@
     <!-- <link rel="stylesheet" href="incude/malihu-custom-scrollbar/css/jquery.mCustomScrollbar.min.css"> -->
 
     <link rel="stylesheet" href="incude/highlight/css/monokai-sublime.css">
-
-
     <link rel="stylesheet" href="css/customize.css">
 
 </head>
-
-
-
-
 <body>
 
     <header>
@@ -33,12 +27,12 @@
             <div class="headereyes">
                 <!-- <iframe src="http://lmv.rocks/viewer/?url=http://lmv.rocks/data/racecar/Design.svf" frameBorder=0 scrolling=no width="100%" height="100%"></iframe> -->
                 <!-- <iframe src="assets/webgl/ring/index.html" frameBorder=0 scrolling=no width="100%" height="100%"></iframe> -->
-                <!-- <iframe src="assets/webgl/webgl/index.html" frameBorder=0 scrolling=no width="100%" height="100%"></iframe> -->
+                <iframe src="assets/webgl/webgl/index.html" frameBorder=0 scrolling=no width="100%" height="100%"></iframe>
                 <!-- <router-view></router-view> -->
                 <!-- <img src="assets/img/logo/3dlogo.png"> -->
-                <h1>3dLook</h1>
+                <!-- <h1>3dLook</h1> -->
             </div>
-            
+
         </div>
 
 
@@ -50,7 +44,7 @@
                 <li v-link = "{ path: '/contact' }" class='navItem' data-page="contact"> <h3>  联系 </h3> </li>
             </ul>
 
-        </nav> 
+        </nav>
 
     </header>
 
@@ -58,14 +52,14 @@
 
 
 
-    <div class="btns">       
+    <div class="btns">
 
         <div v-link="'/' + 'work'" class='btnCicle backCicle backWork' > <i class='fa fa-angle-left' aria-hidden='true'></i> </div>
 
         <div v-link="'/' + 'blog'" class='btnCicle backCicle backBlog'> <i class='fa fa-angle-left' aria-hidden='true'></i> </div>
 
         <div class="btnCicle goPageCicle"> <a class="btnCicleMore" href="#"><h3>3D</h3></a> </div>
-        
+
     </div>
 
 
@@ -80,7 +74,7 @@
             <div class="detailAdditional"></div>
 
         </div>
-        
+
     </div>
 
 
@@ -107,13 +101,13 @@
                 <template v-for="data in work" id="workVUE">
 
                     <div class="item scrollItem">
-                    
+
                         <!-- <a v-link="{ name: 'new', params: { name: user.name }}"> -->
 
                         <div v-link="{ name: 'detail', params: { itemName: data.title }}" class="itemImg">
 
                             <div class="gridImg workImg">
-                                <img v-bind:src="data.image" />                                
+                                <img v-bind:src="data.image" />
                             </div>
                         </div>
 
@@ -122,7 +116,7 @@
                         </div>
 
                         <div class="itemTag">
-                            <div class="tagTitle">                               
+                            <div class="tagTitle">
 
                                 <ul class="tagName">
                                     <li class="tagTip"><h3> 标签: </h3> </li>
@@ -137,10 +131,10 @@
 
                         <ul class="info">
                             <li class="infoItem infoTitle">
-                                <h3>{{data.title}}</h3>    
+                                <h3>{{data.title}}</h3>
                             </li>
                             <li class="infoItem infoCont">
-                                <h3>{{data.date}}</h3> 
+                                <h3>{{data.date}}</h3>
                                 <h3>作者：laishi</h3>
                             </li>
                         </ul>
@@ -156,7 +150,7 @@
 
                             <li class="barItem barInfo">
                                 <div>
-                                    <i class="fa fa-info"></i> 
+                                    <i class="fa fa-info"></i>
                                 </div>
                             </li>
                         </ul>
@@ -173,23 +167,21 @@
             </div>
         </div>
 
-        
+
 
         <!-- pageBlog========================================================================================================== -->
 
 
         <div class="page blog">
 
-            <div class="blogFilter"> 
+            <div class="blogFilter">
                 <ul>
                     <li id="ChangeLayout" class="filterItem" data-filter="all"> <i class="fa fa-list" aria-hidden="true"></i> </li>
                     <li class="filterItem filter filterAll" data-filter="all"> <h3> 显示全部 </h3> </li>
                     <li class="filterItem filter" data-filter=".threeJS"> <h3> ThreeJS</h3> </li>
                     <li class="filterItem filter" data-filter=".blend4web"> <h3> Blend4Web</h3> </li>
                     <li class="filterItem filter" data-filter=".playCanvas"> <h3> PlayCanvs</h3> </li>
-                    <li class="filterItem filter" data-filter=".pbr"> <h3> pbr</h3> </li>
-                    <li class="filterItem filter" data-filter=".lokiJS"> <h3> lokiJS</h3> </li>
-                    <li class="filterItem filterInput" >                          
+                    <li class="filterItem filterInput" >
                         <input type="text" id="input" placeholder="Search" style="font-family:Arial, FontAwesome">
                     </li>
                 </ul>
@@ -205,21 +197,21 @@
 
                         <div v-link="'/detail/' + 'blog'" class="itemImg">
                             <div class="gridImg blogImg">
-                                <img v-bind:src="data.image" />                                
+                                <img v-bind:src="data.image" />
                             </div>
                         </div>
 
                         <ul class="info">
                             <li class="infoItem infoTitle">
-                                <h3>{{data.title}}</h3>    
+                                <h3>{{data.title}}</h3>
                             </li>
                             <li class="infoItem infoCont">
-                                <h3>{{data.date}}</h3> 
+                                <h3>{{data.date}}</h3>
                                 <h3>作者：laishi</h3>
                             </li>
                         </ul>
 
-                        <div class="itemTotal"> 
+                        <div class="itemTotal">
 
                             <div class="itemTitle">
                                 <h3>{{data.title}}</h3>
@@ -231,14 +223,12 @@
 
 
                             <div class="itemTag">
-                                <div class="tagTitle">                               
-
+                                <div class="tagTitle">
                                     <ul class="tagName">
                                         <li class="tagTip"><h3> 标签: </h3> </li>
                                         <li><h3 class="pageName"> {{data.useClass}} </h3> </li>
                                         <li><h3> {{data.tag}} </h3> </li>
                                     </ul>
-
                                     <div class="titlePos"> <h3>titlePos</h3> </div>
                                 </div>
                             </div>
@@ -251,7 +241,7 @@
                                 </li>
 
                                 <li class="barItem">
-                                    <dir> <a class="moreLink" v-bind:href="data.link"> <h3> 3D </h3> </a> </dir>
+                                    <dir> <a class="moreLink" v-bind:href="data.link"> <i class="fa fa-link"></i> </a> </dir>
                                 </li>
 
                                 <li class="barItem barInfo">
@@ -264,16 +254,11 @@
 
                 </template>
 
-
-
-
-
                 <div class="gap"></div>
                 <div class="gap"></div>
                 <div class="gap"></div>
-
             </div>
-            
+
 
         </div>
 
@@ -329,13 +314,9 @@
                     </div>
 
                 </div>
-                
+
             </div>
         </div>
-
-
-
-
 
 
         <!-- pageContact========================================================================================================== -->
@@ -345,9 +326,7 @@
 
             <div class="w80">
 
-
                 <div class="item">
-
 
                     <div class="aboutItem">
                         <div class="aboutImg">
@@ -364,15 +343,15 @@
                     <p> 13640566324 </p>
 
                     <h3>ADD:</h3>
-                    <p> CHONGQING </p>                    
+                    <p> CHONGQING </p>
 
                 </div>
-                
+
             </div>
 
         </div>
 
-        
+
     </div>
 
 
