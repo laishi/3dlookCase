@@ -107,9 +107,11 @@
                 <template v-for="data in work" id="workVUE">
 
                     <div class="item scrollItem">
+                    
+                        <!-- <a v-link="{ name: 'new', params: { name: user.name }}"> -->
 
+                        <div v-link="{ name: 'detail', params: { itemName: data.title }}" class="itemImg">
 
-                        <div v-link="'/detail/' + 'work'" class="itemImg">
                             <div class="gridImg workImg">
                                 <img v-bind:src="data.image" />                                
                             </div>
@@ -370,14 +372,6 @@
 
         </div>
 
-
-
-
-
-
-
-
-
         
     </div>
 
@@ -385,14 +379,6 @@
 
 
 </body>
-
-
-
-
-
-
-
-
 
 
 
@@ -406,11 +392,12 @@
 <script src="incude/LokiJS/lokijs.min.js"></script>
 <!-- <script src="incude/LokiJS/lokijs.db.js"></script> -->
 
+<script src="incude/vue/vue-router.min.js"></script>
 <script src="incude/vue/vue.min.js"></script>
 <script src="incude/vue/vueItem.js"></script>
+<!-- <script src="js/vue-detail.js"></script> -->
 
-<script src="incude/vue/vue-router.min.js"></script>
-<script src="incude/vue/vueconfig.js"></script>
+<!-- <script src="incude/vue/vueconfig.js"></script> -->
 
 <script src='incude/mixitup/js/jquery.mixitup.min.js'></script>
 <script src="incude/slinky/js/slinkyHome.js"></script>

@@ -4,15 +4,25 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="网上三维产品展示">
     <meta name="description" content="网上三维产品展示 联系:13640566324">
-    <title>LokiJS：纯JavaScript实现的轻量级数据库</title>
-    <script src="../common/js/append.cssjs.js"></script>
+    <title> LokiJS：纯JavaScript实现的轻量级数据库 </title>
+    <script src="../common/js/page.conf.js"></script>
 </head>
 
 <body>
-    <header class="pageTitle">
+
+    <div class="pageTitle">
         <img src="img/logo/3dlogo.png">
-        <h3>LokiJS：纯JavaScript实现的轻量级数据库</h3>
-    </header>
+        <p class="byDate">By: 3dlook Date: 2016-6-13</p>
+        <ul class="tags">
+            <li class="tag"> TAG </li>
+            <li class="tag"> PlayCanvas </li>
+            <li class="tag"> PBR </li>
+            <li class="tag"> webgl </li>
+            <li class="tag"> web3d </li>
+        </ul>
+        <h3 class="title"> LokiJS：纯JavaScript实现的轻量级数据库 </h3>
+    </div>
+
     <div class="btnCicle goHome">
         <a class="btnCicleMore" href="http://localhost:8080/#!/work"> <i class='fa fa-home' aria-hidden='true'></i> </a>
     </div>
@@ -20,38 +30,46 @@
         <article>
             <section>
                 <div class="title">
-                    <h1>摘要</h1>
+                    <h1> 摘要 </h1>
                 </div>
-                <div class="titleCont">
-                    <p>
-                        <strong>
-                            LokiJS一个轻量级的面向文档的数据库，由JavaScript实现，性能高于一切。支持字段索引来实现更快的文件访问，性能也相当好（近50万OPS/ s）。
-                        </strong></br>
-                        LokiJS一个轻量级的面向文档的数据库，由JavaScript实现，性能高于一切。目的是把JavaScript对象作为文档，然后再进行存储，并且以同样的方式来检索数据。 LokiJS可以运行于Node.js和所有支持JavaScript的浏览器、移动应用程序上。 </br>
-                        LokiJS支持字段索引来实现更快的文件访问，性能也相当好（近50万OPS/ s）。其内置的DynamicView类也能用于数据子集的索引，达到更快的性能。 </br>LokiJS支持集合，很像MongoDB，并将数据以JSON格式保存到硬盘上（根据会话来恢复状态），所以你的数据是可移植的。</br>
-                    </p>
+                <div class="titleCont summary">
+                    <div class="pageGrids">
+                        <div class="pageGrid gridW100" style="clear: both;">
+                            <p>
+                                <strong>
+                                    LokiJS一个轻量级的面向文档的数据库，由JavaScript实现，性能高于一切。支持字段索引来实现更快的文件访问，性能也相当好（近50万OPS/ s）。
+                                </strong></br>
+                                LokiJS一个轻量级的面向文档的数据库，由JavaScript实现，性能高于一切。目的是把JavaScript对象作为文档，然后再进行存储，并且以同样的方式来检索数据。 LokiJS可以运行于Node.js和所有支持JavaScript的浏览器、移动应用程序上。 </br>
+                                LokiJS支持字段索引来实现更快的文件访问，性能也相当好（近50万OPS/ s）。其内置的DynamicView类也能用于数据子集的索引，达到更快的性能。 </br>LokiJS支持集合，很像MongoDB，并将数据以JSON格式保存到硬盘上（根据会话来恢复状态），所以你的数据是可移植的。</br>
+                            </p>
+                        </div>
+
+                    </div>
                 </div>
             </section>
 
 
             <section>
                 <div class="title">
-                    <h1>采用LokiJS的最理想情景：</h1>
+                    <h1> 采用LokiJS的最理想情景： </h1>
                 </div>
                 <div class="titleCont">
-                    <p>
-                        <ul>
-                            <li> 移动应用程序——尤其是基于HTML5的（例如：Cordova，Phonegap等等）</li>
 
-                            <li>基于Node.js的小——中型应用程序的数据存储</li>
+                    <ul>
+                        <li> <p>  移动应用程序——尤其是基于HTML5的（例如：Cordova，Phonegap等等）</p></li>
 
-                            <li>采用Node-Webkit的桌面应用程序</li>
+                        <li> <p> 基于Node.js的小——中型应用程序的数据存储 </p></li>
 
-                            <li><strong>LokiJS目前还处在alpha阶段。源码托管在Github上。</strong></li>
-                        </ul>
-                    </p>
+                        <li> <p> 采用Node-Webkit的桌面应用程序 </p></li>
+
+                        <li> <p> <strong>LokiJS目前还处在alpha阶段。源码托管在Github上。</strong> </p> </li>
+                    </ul>
+
                 </div>
             </section>
+
+
+
 
 
             <section>
@@ -112,10 +130,6 @@ console.log(fruit.data);
 
 var findApple = fruit.findOne({ 'name': 'apple' });
 
-
-
-
-
 // write some function
 
 function bill(name, num) {
@@ -124,10 +138,6 @@ function bill(name, num) {
     var num = num;
 
     var findCommodity = fruit.findOne({ 'name': name });
-
-
-
-
 
     if (findCommodity) {
 
@@ -138,8 +148,6 @@ function bill(name, num) {
         var commodityPice = findCommodity.pice;
 
         var count;
-
-
         if ( commodityNum < num ) {
             alert("商品卖完了哦")
         } else {
@@ -152,7 +160,6 @@ function bill(name, num) {
 
             $(".buyCont").append(buyCont);
         }
-
     } 
 
 
@@ -165,12 +172,7 @@ function bill(name, num) {
     } else {
 
     }
-
 }
-
-
-
-
 
 new Vue({
 
@@ -195,7 +197,7 @@ new Vue({
   }
   
 })
-                    </code></pre>
+                    </code></pre>                   
 
                 
             </section>
@@ -207,21 +209,15 @@ new Vue({
                     <h1>LokiJS相关资料：</h1> </div>
                 <div class="titleCont">
                     <ul>
-                        <li>官网：http://lokijs.org/</li>
-                        <li>托管地址：https://github.com/techfort/LokiJS</li>
+                        <li> <a href="http://lokijs.org">lokijs官网</a></li>
+                        <li> <a href="https://github.com/techfort/LokiJS">github托管地址</a></li>
                     </ul>
                 </div>
             </section>
+
+
         </article>
     </div>
-
-
-
-
-
-
-
-
 </body>
 
 </html>
